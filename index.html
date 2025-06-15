@@ -6,58 +6,63 @@
     <title>AI Engineer Portfolio</title>
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;500;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
     <header>
         <nav>
-            <ul>
-                <li><a href="#home">Home</a></li>
-                <li><a href="#expertise">Expertise</a></li>
-                <li><a href="#projects">Projects</a></li>
-                <li><a href="#publications">Publications</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
+            <div class="nav-content">
+                <a href="#home" class="logo">AI Portfolio</a>
+                <ul>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#experience">Experience</a></li>
+                    <li><a href="#projects">Projects</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </div>
         </nav>
     </header>
 
     <main>
         <section id="home" class="hero">
             <div class="hero-content">
-                <h1>AI Engineer & Researcher</h1>
-                <p class="subtitle">Specializing in Machine Learning, Deep Learning & AI Solutions</p>
-                <div class="tech-stack">
-                    <span>TensorFlow</span>
-                    <span>PyTorch</span>
-                    <span>Python</span>
-                    <span>NLP</span>
-                    <span>Computer Vision</span>
-                </div>
+                <p class="greeting">Hi, my name is</p>
+                <h1>John Doe</h1>
+                <h2>AI Engineer & Machine Learning Specialist</h2>
+                <a href="#contact" class="cta-button">Get in Touch</a>
             </div>
         </section>
 
-        <section id="expertise" class="expertise">
-            <h2>Areas of Expertise</h2>
-            <div class="expertise-grid">
-                <div class="expertise-card">
-                    <i class="fas fa-brain"></i>
-                    <h3>Deep Learning</h3>
-                    <p>Neural Networks, CNN, RNN, Transformers</p>
+        <section id="about" class="about">
+            <h2>About</h2>
+            <div class="about-content">
+                <p>I'm an AI Engineer and Machine Learning Specialist with a passion for building intelligent systems that solve real-world problems. With expertise in deep learning, natural language processing, and computer vision, I create innovative solutions that push the boundaries of what's possible with AI.</p>
+                <p>Currently, I'm working on cutting-edge AI projects while contributing to open-source machine learning initiatives. I believe in the power of AI to transform industries and improve lives.</p>
+            </div>
+        </section>
+
+        <section id="experience" class="experience">
+            <h2>Experience</h2>
+            <div class="experience-grid">
+                <div class="experience-item">
+                    <h3>Senior AI Engineer</h3>
+                    <p class="company">Tech Innovations Inc.</p>
+                    <p class="duration">2021 - Present</p>
+                    <ul>
+                        <li>Led development of ML models for real-time object detection</li>
+                        <li>Implemented NLP solutions for automated text analysis</li>
+                        <li>Managed AI infrastructure using cloud platforms</li>
+                    </ul>
                 </div>
-                <div class="expertise-card">
-                    <i class="fas fa-language"></i>
-                    <h3>Natural Language Processing</h3>
-                    <p>BERT, GPT, Text Classification, Sentiment Analysis</p>
-                </div>
-                <div class="expertise-card">
-                    <i class="fas fa-eye"></i>
-                    <h3>Computer Vision</h3>
-                    <p>Object Detection, Image Segmentation, Face Recognition</p>
-                </div>
-                <div class="expertise-card">
-                    <i class="fas fa-robot"></i>
-                    <h3>AI Solutions</h3>
-                    <p>Model Deployment, MLOps, Cloud AI Services</p>
+                <div class="experience-item">
+                    <h3>Machine Learning Engineer</h3>
+                    <p class="company">AI Solutions Co.</p>
+                    <p class="duration">2019 - 2021</p>
+                    <ul>
+                        <li>Developed recommendation systems using deep learning</li>
+                        <li>Optimized model performance for production deployment</li>
+                        <li>Collaborated with cross-functional teams on AI projects</li>
+                    </ul>
                 </div>
             </div>
         </section>
@@ -67,67 +72,41 @@
             <div class="project-grid">
                 <div class="project-card">
                     <div class="project-image">
-                        <img src="https://via.placeholder.com/300x200" alt="AI Project 1">
+                        <img src="https://via.placeholder.com/600x400" alt="AI Project 1">
                     </div>
-                    <h3>Real-time Object Detection System</h3>
-                    <p>Built a real-time object detection system using YOLOv5 and TensorRT for edge deployment</p>
-                    <div class="project-tech">
-                        <span>Python</span>
-                        <span>PyTorch</span>
-                        <span>TensorRT</span>
+                    <div class="project-content">
+                        <h3>Real-time Object Detection System</h3>
+                        <p>A high-performance object detection system using YOLOv5 and TensorRT for edge deployment.</p>
+                        <div class="project-tech">
+                            <span>Python</span>
+                            <span>PyTorch</span>
+                            <span>TensorRT</span>
+                        </div>
+                        <a href="#" class="project-link">View Project →</a>
                     </div>
-                    <a href="#" class="project-link">View Project</a>
                 </div>
                 <div class="project-card">
                     <div class="project-image">
-                        <img src="https://via.placeholder.com/300x200" alt="AI Project 2">
+                        <img src="https://via.placeholder.com/600x400" alt="AI Project 2">
                     </div>
-                    <h3>NLP-based Document Analysis</h3>
-                    <p>Developed a document analysis system using BERT for automated text classification</p>
-                    <div class="project-tech">
-                        <span>Python</span>
-                        <span>Transformers</span>
-                        <span>FastAPI</span>
+                    <div class="project-content">
+                        <h3>NLP Document Analysis</h3>
+                        <p>Advanced document analysis system using BERT for automated text classification and extraction.</p>
+                        <div class="project-tech">
+                            <span>Python</span>
+                            <span>Transformers</span>
+                            <span>FastAPI</span>
+                        </div>
+                        <a href="#" class="project-link">View Project →</a>
                     </div>
-                    <a href="#" class="project-link">View Project</a>
-                </div>
-                <div class="project-card">
-                    <div class="project-image">
-                        <img src="https://via.placeholder.com/300x200" alt="AI Project 3">
-                    </div>
-                    <h3>AI-Powered Recommendation System</h3>
-                    <p>Implemented a collaborative filtering system using deep learning for personalized recommendations</p>
-                    <div class="project-tech">
-                        <span>Python</span>
-                        <span>TensorFlow</span>
-                        <span>Docker</span>
-                    </div>
-                    <a href="#" class="project-link">View Project</a>
-                </div>
-            </div>
-        </section>
-
-        <section id="publications" class="publications">
-            <h2>Publications & Research</h2>
-            <div class="publication-list">
-                <div class="publication-item">
-                    <h3>Advanced Neural Network Architectures for Image Recognition</h3>
-                    <p class="publication-meta">Journal of AI Research, 2023</p>
-                    <p class="publication-abstract">Research on novel neural network architectures for improved image recognition accuracy...</p>
-                    <a href="#" class="publication-link">Read Paper</a>
-                </div>
-                <div class="publication-item">
-                    <h3>Efficient NLP Models for Low-Resource Languages</h3>
-                    <p class="publication-meta">ICML Conference, 2023</p>
-                    <p class="publication-abstract">Study on optimizing transformer models for languages with limited training data...</p>
-                    <a href="#" class="publication-link">Read Paper</a>
                 </div>
             </div>
         </section>
 
         <section id="contact" class="contact">
-            <h2>Get In Touch</h2>
+            <h2>Get in Touch</h2>
             <div class="contact-content">
+                <p>Interested in working together? Let's connect and discuss how we can collaborate on your next AI project.</p>
                 <div class="social-links">
                     <a href="https://github.com/yourusername" target="_blank" title="GitHub">
                         <i class="fab fa-github"></i>
@@ -147,7 +126,15 @@
     </main>
 
     <footer>
-        <p>&copy; 2024 AI Engineer Portfolio. All rights reserved.</p>
+        <div class="footer-content">
+            <p>&copy; 2024 AI Engineer Portfolio. All rights reserved.</p>
+            <div class="footer-links">
+                <a href="#home">Home</a>
+                <a href="#about">About</a>
+                <a href="#projects">Projects</a>
+                <a href="#contact">Contact</a>
+            </div>
+        </div>
     </footer>
 </body>
 </html> 
