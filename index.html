@@ -3,17 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Portfolio</title>
+    <title>AI Engineer Portfolio</title>
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;500;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 </head>
 <body>
     <header>
         <nav>
             <ul>
                 <li><a href="#home">Home</a></li>
-                <li><a href="#about">About</a></li>
+                <li><a href="#expertise">Expertise</a></li>
                 <li><a href="#projects">Projects</a></li>
+                <li><a href="#publications">Publications</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
         </nav>
@@ -22,47 +24,103 @@
     <main>
         <section id="home" class="hero">
             <div class="hero-content">
-                <h1>Welcome to My Portfolio</h1>
-                <p>Full Stack Developer | Problem Solver | Tech Enthusiast</p>
+                <h1>AI Engineer & Researcher</h1>
+                <p class="subtitle">Specializing in Machine Learning, Deep Learning & AI Solutions</p>
+                <div class="tech-stack">
+                    <span>TensorFlow</span>
+                    <span>PyTorch</span>
+                    <span>Python</span>
+                    <span>NLP</span>
+                    <span>Computer Vision</span>
+                </div>
             </div>
         </section>
 
-        <section id="about" class="about">
-            <h2>About Me</h2>
-            <div class="about-content">
-                <div class="about-text">
-                    <p>I am a passionate developer with expertise in building modern web applications. I love solving complex problems and creating user-friendly solutions.</p>
+        <section id="expertise" class="expertise">
+            <h2>Areas of Expertise</h2>
+            <div class="expertise-grid">
+                <div class="expertise-card">
+                    <i class="fas fa-brain"></i>
+                    <h3>Deep Learning</h3>
+                    <p>Neural Networks, CNN, RNN, Transformers</p>
                 </div>
-                <div class="skills">
-                    <h3>Skills</h3>
-                    <ul>
-                        <li>HTML5 & CSS3</li>
-                        <li>JavaScript</li>
-                        <li>React</li>
-                        <li>Node.js</li>
-                        <li>Python</li>
-                    </ul>
+                <div class="expertise-card">
+                    <i class="fas fa-language"></i>
+                    <h3>Natural Language Processing</h3>
+                    <p>BERT, GPT, Text Classification, Sentiment Analysis</p>
+                </div>
+                <div class="expertise-card">
+                    <i class="fas fa-eye"></i>
+                    <h3>Computer Vision</h3>
+                    <p>Object Detection, Image Segmentation, Face Recognition</p>
+                </div>
+                <div class="expertise-card">
+                    <i class="fas fa-robot"></i>
+                    <h3>AI Solutions</h3>
+                    <p>Model Deployment, MLOps, Cloud AI Services</p>
                 </div>
             </div>
         </section>
 
         <section id="projects" class="projects">
-            <h2>My Projects</h2>
+            <h2>Featured Projects</h2>
             <div class="project-grid">
                 <div class="project-card">
-                    <h3>Project 1</h3>
-                    <p>A web application built with React and Node.js</p>
+                    <div class="project-image">
+                        <img src="https://via.placeholder.com/300x200" alt="AI Project 1">
+                    </div>
+                    <h3>Real-time Object Detection System</h3>
+                    <p>Built a real-time object detection system using YOLOv5 and TensorRT for edge deployment</p>
+                    <div class="project-tech">
+                        <span>Python</span>
+                        <span>PyTorch</span>
+                        <span>TensorRT</span>
+                    </div>
                     <a href="#" class="project-link">View Project</a>
                 </div>
                 <div class="project-card">
-                    <h3>Project 2</h3>
-                    <p>An e-commerce platform with modern features</p>
+                    <div class="project-image">
+                        <img src="https://via.placeholder.com/300x200" alt="AI Project 2">
+                    </div>
+                    <h3>NLP-based Document Analysis</h3>
+                    <p>Developed a document analysis system using BERT for automated text classification</p>
+                    <div class="project-tech">
+                        <span>Python</span>
+                        <span>Transformers</span>
+                        <span>FastAPI</span>
+                    </div>
                     <a href="#" class="project-link">View Project</a>
                 </div>
                 <div class="project-card">
-                    <h3>Project 3</h3>
-                    <p>Mobile-first responsive website</p>
+                    <div class="project-image">
+                        <img src="https://via.placeholder.com/300x200" alt="AI Project 3">
+                    </div>
+                    <h3>AI-Powered Recommendation System</h3>
+                    <p>Implemented a collaborative filtering system using deep learning for personalized recommendations</p>
+                    <div class="project-tech">
+                        <span>Python</span>
+                        <span>TensorFlow</span>
+                        <span>Docker</span>
+                    </div>
                     <a href="#" class="project-link">View Project</a>
+                </div>
+            </div>
+        </section>
+
+        <section id="publications" class="publications">
+            <h2>Publications & Research</h2>
+            <div class="publication-list">
+                <div class="publication-item">
+                    <h3>Advanced Neural Network Architectures for Image Recognition</h3>
+                    <p class="publication-meta">Journal of AI Research, 2023</p>
+                    <p class="publication-abstract">Research on novel neural network architectures for improved image recognition accuracy...</p>
+                    <a href="#" class="publication-link">Read Paper</a>
+                </div>
+                <div class="publication-item">
+                    <h3>Efficient NLP Models for Low-Resource Languages</h3>
+                    <p class="publication-meta">ICML Conference, 2023</p>
+                    <p class="publication-abstract">Study on optimizing transformer models for languages with limited training data...</p>
+                    <a href="#" class="publication-link">Read Paper</a>
                 </div>
             </div>
         </section>
@@ -71,16 +129,25 @@
             <h2>Get In Touch</h2>
             <div class="contact-content">
                 <div class="social-links">
-                    <a href="https://github.com/yourusername" target="_blank"><i class="fab fa-github"></i></a>
-                    <a href="https://linkedin.com/in/yourusername" target="_blank"><i class="fab fa-linkedin"></i></a>
-                    <a href="mailto:your.email@example.com"><i class="fas fa-envelope"></i></a>
+                    <a href="https://github.com/yourusername" target="_blank" title="GitHub">
+                        <i class="fab fa-github"></i>
+                    </a>
+                    <a href="https://linkedin.com/in/yourusername" target="_blank" title="LinkedIn">
+                        <i class="fab fa-linkedin"></i>
+                    </a>
+                    <a href="https://scholar.google.com/yourusername" target="_blank" title="Google Scholar">
+                        <i class="fas fa-graduation-cap"></i>
+                    </a>
+                    <a href="mailto:your.email@example.com" title="Email">
+                        <i class="fas fa-envelope"></i>
+                    </a>
                 </div>
             </div>
         </section>
     </main>
 
     <footer>
-        <p>&copy; 2024 My Portfolio. All rights reserved.</p>
+        <p>&copy; 2024 AI Engineer Portfolio. All rights reserved.</p>
     </footer>
 </body>
 </html> 
