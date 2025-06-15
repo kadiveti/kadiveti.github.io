@@ -10,12 +10,13 @@
     --light-bg: #fdd835; /* Yellowish background for sidebar */
     --text-dark: #ffffff;
     --text-light: #333333;
-    --accent-color: #007bff;
+    --accent-color: #fdd835; /* Changed to yellowish for consistency with image */
     --card-bg: #2c2c2c;
     --card-border: #444444;
     --section-header-color: #fdd835;
     --timeline-dot: #fdd835;
     --timeline-line: #444444;
+    --tech-tag-bg: #8b0000; /* Dark red/maroon for tech tags */
 }
 
 body {
@@ -49,19 +50,31 @@ body {
     margin-bottom: 3rem;
 }
 
+.profile-image-wrapper {
+    position: relative;
+    width: 150px; /* Same as profile-pic width */
+    height: 150px; /* Same as profile-pic height */
+    margin-bottom: 1rem;
+}
+
 .profile-pic {
     width: 150px;
     height: 150px;
     border-radius: 50%;
     object-fit: cover;
     border: 3px solid var(--text-light);
-    margin-bottom: 1rem;
 }
 
 .greeting-text {
     font-size: 0.9rem;
     color: var(--text-light);
-    margin-bottom: 0.5rem;
+    position: absolute;
+    top: 5px; /* Adjust as needed */
+    right: -25px; /* Adjust as needed */
+    background-color: #ffffff; /* Small white circle background */
+    border-radius: 50%;
+    padding: 0.3em 0.6em; /* Adjust padding for the circle size */
+    box-shadow: 0 0 5px rgba(0,0,0,0.2);
 }
 
 .profile-section h1 {
@@ -87,7 +100,7 @@ body {
     font-size: 1rem;
     padding: 0.5rem 0;
     display: block;
-    transition: color 0.3s ease;
+    transition: color 0.3s ease, border-bottom 0.3s ease;
 }
 
 .sidebar-nav ul li a:hover,
@@ -182,8 +195,12 @@ body {
     width: 30px;
     height: 30px;
     font-size: 2rem;
-    color: var(--accent-color);
+    color: var(--accent-color); /* Icons color */
     margin-right: 0.5rem;
+    /* Added for circular background if desired, based on image */
+    background-color: rgba(255, 255, 255, 0.1); 
+    border-radius: 50%;
+    padding: 5px;
 }
 
 .stat-card .card-header p {
@@ -217,6 +234,10 @@ body {
 }
 
 /* Work Experience Section */
+.work-experience-section {
+    margin-bottom: 4rem; /* Ensure consistent spacing */
+}
+
 .experience-timeline {
     position: relative;
     padding-left: 25px;
@@ -304,12 +325,19 @@ body {
 }
 
 .tech-tags span {
-    background-color: var(--accent-color);
+    background-color: var(--tech-tag-bg); /* Using new tech tag background color */
     color: white;
     padding: 0.3rem 0.8rem;
     border-radius: 5px;
     font-size: 0.8rem;
     font-weight: 500;
+}
+
+/* Placeholder for other sections to ensure proper spacing */
+#repositories, #blogs, #trekking-adventures, #education, #contact {
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+    /* You might want to add specific styling for these sections later */
 }
 
 /* Responsive Design */
@@ -333,6 +361,24 @@ body {
 
     .profile-section {
         margin-bottom: 1rem;
+    }
+
+    .profile-image-wrapper {
+        margin-left: auto;
+        margin-right: auto;
+        /* Resetting absolute positioning for mobile if needed */
+        position: relative;
+        top: auto;
+        right: auto;
+    }
+
+    .greeting-text {
+        position: static; /* Remove absolute positioning on mobile */
+        background-color: transparent;
+        box-shadow: none;
+        padding: 0;
+        margin-top: 0.5rem; /* Add some space below the picture */
+        text-align: center;
     }
 
     .sidebar-nav ul {
