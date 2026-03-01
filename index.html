@@ -1,178 +1,1016 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Vinay Somawat | Frontend Engineer</title>
-    <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Kadiveti Sai Kumar | AI Engineer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@300;400;500&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #0a0d0f;
+      --surface: #111518;
+      --border: #1e2428;
+      --accent: #00d4aa;
+      --accent2: #ff6b35;
+      --text: #e8eaed;
+      --muted: #6b7580;
+      --card: #13181c;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Outfit', sans-serif;
+      font-weight: 300;
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+
+    /* ── NOISE TEXTURE OVERLAY ── */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+      pointer-events: none;
+      z-index: 0;
+      opacity: 0.4;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1.2rem 4rem;
+      border-bottom: 1px solid var(--border);
+      background: rgba(10,13,15,0.85);
+      backdrop-filter: blur(12px);
+    }
+
+    .nav-logo {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.85rem;
+      color: var(--accent);
+      letter-spacing: 0.05em;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2.5rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.78rem;
+      color: var(--muted);
+      text-decoration: none;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover { color: var(--accent); }
+
+    /* ── HERO ── */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      padding: 0 4rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-grid {
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(var(--border) 1px, transparent 1px),
+        linear-gradient(90deg, var(--border) 1px, transparent 1px);
+      background-size: 60px 60px;
+      opacity: 0.3;
+      mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black 30%, transparent 100%);
+    }
+
+    .hero-glow {
+      position: absolute;
+      width: 600px; height: 600px;
+      background: radial-gradient(circle, rgba(0,212,170,0.08) 0%, transparent 70%);
+      top: 50%; left: 55%;
+      transform: translate(-50%, -50%);
+      pointer-events: none;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      max-width: 780px;
+    }
+
+    .hero-tag {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.75rem;
+      color: var(--accent);
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      margin-bottom: 1.5rem;
+      opacity: 0;
+      animation: fadeUp 0.6s 0.1s forwards;
+    }
+
+    .hero-name {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(3rem, 7vw, 5.5rem);
+      line-height: 1.05;
+      letter-spacing: -0.02em;
+      margin-bottom: 0.5rem;
+      opacity: 0;
+      animation: fadeUp 0.7s 0.2s forwards;
+    }
+
+    .hero-name em {
+      font-style: italic;
+      color: var(--accent);
+    }
+
+    .hero-title {
+      font-family: 'DM Mono', monospace;
+      font-size: clamp(0.9rem, 2vw, 1.1rem);
+      color: var(--muted);
+      margin-bottom: 2rem;
+      opacity: 0;
+      animation: fadeUp 0.7s 0.35s forwards;
+    }
+
+    .hero-title span {
+      color: var(--accent2);
+    }
+
+    .hero-desc {
+      font-size: 1.05rem;
+      color: #9aa3ad;
+      max-width: 540px;
+      line-height: 1.8;
+      margin-bottom: 2.5rem;
+      opacity: 0;
+      animation: fadeUp 0.7s 0.45s forwards;
+    }
+
+    .hero-cta {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      opacity: 0;
+      animation: fadeUp 0.7s 0.55s forwards;
+    }
+
+    .btn {
+      padding: 0.75rem 1.8rem;
+      border-radius: 4px;
+      font-family: 'DM Mono', monospace;
+      font-size: 0.8rem;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      text-decoration: none;
+      transition: all 0.2s;
+      cursor: pointer;
+      border: none;
+      display: inline-block;
+    }
+
+    .btn-primary {
+      background: var(--accent);
+      color: #0a0d0f;
+      font-weight: 500;
+    }
+
+    .btn-primary:hover {
+      background: #00f0c2;
+      transform: translateY(-1px);
+      box-shadow: 0 8px 30px rgba(0,212,170,0.25);
+    }
+
+    .btn-ghost {
+      background: transparent;
+      color: var(--text);
+      border: 1px solid var(--border);
+    }
+
+    .btn-ghost:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+      transform: translateY(-1px);
+    }
+
+    /* ── SECTION BASE ── */
+    section {
+      padding: 6rem 4rem;
+      position: relative;
+    }
+
+    .section-label {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.72rem;
+      color: var(--accent);
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      margin-bottom: 0.75rem;
+    }
+
+    .section-title {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(2rem, 4vw, 3rem);
+      line-height: 1.1;
+      margin-bottom: 3rem;
+      letter-spacing: -0.01em;
+    }
+
+    .divider {
+      width: 100%;
+      height: 1px;
+      background: var(--border);
+      margin: 0 4rem;
+      width: calc(100% - 8rem);
+    }
+
+    /* ── ABOUT ── */
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      align-items: start;
+    }
+
+    .about-text p {
+      color: #9aa3ad;
+      margin-bottom: 1.2rem;
+      font-size: 1rem;
+    }
+
+    .about-text p strong {
+      color: var(--text);
+      font-weight: 500;
+    }
+
+    .about-stats {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+    }
+
+    .stat-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 1.5rem;
+      transition: border-color 0.2s;
+    }
+
+    .stat-card:hover { border-color: var(--accent); }
+
+    .stat-num {
+      font-family: 'DM Serif Display', serif;
+      font-size: 2.2rem;
+      color: var(--accent);
+      line-height: 1;
+      margin-bottom: 0.3rem;
+    }
+
+    .stat-label {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.72rem;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+    }
+
+    /* ── SKILLS ── */
+    #skills { background: var(--surface); }
+
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .skill-group {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 2rem;
+      transition: all 0.25s;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .skill-group::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 2px;
+      background: var(--accent);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.3s;
+    }
+
+    .skill-group:hover::before { transform: scaleX(1); }
+    .skill-group:hover { border-color: rgba(0,212,170,0.3); transform: translateY(-3px); }
+
+    .skill-group-icon {
+      font-size: 1.5rem;
+      margin-bottom: 0.8rem;
+    }
+
+    .skill-group-title {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.78rem;
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-bottom: 1.2rem;
+    }
+
+    .skill-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    .tag {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.72rem;
+      padding: 0.3rem 0.75rem;
+      border-radius: 20px;
+      border: 1px solid var(--border);
+      color: #9aa3ad;
+      transition: all 0.2s;
+    }
+
+    .tag:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+
+    /* ── EXPERIENCE ── */
+    .exp-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+
+    .exp-item {
+      display: grid;
+      grid-template-columns: 200px 1fr;
+      gap: 3rem;
+      padding: 2.5rem 0;
+      border-bottom: 1px solid var(--border);
+      transition: background 0.2s;
+    }
+
+    .exp-item:first-child { border-top: 1px solid var(--border); }
+
+    .exp-meta {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .exp-period {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.75rem;
+      color: var(--muted);
+      letter-spacing: 0.05em;
+      margin-bottom: 0.4rem;
+    }
+
+    .exp-company {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.78rem;
+      color: var(--accent);
+    }
+
+    .exp-role {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.3rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .exp-desc {
+      color: #9aa3ad;
+      font-size: 0.95rem;
+      line-height: 1.7;
+    }
+
+    .exp-badge {
+      display: inline-block;
+      margin-top: 1rem;
+      font-family: 'DM Mono', monospace;
+      font-size: 0.7rem;
+      padding: 0.25rem 0.75rem;
+      border-radius: 20px;
+      background: rgba(0,212,170,0.08);
+      color: var(--accent);
+      border: 1px solid rgba(0,212,170,0.2);
+    }
+
+    /* ── PROJECTS ── */
+    #projects { background: var(--surface); }
+
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .project-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 2rem;
+      transition: all 0.25s;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .project-card:hover {
+      border-color: rgba(0,212,170,0.4);
+      transform: translateY(-4px);
+      box-shadow: 0 20px 60px rgba(0,0,0,0.4);
+    }
+
+    .project-number {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.68rem;
+      color: var(--muted);
+      margin-bottom: 1rem;
+    }
+
+    .project-title {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.2rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .project-desc {
+      color: #9aa3ad;
+      font-size: 0.92rem;
+      line-height: 1.7;
+      flex: 1;
+      margin-bottom: 1.2rem;
+    }
+
+    .project-stack {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+    }
+
+    .stack-tag {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.68rem;
+      padding: 0.2rem 0.6rem;
+      border-radius: 3px;
+      background: rgba(255,107,53,0.1);
+      color: var(--accent2);
+      border: 1px solid rgba(255,107,53,0.2);
+    }
+
+    /* ── CONTACT ── */
+    .contact-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      align-items: start;
+    }
+
+    .contact-text {
+      color: #9aa3ad;
+      font-size: 1.05rem;
+      line-height: 1.8;
+      margin-bottom: 2rem;
+    }
+
+    .contact-links {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .contact-link {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      text-decoration: none;
+      color: var(--text);
+      padding: 1rem 1.2rem;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      transition: all 0.2s;
+      font-size: 0.92rem;
+    }
+
+    .contact-link:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+      transform: translateX(4px);
+    }
+
+    .contact-link-icon {
+      font-size: 1.2rem;
+      width: 24px;
+      text-align: center;
+    }
+
+    .contact-link-label {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.75rem;
+      color: var(--muted);
+      margin-left: auto;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    .open-to-work {
+      background: var(--card);
+      border: 1px solid rgba(0,212,170,0.25);
+      border-radius: 10px;
+      padding: 2rem;
+    }
+
+    .open-dot {
+      display: inline-block;
+      width: 8px; height: 8px;
+      border-radius: 50%;
+      background: var(--accent);
+      margin-right: 0.5rem;
+      animation: pulse 2s infinite;
+    }
+
+    .open-title {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.8rem;
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-bottom: 1rem;
+    }
+
+    .open-desc {
+      color: #9aa3ad;
+      font-size: 0.92rem;
+      line-height: 1.7;
+    }
+
+    .open-roles {
+      margin-top: 1rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .open-role {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      font-family: 'DM Mono', monospace;
+      font-size: 0.78rem;
+      color: var(--text);
+    }
+
+    .open-role::before {
+      content: '→';
+      color: var(--accent);
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 2rem 4rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .footer-copy {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.72rem;
+      color: var(--muted);
+    }
+
+    .footer-tag {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.72rem;
+      color: var(--accent);
+    }
+
+    /* ── ANIMATIONS ── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; box-shadow: 0 0 0 0 rgba(0,212,170,0.4); }
+      50% { opacity: 0.8; box-shadow: 0 0 0 6px rgba(0,212,170,0); }
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity 0.65s ease, transform 0.65s ease;
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: none;
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 768px) {
+      nav { padding: 1rem 1.5rem; }
+      .nav-links { gap: 1.2rem; }
+      section { padding: 4rem 1.5rem; }
+      .hero { padding: 0 1.5rem; }
+      .divider { margin: 0 1.5rem; width: calc(100% - 3rem); }
+      .about-grid, .contact-inner { grid-template-columns: 1fr; gap: 2.5rem; }
+      .exp-item { grid-template-columns: 1fr; gap: 0.5rem; }
+      footer { padding: 1.5rem; flex-direction: column; gap: 0.5rem; text-align: center; }
+    }
+  </style>
 </head>
 <body>
-    <div class="container">
-        <aside class="sidebar">
-            <div class="profile-section">
-                <div class="profile-image-wrapper">
-                    <img src="https://via.placeholder.com/150" alt="Vinay Somawat" class="profile-pic">
-                    <p class="greeting-text">hey.</p>
-                </div>
-                <h1>Vinay Somawat</h1>
-            </div>
-            <nav class="sidebar-nav">
-                <ul>
-                    <li><a href="#about">ABOUT</a></li>
-                    <li><a href="#skills">SKILLS</a></li>
-                    <li><a href="#repositories">TOP REPOSITORIES</a></li>
-                    <li><a href="#blogs">BLOGS</a></li>
-                    <li><a href="#work-experience">WORK EXPERIENCE</a></li>
-                    <li><a href="#trekking-adventures">TREKKING ADVENTURES</a></li>
-                    <li><a href="#education">EDUCATION</a></li>
-                    <li><a href="#contact">CONTACT</a></li>
-                </ul>
-            </nav>
-        </aside>
 
-        <main class="main-content">
-            <section id="about" class="about-section content-section">
-                <h2>About</h2>
-                <p class="intro-text">Hello, I'm Vinay Somawat!</p>
-                <p>Frontend Software Engineer with 4+ years of experience building scalable, user-focused web applications.</p>
-                <p>Skilled in Angular, TypeScript, and performance optimization, I aim to leverage my expertise in delivering innovative solutions that drive measurable business outcomes.</p>
-                <p>Passionate about mentoring, teamwork, and continuous improvement in engineering processes.</p>
-            </section>
+  <!-- NAV -->
+  <nav>
+    <div class="nav-logo">kadiveti.saikumar</div>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
 
-            <section id="skills" class="skills-section content-section">
-                <h2>Skills</h2>
-                <ul class="skill-list">
-                    <li>JavaScript, TypeScript, Angular, AngularJS, React, HTML5, CSS, Bootstrap, Tailwind CSS</li>
-                    <li>RxJS, NGXS, NGRX, WebSockets, Stencil, Storybook, Module Federation, Webpack</li>
-                    <li>Jenkins, JIRA, Git</li>
-                    <li>Performance Optimization, Responsive Design, Cross-Browser Compatibility</li>
-                </ul>
-                <div class="stats-grid">
-                    <div class="stat-card">
-                        <div class="card-header">
-                            <img src="https://via.placeholder.com/30x30" alt="StackOverflow Icon">
-                            <p>STACKOVERFLOW</p>
-                        </div>
-                        <p class="url">stackoverflow.com/vinay-somawat</p>
-                        <div class="metrics">
-                            <div class="metric-item">
-                                <p>REPUTATION</p>
-                                <span>687</span>
-                            </div>
-                            <div class="metric-item">
-                                <p>GOLD</p>
-                                <span>1</span>
-                            </div>
-                            <div class="metric-item">
-                                <p>SILVER</p>
-                                <span>15</span>
-                            </div>
-                            <div class="metric-item">
-                                <p>BRONZE</p>
-                                <span>26</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="stat-card">
-                        <div class="card-header">
-                            <i class="fab fa-github"></i>
-                            <p>GITHUB</p>
-                        </div>
-                        <p class="url">https://github.com/vinaysomawat</p>
-                        <div class="metrics">
-                            <div class="metric-item">
-                                <p>REPOSITORIES</p>
-                                <span>33</span>
-                            </div>
-                            <div class="metric-item">
-                                <p>FOLLOWERS</p>
-                                <span>257</span>
-                            </div>
-                            <div class="metric-item">
-                                <p>FOLLOWING</p>
-                                <span>36</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="stat-card">
-                        <div class="card-header">
-                            <img src="https://via.placeholder.com/30x30" alt="LeetCode Icon">
-                            <p>LEETCODE</p>
-                        </div>
-                        <p class="url">https://leetcode.com/vinaysomawat/</p>
-                        <div class="metrics">
-                            <div class="metric-item">
-                                <p>SOLVED</p>
-                                <span>210/3586</span>
-                            </div>
-                            <div class="metric-item">
-                                <p>RANK</p>
-                                <span>#574180</span>
-                            </div>
-                            <div class="metric-item">
-                                <p>ACCEPTANCE</p>
-                                <span>69.41%</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <section id="work-experience" class="work-experience-section content-section">
-                <h2>Work Experience</h2>
-                <div class="experience-timeline">
-                    <div class="timeline-item">
-                        <div class="timeline-dot"></div>
-                        <div class="timeline-content">
-                            <h3>Shiprocket Private Limited <span class="duration">September 2023 - Present</span></h3>
-                            <p class="role">Software Engineer</p>
-                            <ul>
-                                <li>Developed a design system using Stencil and Storybook that provides consistent UI components across platforms, ensuring a cohesive design.</li>
-                                <li>Developed a dynamic support ticket panel that renders subcategories based on component IDs, handling up to 100 AWBs simultaneously.</li>
-                                <li>Migrated 30+ modules from AngularJS to Angular 15 using Generative AI tools, reporting directly to the VP of Engineering.</li>
-                                <li>Designed and implemented advanced features such as keyboard shortcuts, improving operational efficiency by 15 percent.</li>
-                                <li>Took ownership of OKRs, collaborated with the product team, and mentored two junior developers, cutting their code review iterations and ensuring on-time feature delivery.</li>
-                            </ul>
-                            <div class="tech-tags">
-                                <span>ANGULAR 15</span>
-                                <span>STORYBOOK</span>
-                                <span>STENCIL</span>
-                                <span>BOOTSTRAP</span>
-                                <span>ANGULARJS</span>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Add more experience items here -->
-                </div>
-            </section>
-
-            <section id="repositories" class="content-section">
-                <h2>Top Repositories</h2>
-                <p>Placeholder for your top repositories.</p>
-            </section>
-
-            <section id="blogs" class="content-section">
-                <h2>Blogs</h2>
-                <p>Placeholder for your blog posts.</p>
-            </section>
-
-            <section id="trekking-adventures" class="content-section">
-                <h2>Trekking Adventures</h2>
-                <p>Placeholder for your trekking adventures.</p>
-            </section>
-
-            <section id="education" class="content-section">
-                <h2>Education</h2>
-                <p>Placeholder for your educational background.</p>
-            </section>
-
-            <section id="contact" class="content-section">
-                <h2>Contact</h2>
-                <p>Placeholder for your contact information.</p>
-            </section>
-        </main>
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-grid"></div>
+    <div class="hero-glow"></div>
+    <div class="hero-content">
+      <p class="hero-tag">// Observability → AI Engineering</p>
+      <h1 class="hero-name">Kadiveti<br><em>Sai Kumar</em></h1>
+      <p class="hero-title">
+        Observability Engineer &nbsp;·&nbsp;
+        <span>Aspiring AI Engineer</span>
+      </p>
+      <p class="hero-desc">
+        I build systems that <strong style="color:var(--text)">see everything</strong> — monitoring stacks, tracing pipelines, and alerting systems at scale. Now channelling that production intuition into <strong style="color:var(--accent)">AI engineering</strong>: RAG systems, LLM observability, and intelligent infrastructure.
+      </p>
+      <div class="hero-cta">
+        <a href="#projects" class="btn btn-primary">View My Work</a>
+        <a href="#contact" class="btn btn-ghost">Get In Touch</a>
+      </div>
     </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="reveal">
+      <p class="section-label">// 01. about</p>
+      <h2 class="section-title">The engineer behind<br>the dashboards</h2>
+    </div>
+    <div class="about-grid reveal">
+      <div class="about-text">
+        <p>
+          I'm <strong>Kadiveti Sai Kumar</strong>, an Observability Engineer passionate about understanding how complex systems behave — and increasingly, how <strong>intelligent systems</strong> can be made reliable, explainable, and production-ready.
+        </p>
+        <p>
+          My daily work involves designing monitoring stacks with <strong>Prometheus, Grafana, and OpenTelemetry</strong>, building SLOs, and managing distributed tracing across microservices. I've learned that the hardest engineering problems aren't just building things — it's <em>trusting</em> them in production.
+        </p>
+        <p>
+          That philosophy drives my push into AI Engineering. I'm applying observability principles — tracing, metrics, evals — to LLM systems. Because an AI you can't monitor is an AI you can't trust.
+        </p>
+        <a href="#contact" class="btn btn-ghost" style="margin-top:1rem;">Let's talk →</a>
+      </div>
+      <div class="about-stats">
+        <div class="stat-card">
+          <div class="stat-num">3+</div>
+          <div class="stat-label">Years in Observability</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-num">10+</div>
+          <div class="stat-label">Production Systems Monitored</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-num">RAG</div>
+          <div class="stat-label">AI Focus Area</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-num">OTel</div>
+          <div class="stat-label">Core Instrumentation Stack</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- SKILLS -->
+  <section id="skills">
+    <div class="reveal">
+      <p class="section-label">// 02. skills</p>
+      <h2 class="section-title">What I work with</h2>
+    </div>
+    <div class="skills-grid reveal">
+
+      <div class="skill-group">
+        <div class="skill-group-icon">🤖</div>
+        <div class="skill-group-title">AI / LLM Engineering</div>
+        <div class="skill-tags">
+          <span class="tag">LangChain</span>
+          <span class="tag">LlamaIndex</span>
+          <span class="tag">RAG Pipelines</span>
+          <span class="tag">OpenAI API</span>
+          <span class="tag">HuggingFace</span>
+          <span class="tag">Embeddings</span>
+          <span class="tag">Prompt Engineering</span>
+          <span class="tag">Vector DBs</span>
+        </div>
+      </div>
+
+      <div class="skill-group">
+        <div class="skill-group-icon">🔭</div>
+        <div class="skill-group-title">Observability Stack</div>
+        <div class="skill-tags">
+          <span class="tag">Prometheus</span>
+          <span class="tag">Grafana</span>
+          <span class="tag">OpenTelemetry</span>
+          <span class="tag">Jaeger</span>
+          <span class="tag">Loki</span>
+          <span class="tag">Datadog</span>
+          <span class="tag">ELK Stack</span>
+          <span class="tag">AlertManager</span>
+        </div>
+      </div>
+
+      <div class="skill-group">
+        <div class="skill-group-icon">🧠</div>
+        <div class="skill-group-title">AI Observability</div>
+        <div class="skill-tags">
+          <span class="tag">Langfuse</span>
+          <span class="tag">Arize Phoenix</span>
+          <span class="tag">LLM Tracing</span>
+          <span class="tag">Evals</span>
+          <span class="tag">Hallucination Detection</span>
+          <span class="tag">Model Monitoring</span>
+        </div>
+      </div>
+
+      <div class="skill-group">
+        <div class="skill-group-icon">⚙️</div>
+        <div class="skill-group-title">Infrastructure & Cloud</div>
+        <div class="skill-tags">
+          <span class="tag">Kubernetes</span>
+          <span class="tag">Terraform</span>
+          <span class="tag">AWS</span>
+          <span class="tag">Docker</span>
+          <span class="tag">Helm</span>
+          <span class="tag">CI/CD</span>
+          <span class="tag">Linux</span>
+        </div>
+      </div>
+
+      <div class="skill-group">
+        <div class="skill-group-icon">💻</div>
+        <div class="skill-group-title">Languages & Frameworks</div>
+        <div class="skill-tags">
+          <span class="tag">Python</span>
+          <span class="tag">FastAPI</span>
+          <span class="tag">Bash</span>
+          <span class="tag">SQL</span>
+          <span class="tag">Go</span>
+          <span class="tag">pgvector</span>
+          <span class="tag">Pinecone</span>
+        </div>
+      </div>
+
+      <div class="skill-group">
+        <div class="skill-group-icon">📐</div>
+        <div class="skill-group-title">SRE & Reliability</div>
+        <div class="skill-tags">
+          <span class="tag">SLOs / SLAs</span>
+          <span class="tag">Incident Response</span>
+          <span class="tag">Runbooks</span>
+          <span class="tag">Capacity Planning</span>
+          <span class="tag">PagerDuty</span>
+          <span class="tag">Chaos Engineering</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- EXPERIENCE -->
+  <section id="experience">
+    <div class="reveal">
+      <p class="section-label">// 03. experience</p>
+      <h2 class="section-title">Where I've worked</h2>
+    </div>
+    <div class="exp-list reveal">
+
+      <div class="exp-item">
+        <div class="exp-meta">
+          <span class="exp-period">2023 — Present</span>
+          <span class="exp-company">Current Role</span>
+        </div>
+        <div>
+          <div class="exp-role">Observability Engineer</div>
+          <div class="exp-desc">
+            Designing and maintaining end-to-end observability infrastructure for distributed microservices. Built Prometheus + Grafana dashboards for 50+ services, instrumented applications with OpenTelemetry, defined SLOs and alerting policies, and reduced mean time to detect (MTTD) incidents by 40%. Actively integrating AI/LLM observability tooling into existing pipelines.
+          </div>
+          <span class="exp-badge">OpenTelemetry · Prometheus · Grafana · Kubernetes · AWS</span>
+        </div>
+      </div>
+
+      <div class="exp-item">
+        <div class="exp-meta">
+          <span class="exp-period">2021 — 2023</span>
+          <span class="exp-company">Previous Role</span>
+        </div>
+        <div>
+          <div class="exp-role">DevOps / SRE Engineer</div>
+          <div class="exp-desc">
+            Managed CI/CD pipelines, infrastructure-as-code with Terraform, and cloud deployments on AWS. Established log aggregation with ELK stack and built first-response playbooks that reduced on-call alert fatigue by 30%.
+          </div>
+          <span class="exp-badge">Terraform · AWS · Docker · ELK · Jenkins</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- PROJECTS -->
+  <section id="projects">
+    <div class="reveal">
+      <p class="section-label">// 04. projects</p>
+      <h2 class="section-title">Things I've built</h2>
+    </div>
+    <div class="projects-grid reveal">
+
+      <div class="project-card">
+        <div class="project-number">Project 01</div>
+        <div class="project-title">LLM Observability Dashboard</div>
+        <div class="project-desc">
+          Instrumented LLM API calls with OpenTelemetry spans, capturing token usage, latency, cost, and error rates. Feeds into a Grafana dashboard with SLO-style burn rate alerts for hallucination thresholds tracked via Langfuse evals.
+        </div>
+        <div class="project-stack">
+          <span class="stack-tag">Python</span>
+          <span class="stack-tag">OpenTelemetry</span>
+          <span class="stack-tag">Langfuse</span>
+          <span class="stack-tag">Grafana</span>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <div class="project-number">Project 02</div>
+        <div class="project-title">RAG Pipeline with Eval Framework</div>
+        <div class="project-desc">
+          End-to-end Retrieval Augmented Generation system using LlamaIndex + pgvector. Built automated evaluation pipeline scoring faithfulness, relevance, and groundedness — with metrics stored as time-series for regression tracking.
+        </div>
+        <div class="project-stack">
+          <span class="stack-tag">LlamaIndex</span>
+          <span class="stack-tag">pgvector</span>
+          <span class="stack-tag">FastAPI</span>
+          <span class="stack-tag">Prometheus</span>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <div class="project-number">Project 03</div>
+        <div class="project-title">Observability Copilot</div>
+        <div class="project-desc">
+          LLM-powered assistant that interprets Prometheus alerts in natural language, explains anomalies, and surfaces relevant runbook sections. Reduces on-call cognitive load by turning raw metric spikes into human-readable context.
+        </div>
+        <div class="project-stack">
+          <span class="stack-tag">OpenAI</span>
+          <span class="stack-tag">LangChain</span>
+          <span class="stack-tag">Prometheus API</span>
+          <span class="stack-tag">Slack</span>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <div class="project-number">Project 04</div>
+        <div class="project-title">Unified Telemetry Platform</div>
+        <div class="project-desc">
+          Designed a centralised observability platform unifying metrics, logs, and traces under a single OpenTelemetry collector deployment. Reduced instrumentation effort for dev teams by 60% through standardised SDKs and auto-instrumentation.
+        </div>
+        <div class="project-stack">
+          <span class="stack-tag">OpenTelemetry</span>
+          <span class="stack-tag">Tempo</span>
+          <span class="stack-tag">Loki</span>
+          <span class="stack-tag">Kubernetes</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="reveal">
+      <p class="section-label">// 05. contact</p>
+      <h2 class="section-title">Let's connect</h2>
+    </div>
+    <div class="contact-inner reveal">
+      <div>
+        <p class="contact-text">
+          I'm actively exploring <strong style="color:var(--text)">AI Engineering roles</strong> — especially at companies building production LLM systems, AI infra, or applying observability to intelligent systems. If that resonates, I'd love to chat.
+        </p>
+        <div class="contact-links">
+          <a href="https://linkedin.com/in/kadiveti-sai-kumar" class="contact-link" target="_blank">
+            <span class="contact-link-icon">💼</span>
+            LinkedIn
+            <span class="contact-link-label">Connect →</span>
+          </a>
+          <a href="https://github.com/kadiveti" class="contact-link" target="_blank">
+            <span class="contact-link-icon">🐙</span>
+            GitHub
+            <span class="contact-link-label">View code →</span>
+          </a>
+          <a href="mailto:saikumar@example.com" class="contact-link">
+            <span class="contact-link-icon">✉️</span>
+            saikumar@example.com
+            <span class="contact-link-label">Email →</span>
+          </a>
+        </div>
+      </div>
+      <div class="open-to-work">
+        <div class="open-title">
+          <span class="open-dot"></span>
+          Open to Opportunities
+        </div>
+        <p class="open-desc">
+          Currently open to full-time roles, contract positions, and interesting conversations around AI infra and LLM systems.
+        </p>
+        <div class="open-roles">
+          <div class="open-role">AI Engineer</div>
+          <div class="open-role">ML Infrastructure Engineer</div>
+          <div class="open-role">AI Reliability / LLMOps Engineer</div>
+          <div class="open-role">Senior Observability Engineer</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-copy">© 2025 Kadiveti Sai Kumar. Built from scratch.</div>
+    <div class="footer-tag">Observability → AI Engineering</div>
+  </footer>
+
+  <script>
+    // Scroll reveal
+    const reveals = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry, i) => {
+        if (entry.isIntersecting) {
+          setTimeout(() => entry.target.classList.add('visible'), i * 80);
+        }
+      });
+    }, { threshold: 0.1 });
+    reveals.forEach(el => observer.observe(el));
+
+    // Active nav link
+    const sections = document.querySelectorAll('section[id]');
+    const navLinks = document.querySelectorAll('.nav-links a');
+    window.addEventListener('scroll', () => {
+      let current = '';
+      sections.forEach(sec => {
+        if (window.scrollY >= sec.offsetTop - 120) current = sec.id;
+      });
+      navLinks.forEach(a => {
+        a.style.color = a.getAttribute('href') === `#${current}` ? 'var(--accent)' : '';
+      });
+    });
+  </script>
+
 </body>
-</html> 
+</html>
