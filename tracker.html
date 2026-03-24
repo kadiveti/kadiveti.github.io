@@ -1,136 +1,250 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Learning Tracker System</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>6-Month AI Mastery OS</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+
 <style>
-body { background:#0b0b12; color:#eee; font-family:Arial; padding:20px; }
-h2 { margin-top:30px; }
-.card { background:#151520; padding:16px; border-radius:10px; margin-bottom:16px; }
-button { padding:6px 12px; margin-top:10px; cursor:pointer; }
-.completed { text-decoration:line-through; color:#777; }
-.summary { background:#101018; padding:16px; border-radius:10px; }
+:root {
+  --bg: #0b0b12;
+  --card: rgba(255,255,255,0.05);
+  --border: rgba(255,255,255,0.08);
+  --accent: #7c6af7;
+  --green: #4ade80;
+  --blue: #60a5fa;
+  --pink: #f472b6;
+  --text: #e5e7eb;
+  --muted: #9ca3af;
+}
+
+* { margin:0; padding:0; box-sizing:border-box; }
+
+body {
+  font-family: 'Inter', sans-serif;
+  background: radial-gradient(circle at top, #111122, #050507);
+  color: var(--text);
+  padding: 40px 20px;
+}
+
+/* HEADER */
+.header {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.header h1 {
+  font-size: 42px;
+  font-weight: 800;
+  background: linear-gradient(90deg, #7c6af7, #60a5fa);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.header p {
+  color: var(--muted);
+  margin-top: 10px;
+}
+
+/* GRID */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 16px;
+  margin-bottom: 40px;
+}
+
+.card {
+  background: var(--card);
+  backdrop-filter: blur(12px);
+  border: 1px solid var(--border);
+  padding: 20px;
+  border-radius: 16px;
+  transition: 0.3s;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  border-color: var(--accent);
+}
+
+/* TRACK BLOCK */
+.track-title {
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+.time {
+  font-size: 22px;
+  color: var(--accent);
+}
+
+/* CHECKLIST */
+.checklist {
+  margin-top: 10px;
+}
+
+.checklist label {
+  display: flex;
+  gap: 8px;
+  font-size: 14px;
+  margin-bottom: 6px;
+  cursor: pointer;
+}
+
+input[type="checkbox"] {
+  accent-color: var(--accent);
+}
+
+/* BUTTONS */
+.buttons {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-top: 20px;
+}
+
+.btn {
+  padding: 10px 16px;
+  border-radius: 10px;
+  border: 1px solid var(--border);
+  text-decoration: none;
+  color: white;
+  font-size: 14px;
+  transition: 0.3s;
+}
+
+.btn:hover {
+  background: var(--accent);
+}
+
+/* PROGRESS */
+.progress-box {
+  margin-top: 30px;
+}
+
+.progress-bar {
+  height: 10px;
+  background: #222;
+  border-radius: 20px;
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(90deg, #7c6af7, #4ade80);
+  transition: 0.3s;
+}
+
+.progress-text {
+  font-size: 12px;
+  margin-top: 6px;
+  color: var(--muted);
+}
 </style>
 </head>
+
 <body>
 
-<h1>📊 Learning Tracker</h1>
+<div class="header">
+  <h1>AI Mastery OS</h1>
+  <p>4.5 hrs/day · Build → Ship → Track</p>
+</div>
 
-<!-- DAILY TRACKER -->
-<h2>Daily Tasks</h2>
-<div id="daily" class="card"></div>
+<!-- DAILY TRACKING -->
+<div class="grid">
 
-<!-- WEEKLY TRACKER -->
-<h2>Weekly Tasks</h2>
-<div id="weekly" class="card"></div>
+  <div class="card">
+    <div class="track-title">Claude Architect</div>
+    <div class="time">60m</div>
+    <div class="checklist">
+      <label><input type="checkbox"> Practice questions</label>
+      <label><input type="checkbox"> Concept summary</label>
+    </div>
+  </div>
 
-<!-- MONTHLY TRACKER -->
-<h2>Monthly Tasks</h2>
-<div id="monthly" class="card"></div>
+  <div class="card">
+    <div class="track-title">Python</div>
+    <div class="time">30m</div>
+    <div class="checklist">
+      <label><input type="checkbox"> LeetCode</label>
+      <label><input type="checkbox"> Refactor/Test</label>
+    </div>
+  </div>
 
-<!-- SUMMARY -->
-<h2>Summary</h2>
-<div id="summary" class="summary"></div>
+  <div class="card">
+    <div class="track-title">AI / ML</div>
+    <div class="time">60m</div>
+    <div class="checklist">
+      <label><input type="checkbox"> Notebook work</label>
+      <label><input type="checkbox"> RAG/Agent</label>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="track-title">Observability</div>
+    <div class="time">60m</div>
+    <div class="checklist">
+      <label><input type="checkbox"> Metrics/Tracing</label>
+      <label><input type="checkbox"> Grafana</label>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="track-title">DevOps + Cloud</div>
+    <div class="time">60m</div>
+    <div class="checklist">
+      <label><input type="checkbox"> CI/CD</label>
+      <label><input type="checkbox"> Deploy</label>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="track-title">Brand</div>
+    <div class="time">10m</div>
+    <div class="checklist">
+      <label><input type="checkbox"> LinkedIn draft</label>
+    </div>
+  </div>
+
+</div>
+
+<!-- PROGRESS -->
+<div class="progress-box">
+  <div class="progress-bar">
+    <div class="progress-fill" id="progress"></div>
+  </div>
+  <div class="progress-text" id="progressText">0% completed</div>
+</div>
+
+<!-- NOTION LINKS -->
+<div class="buttons">
+  <a href="https://www.notion.so/c3ee395c250a4c35af12bbfe25d1a3e3?pvs=21" target="_blank" class="btn">Daily Logs</a>
+  <a href="https://www.notion.so/b8789a77d468406c98b7afbd9791bc99?pvs=21" target="_blank" class="btn">Calendar</a>
+  <a href="https://www.notion.so/ca6574e55fbd48859c1830362f6cafb9?pvs=21" target="_blank" class="btn">Weekly Review</a>
+  <a href="https://www.notion.so/9dea9daa8d4a4a7d9008a7ea7393f946?pvs=21" target="_blank" class="btn">Monthly Review</a>
+</div>
 
 <script>
-const dailyTasks = [
-  "Claude Practice",
-  "Python Practice",
-  "AI Learning",
-  "Observability",
-  "DevOps",
-  "Brand Post"
-];
+const checkboxes = document.querySelectorAll("input[type='checkbox']");
+const progress = document.getElementById("progress");
+const progressText = document.getElementById("progressText");
 
-const weeklyTasks = [
-  "Publish LinkedIn Post",
-  "Complete 1 Project",
-  "Review Progress"
-];
+checkboxes.forEach(cb => {
+  cb.addEventListener("change", updateProgress);
+});
 
-const monthlyTasks = [
-  "Complete Phase Goals",
-  "Publish Blog",
-  "Update Resume"
-];
+function updateProgress() {
+  const total = checkboxes.length;
+  const checked = document.querySelectorAll("input:checked").length;
+  const percent = Math.round((checked / total) * 100);
 
-function createChecklist(containerId, tasks, storageKey) {
-  const container = document.getElementById(containerId);
-  const saved = JSON.parse(localStorage.getItem(storageKey)) || {};
-
-  container.innerHTML = "";
-
-  tasks.forEach((task, index) => {
-    const div = document.createElement("div");
-
-    const checked = saved[index] || false;
-
-    div.innerHTML = `
-      <input type="checkbox" ${checked ? "checked" : ""} data-id="${index}" />
-      <span class="${checked ? "completed" : ""}">${task}</span>
-    `;
-
-    const checkbox = div.querySelector("input");
-    const text = div.querySelector("span");
-
-    checkbox.addEventListener("change", () => {
-      saved[index] = checkbox.checked;
-      localStorage.setItem(storageKey, JSON.stringify(saved));
-      text.classList.toggle("completed");
-      updateSummary();
-    });
-
-    container.appendChild(div);
-  });
+  progress.style.width = percent + "%";
+  progressText.innerText = percent + "% completed";
 }
-
-function updateSummary() {
-  const daily = JSON.parse(localStorage.getItem("daily")) || {};
-  const weekly = JSON.parse(localStorage.getItem("weekly")) || {};
-  const monthly = JSON.parse(localStorage.getItem("monthly")) || {};
-
-  const count = (obj, total) => {
-    let done = Object.values(obj).filter(v => v).length;
-    return `${done}/${total}`;
-  };
-
-  document.getElementById("summary").innerHTML = `
-    <p>📅 Daily: ${count(daily, dailyTasks.length)}</p>
-    <p>📆 Weekly: ${count(weekly, weeklyTasks.length)}</p>
-    <p>🗓 Monthly: ${count(monthly, monthlyTasks.length)}</p>
-  `;
-}
-
-function resetWeeklyIfMissed() {
-  const today = new Date();
-  const day = today.getDay();
-
-  // Sunday reset
-  if (day === 0) {
-    localStorage.removeItem("daily");
-    localStorage.removeItem("weekly");
-  }
-}
-
-function resetMonthlyIfNewMonth() {
-  const now = new Date();
-  const last = localStorage.getItem("month");
-
-  if (last !== now.getMonth()) {
-    localStorage.removeItem("monthly");
-    localStorage.setItem("month", now.getMonth());
-  }
-}
-
-resetWeeklyIfMissed();
-resetMonthlyIfNewMonth();
-
-createChecklist("daily", dailyTasks, "daily");
-createChecklist("weekly", weeklyTasks, "weekly");
-createChecklist("monthly", monthlyTasks, "monthly");
-
-updateSummary();
 </script>
 
 </body>
