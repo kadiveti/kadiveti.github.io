@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>My AI & Observability Projects</title>
+<style>
+  body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f7f8fa;
+    color: #333;
+  }
+  header {
+    background-color: #4f46e5;
+    color: #fff;
+    padding: 2rem;
+    text-align: center;
+  }
+  header h1 {
+    margin: 0;
+    font-size: 2.5rem;
+  }
+  .container {
+    max-width: 1000px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+  }
+  .project {
+    background-color: #fff;
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+  }
+  .project h2 {
+    margin-top: 0;
+    color: #1e40af;
+  }
+  .project p {
+    line-height: 1.6;
+  }
+  .tech-stack {
+    margin-top: 0.5rem;
+  }
+  .tech-stack span {
+    display: inline-block;
+    background-color: #e0e7ff;
+    color: #1e3a8a;
+    padding: 0.2rem 0.6rem;
+    margin: 0.2rem;
+    border-radius: 5px;
+    font-size: 0.85rem;
+  }
+  footer {
+    text-align: center;
+    padding: 2rem;
+    background-color: #4f46e5;
+    color: #fff;
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>AI & Observability Projects Portfolio</h1>
+  <p>14 Projects Demonstrating LLM Systems, Observability, and ML Engineering</p>
+</header>
+
+<div class="container">
+
+  <!-- Project 1 -->
+  <div class="project">
+    <h2>Project 01: LLM Observability Dashboard</h2>
+    <p>Instrumented LLM API calls with OpenTelemetry spans, capturing token usage, latency, cost, and error rates. Feeds into a Grafana dashboard with SLO-style burn rate alerts for hallucination thresholds tracked via Langfuse evals.</p>
+    <div class="tech-stack">
+      <span>Python</span>
+      <span>OpenTelemetry</span>
+      <span>Langfuse</span>
+      <span>Grafana</span>
+    </div>
+  </div>
+
+  <!-- Project 2 -->
+  <div class="project">
+    <h2>Project 02: RAG Pipeline with Eval Framework</h2>
+    <p>End-to-end Retrieval Augmented Generation system using LlamaIndex + pgvector. Built automated evaluation pipeline scoring faithfulness, relevance, and groundedness — with metrics stored as time-series for regression tracking.</p>
+    <div class="tech-stack">
+      <span>LlamaIndex</span>
+      <span>pgvector</span>
+      <span>FastAPI</span>
+      <span>Prometheus</span>
+    </div>
+  </div>
+
+  <!-- Project 3 -->
+  <div class="project">
+    <h2>Project 03: Observability Copilot</h2>
+    <p>LLM-powered assistant that interprets Prometheus alerts in natural language, explains anomalies, and surfaces relevant runbook sections. Reduces on-call cognitive load by turning raw metric spikes into human-readable context.</p>
+    <div class="tech-stack">
+      <span>OpenAI</span>
+      <span>LangChain</span>
+      <span>Prometheus API</span>
+      <span>Slack</span>
+    </div>
+  </div>
+
+  <!-- Project 4 -->
+  <div class="project">
+    <h2>Project 04: Unified Telemetry Platform</h2>
+    <p>Designed a centralized observability platform unifying metrics, logs, and traces under a single OpenTelemetry collector deployment. Reduced instrumentation effort for dev teams by 60% through standardized SDKs and auto-instrumentation.</p>
+    <div class="tech-stack">
+      <span>OpenTelemetry</span>
+      <span>Tempo</span>
+      <span>Loki</span>
+      <span>Kubernetes</span>
+    </div>
+  </div>
+
+  <!-- Project 5 -->
+  <div class="project">
+    <h2>Project 05: LLM Cost Optimization Engine</h2>
+    <p>Built a dynamic routing system that selects optimal LLM providers/models based on latency, cost, and task complexity. Reduced inference cost by ~35% while maintaining response quality via adaptive prompt compression and caching.</p>
+    <div class="tech-stack">
+      <span>OpenAI</span>
+      <span>Redis</span>
+      <span>FastAPI</span>
+      <span>Cost Heuristics</span>
+    </div>
+  </div>
+
+  <!-- Project 6 -->
+  <div class="project">
+    <h2>Project 06: Semantic Search Platform</h2>
+    <p>Developed a scalable semantic search system with hybrid retrieval (BM25 + embeddings) for high recall and precision. Implemented query rewriting and reranking to improve relevance across noisy datasets.</p>
+    <div class="tech-stack">
+      <span>Elasticsearch</span>
+      <span>SentenceTransformers</span>
+      <span>Python</span>
+      <span>Docker</span>
+    </div>
+  </div>
+
+  <!-- Project 7 -->
+  <div class="project">
+    <h2>Project 07: Real-Time Feature Store for ML</h2>
+    <p>Designed a low-latency feature store supporting both batch and streaming pipelines. Enabled consistent offline/online feature parity for ML models in production.</p>
+    <div class="tech-stack">
+      <span>Kafka</span>
+      <span>Redis</span>
+      <span>Spark</span>
+      <span>Feast</span>
+    </div>
+  </div>
+
+  <!-- Project 8 -->
+  <div class="project">
+    <h2>Project 08: AI Incident Postmortem Generator</h2>
+    <p>Automated incident report generation using LLMs by parsing logs, traces, and alerts. Produces structured root cause analysis and timelines, reducing manual effort for SRE teams.</p>
+    <div class="tech-stack">
+      <span>OpenAI</span>
+      <span>LangChain</span>
+      <span>Elasticsearch</span>
+      <span>FastAPI</span>
+    </div>
+  </div>
+
+  <!-- Project 9 -->
+  <div class="project">
+    <h2>Project 09: Multi-Agent Task Orchestration System</h2>
+    <p>Implemented a multi-agent framework where specialized agents collaborate to solve complex workflows (research, summarization, execution). Includes memory, planning, and tool usage capabilities.</p>
+    <div class="tech-stack">
+      <span>LangGraph</span>
+      <span>OpenAI</span>
+      <span>Python</span>
+      <span>Vector DB</span>
+    </div>
+  </div>
+
+  <!-- Project 10 -->
+  <div class="project">
+    <h2>Project 10: Streaming Anomaly Detection System</h2>
+    <p>Built a real-time anomaly detection pipeline using statistical models and ML to detect metric deviations. Integrated with alerting systems for proactive incident response.</p>
+    <div class="tech-stack">
+      <span>Kafka</span>
+      <span>Prometheus</span>
+      <span>Python</span>
+      <span>Scikit-learn</span>
+    </div>
+  </div>
+
+  <!-- Project 11 -->
+  <div class="project">
+    <h2>Project 11: Prompt Versioning & Experimentation Platform</h2>
+    <p>Created a system for managing, versioning, and A/B testing prompts. Tracks performance metrics across variants to optimize LLM outputs systematically.</p>
+    <div class="tech-stack">
+      <span>Langfuse</span>
+      <span>Postgres</span>
+      <span>FastAPI</span>
+      <span>React</span>
+    </div>
+  </div>
+
+  <!-- Project 12 -->
+  <div class="project">
+    <h2>Project 12: Knowledge Graph Builder for RAG</h2>
+    <p>Constructed an automated pipeline that extracts entities and relationships from documents to build a knowledge graph, improving reasoning and retrieval quality in RAG systems.</p>
+    <div class="tech-stack">
+      <span>Neo4j</span>
+      <span>SpaCy</span>
+      <span>LlamaIndex</span>
+      <span>Python</span>
+    </div>
+  </div>
+
+  <!-- Project 13 -->
+  <div class="project">
+    <h2>Project 13: LLM Guardrails & Safety Layer</h2>
+    <p>Developed a middleware enforcing content safety, hallucination checks, and policy compliance using classifiers and rule-based validation.</p>
+    <div class="tech-stack">
+      <span>OpenAI Moderation</span>
+      <span>Guardrails AI</span>
+      <span>Python</span>
+      <span>FastAPI</span>
+    </div>
+  </div>
+
+  <!-- Project 14 -->
+  <div class="project">
+    <h2>Project 14: Distributed Experiment Tracking System</h2>
+    <p>Built a lightweight experiment tracking platform for ML/LLM workflows with metrics, artifacts, and lineage tracking across distributed jobs.</p>
+    <div class="tech-stack">
+      <span>MLflow</span>
+      <span>S3</span>
+      <span>Kubernetes</span>
+      <span>Python</span>
+    </div>
+  </div>
+
+</div>
+
+<footer>
+  <p>&copy; 2026 My AI & Observability Projects Portfolio</p>
+</footer>
+
+</body>
+</html>
