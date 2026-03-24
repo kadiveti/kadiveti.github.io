@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Project 01: LLM Observability Dashboard</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@300;400;500&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --bg: #0a0d0f;
+    --surface: #111518;
+    --border: #1e2428;
+    --accent: #00d4aa;
+    --accent2: #ff6b35;
+    --text: #e8eaed;
+    --muted: #6b7580;
+    --card: #13181c;
+    --metric-bg: rgba(0,212,170,0.1);
+  }
+
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Outfit', sans-serif;
+    font-weight: 300;
+    line-height: 1.7;
+    padding: 2rem;
+  }
+
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 0;
+    opacity: 0.4;
+  }
+
+  /* ── HERO SECTION ── */
+  .hero {
+    text-align: center;
+    margin-bottom: 3rem;
+  }
+  .hero h1 {
+    font-family: 'DM Serif Display', serif;
+    font-size: 2.5rem;
+    color: var(--accent);
+    margin-bottom: 0.5rem;
+  }
+  .hero p {
+    color: #9aa3ad;
+    font-size: 1.05rem;
+    max-width: 700px;
+    margin: auto;
+  }
+
+  /* ── PROJECT CARD ── */
+  .project-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 2rem;
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 2rem;
+    max-width: 1000px;
+    margin: auto;
+    transition: all 0.25s;
+  }
+  .project-card:hover {
+    border-color: rgba(0,212,170,0.4);
+    transform: translateY(-4px);
+    box-shadow: 0 20px 60px rgba(0,0,0,0.4);
+  }
+
+  .project-info {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+  .project-number {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.75rem;
+    color: var(--muted);
+  }
+  .project-title {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.8rem;
+    color: var(--accent);
+  }
+  .project-desc {
+    color: #9aa3ad;
+    font-size: 0.95rem;
+    line-height: 1.8;
+  }
+  .project-desc ul {
+    margin-top: 0.5rem;
+    margin-left: 1.2rem;
+    list-style-type: disc;
+  }
+
+  .project-metrics {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+  .metric {
+    background: var(--metric-bg);
+    border-radius: 8px;
+    padding: 1rem;
+    text-align: center;
+    font-family: 'DM Mono', monospace;
+    transition: all 0.2s;
+    border: 1px solid rgba(0,212,170,0.2);
+  }
+  .metric:hover {
+    background: rgba(0,212,170,0.15);
+    transform: translateY(-2px);
+  }
+  .metric-value {
+    font-size: 1.4rem;
+    font-weight: 500;
+    color: var(--accent);
+  }
+  .metric-label {
+    font-size: 0.78rem;
+    color: var(--muted);
+    text-transform: uppercase;
+    margin-top: 0.2rem;
+  }
+
+  .project-stack {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: 1.5rem;
+  }
+  .stack-tag {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.7rem;
+    padding: 0.25rem 0.7rem;
+    border-radius: 4px;
+    background: rgba(0,212,170,0.1);
+    color: var(--accent);
+    border: 1px solid rgba(0,212,170,0.2);
+  }
+
+  @media (max-width: 900px) {
+    .project-card { grid-template-columns: 1fr; }
+    .project-metrics { flex-direction: row; justify-content: space-around; }
+  }
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <h1>LLM Observability Dashboard</h1>
+  <p>A comprehensive dashboard capturing latency, cost, token usage, and hallucination metrics for large language models. Designed to provide actionable insights for engineers and SREs.</p>
+</div>
+
+<div class="project-card">
+  <div class="project-info">
+    <div class="project-number">Project 01</div>
+    <div class="project-title">LLM Observability Dashboard</div>
+    <div class="project-desc">
+      This project instruments LLM API calls using <strong>OpenTelemetry</strong> spans, tracking every request's latency, token consumption, errors, and cost. Integrated with <strong>Grafana</strong> for visualizing KPIs and SLO-style alerts.  
+
+      <ul>
+        <li>Supports multi-model/multi-provider routing for cost and latency optimization.</li>
+        <li>Automated hallucination monitoring using <strong>Langfuse</strong> evaluation metrics.</li>
+        <li>Trend analysis of request patterns, performance, and reliability over time.</li>
+      </ul>
+      Tech stack and infrastructure are designed for scalable production deployments.
+      <div class="project-stack">
+        <span class="stack-tag">Python</span>
+        <span class="stack-tag">OpenTelemetry</span>
+        <span class="stack-tag">Grafana</span>
+        <span class="stack-tag">Langfuse</span>
+        <span class="stack-tag">PostgreSQL</span>
+        <span class="stack-tag">Docker</span>
+        <span class="stack-tag">Prometheus</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="project-metrics">
+    <div class="metric">
+      <div class="metric-value">120ms</div>
+      <div class="metric-label">Average Latency</div>
+    </div>
+    <div class="metric">
+      <div class="metric-value">35%</div>
+      <div class="metric-label">Cost Reduction</div>
+    </div>
+    <div class="metric">
+      <div class="metric-value">2%</div>
+      <div class="metric-label">Hallucination Rate</div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>
