@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Learning Tracker System</title>
+<style>
+body { background:#0b0b12; color:#eee; font-family:Arial; padding:20px; }
+h2 { margin-top:30px; }
+.card { background:#151520; padding:16px; border-radius:10px; margin-bottom:16px; }
+button { padding:6px 12px; margin-top:10px; cursor:pointer; }
+.completed { text-decoration:line-through; color:#777; }
+.summary { background:#101018; padding:16px; border-radius:10px; }
+</style>
+</head>
+<body>
+
+<h1>📊 Learning Tracker</h1>
+
+<!-- DAILY TRACKER -->
+<h2>Daily Tasks</h2>
+<div id="daily" class="card"></div>
+
+<!-- WEEKLY TRACKER -->
+<h2>Weekly Tasks</h2>
+<div id="weekly" class="card"></div>
+
+<!-- MONTHLY TRACKER -->
+<h2>Monthly Tasks</h2>
+<div id="monthly" class="card"></div>
+
+<!-- SUMMARY -->
+<h2>Summary</h2>
+<div id="summary" class="summary"></div>
+
+<script>
+const dailyTasks = [
+  "Claude Practice",
+  "Python Practice",
+  "AI Learning",
+  "Observability",
+  "DevOps",
+  "Brand Post"
+];
+
+const weeklyTasks = [
+  "Publish LinkedIn Post",
+  "Complete 1 Project",
+  "Review Progress"
+];
+
+const monthlyTasks = [
+  "Complete Phase Goals",
+  "Publish Blog",
+  "Update Resume"
+];
+
+function createChecklist(containerId, tasks, storageKey) {
+  const container = document.getElementById(containerId);
+  const saved = JSON.parse(localStorage.getItem(storageKey)) || {};
+
+  container.innerHTML = "";
+
+  tasks.forEach((task, index) => {
+    const div = document.createElement("div");
+
+    const checked = saved[index] || false;
+
+    div.innerHTML = `
+      <input type="checkbox" ${checked ? "checked" : ""} data-id="${index}" />
+      <span class="${checked ? "completed" : ""}">${task}</span>
+    `;
+
+    const checkbox = div.querySelector("input");
+    const text = div.querySelector("span");
+
+    checkbox.addEventListener("change", () => {
+      saved[index] = checkbox.checked;
+      localStorage.setItem(storageKey, JSON.stringify(saved));
+      text.classList.toggle("completed");
+      updateSummary();
+    });
+
+    container.appendChild(div);
+  });
+}
+
+function updateSummary() {
+  const daily = JSON.parse(localStorage.getItem("daily")) || {};
+  const weekly = JSON.parse(localStorage.getItem("weekly")) || {};
+  const monthly = JSON.parse(localStorage.getItem("monthly")) || {};
+
+  const count = (obj, total) => {
+    let done = Object.values(obj).filter(v => v).length;
+    return `${done}/${total}`;
+  };
+
+  document.getElementById("summary").innerHTML = `
+    <p>📅 Daily: ${count(daily, dailyTasks.length)}</p>
+    <p>📆 Weekly: ${count(weekly, weeklyTasks.length)}</p>
+    <p>🗓 Monthly: ${count(monthly, monthlyTasks.length)}</p>
+  `;
+}
+
+function resetWeeklyIfMissed() {
+  const today = new Date();
+  const day = today.getDay();
+
+  // Sunday reset
+  if (day === 0) {
+    localStorage.removeItem("daily");
+    localStorage.removeItem("weekly");
+  }
+}
+
+function resetMonthlyIfNewMonth() {
+  const now = new Date();
+  const last = localStorage.getItem("month");
+
+  if (last !== now.getMonth()) {
+    localStorage.removeItem("monthly");
+    localStorage.setItem("month", now.getMonth());
+  }
+}
+
+resetWeeklyIfMissed();
+resetMonthlyIfNewMonth();
+
+createChecklist("daily", dailyTasks, "daily");
+createChecklist("weekly", weeklyTasks, "weekly");
+createChecklist("monthly", monthlyTasks, "monthly");
+
+updateSummary();
+</script>
+
+</body>
+</html>
