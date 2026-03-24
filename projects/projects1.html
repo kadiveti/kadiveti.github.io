@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Project 01: LLM Observability Dashboard</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@300;400;500&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #0a0d0f;
+      --surface: #111518;
+      --border: #1e2428;
+      --accent: #00d4aa;
+      --accent2: #ff6b35;
+      --text: #e8eaed;
+      --muted: #6b7580;
+      --card: #13181c;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Outfit', sans-serif;
+      font-weight: 300;
+      line-height: 1.7;
+      overflow-x: hidden;
+      padding: 2rem;
+    }
+
+    /* ── PROJECT CARD STYLES ── */
+    .project-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 2rem;
+      transition: all 0.25s;
+      display: flex;
+      flex-direction: column;
+      max-width: 900px;
+      margin: auto;
+    }
+
+    .project-card:hover {
+      border-color: rgba(0,212,170,0.4);
+      transform: translateY(-4px);
+      box-shadow: 0 20px 60px rgba(0,0,0,0.4);
+    }
+
+    .project-number {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.68rem;
+      color: var(--muted);
+      margin-bottom: 1rem;
+    }
+
+    .project-title {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.6rem;
+      margin-bottom: 1rem;
+      color: var(--accent);
+    }
+
+    .project-desc {
+      color: #9aa3ad;
+      font-size: 0.95rem;
+      line-height: 1.8;
+      flex: 1;
+      margin-bottom: 1.5rem;
+    }
+
+    .project-stack {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    .stack-tag {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.7rem;
+      padding: 0.25rem 0.7rem;
+      border-radius: 4px;
+      background: rgba(0,212,170,0.1);
+      color: var(--accent);
+      border: 1px solid rgba(0,212,170,0.2);
+    }
+
+    @media (max-width: 768px) {
+      body { padding: 1rem; }
+    }
+</style>
+</head>
+<body>
+
+<div class="project-card">
+  <div class="project-number">Project 01</div>
+  <div class="project-title">LLM Observability Dashboard</div>
+  <div class="project-desc">
+    This project focuses on building a **comprehensive observability dashboard for large language models (LLMs)**, designed to provide engineering and SRE teams with **real-time insights into API usage, performance, cost, and reliability**. The system captures detailed telemetry from every LLM request, including **token consumption, latency breakdowns, error codes, and model-specific cost metrics**.  
+
+    Key features include:  
+    <ul>
+      <li>Instrumentation of LLM API calls using <strong>OpenTelemetry</strong> spans for end-to-end traceability.</li>
+      <li>Aggregation of request-level metrics into a time-series database for longitudinal analysis.</li>
+      <li>Integration with <strong>Grafana</strong> to visualize key performance indicators (KPIs) such as latency distribution, hallucination rates, and cost per request.</li>
+      <li>Automated SLO-style alerting to notify engineers when hallucination thresholds or SLA deviations occur, using data from <strong>Langfuse evaluations</strong>.</li>
+      <li>Support for multi-model and multi-provider setups, allowing teams to compare model performance and optimize routing dynamically.</li>
+    </ul>
+
+    The dashboard also enables **advanced analytics**, including:
+    <ul>
+      <li>Trend detection for cost and latency over time to inform model selection strategies.</li>
+      <li>Correlation between prompt structures and hallucination frequency, enabling proactive prompt engineering.</li>
+      <li>Exportable reports for stakeholder review and compliance audits.</li>
+    </ul>
+
+    This system reduces operational overhead, improves model reliability, and provides **actionable observability for LLM deployments at scale**.
+  </div>
+  <div class="project-stack">
+    <span class="stack-tag">Python</span>
+    <span class="stack-tag">OpenTelemetry</span>
+    <span class="stack-tag">Grafana</span>
+    <span class="stack-tag">Langfuse</span>
+    <span class="stack-tag">PostgreSQL</span>
+    <span class="stack-tag">Docker</span>
+    <span class="stack-tag">Prometheus</span>
+  </div>
+</div>
+
+</body>
+</html>
