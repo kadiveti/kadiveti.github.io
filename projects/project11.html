@@ -657,8 +657,8 @@
     <div class="hero-grid"></div>
     <div class="hero-content" style="max-width: 900px;">
       <a href="../index.html" class="hero-tag" style="display:inline-block; margin-bottom: 2rem; text-decoration:none;">← Return to main page</a>
-      <h1 class="hero-name" style="font-size: 3.5rem;">Project 01: LLM Observability Gateway</h1>
-      <p class="hero-title">Tech Stack: Langfuse · OpenTelemetry · Python</p>
+      <h1 class="hero-name" style="font-size: 3.5rem;">Project 11: Distributed Tracing Visalizer</h1>
+      <p class="hero-title">Tech Stack: OpenTelemetry · Jaeger · .NET</p>
     </div>
   </section>
   <div class="divider"></div>
@@ -668,11 +668,11 @@
        
     <h3>The Challenge & Context</h3>
     <p style="margin-top:1rem; line-height:1.8; color:#9aa3ad;">
-        As LLMs move into production, standard APM tools fail to capture AI-specific metrics. I engineered a gateway wrapper around LangChain scripts using OpenTelemetry to emit spans containing prompt length, completion tokens, latency, and estimated cost. This telemetry was funneled into Langfuse and Grafana, providing an enterprise-wide view of LLM ROI and performance degradation over time.
+        Instrumenting a fragmented system is difficult. I championed the rollout of OpenTelemetry across a hybrid network of legacy .NET Framework applications and modern .NET Core microservices. By ensuring context propagation via HTTP headers, we achieved 100% trace completeness in Jaeger, turning black-box performance issues into easily identifiable database bottlenecks.
     </p>
     <h3 style="margin-top:2rem;">Engineering Philosophy</h3>
     <p style="margin-top:1rem; line-height:1.8; color:#9aa3ad;">
-        This implementation represents a core principle of my engineering philosophy: bridging traditional observability paradigms with advanced algorithmic and AI-driven workflows. By leveraging Langfuse · OpenTelemetry · Python, the system transitioned from presenting raw data to providing <em>actionable intelligence</em>.
+        This implementation represents a core principle of my engineering philosophy: bridging traditional observability paradigms with advanced algorithmic and AI-driven workflows. By leveraging OpenTelemetry · Jaeger · .NET, the system transitioned from presenting raw data to providing <em>actionable intelligence</em>.
     </p>
     
     </div>

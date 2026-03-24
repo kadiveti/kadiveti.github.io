@@ -657,8 +657,8 @@
     <div class="hero-grid"></div>
     <div class="hero-content" style="max-width: 900px;">
       <a href="../index.html" class="hero-tag" style="display:inline-block; margin-bottom: 2rem; text-decoration:none;">← Return to main page</a>
-      <h1 class="hero-name" style="font-size: 3.5rem;">Project 01: LLM Observability Gateway</h1>
-      <p class="hero-title">Tech Stack: Langfuse · OpenTelemetry · Python</p>
+      <h1 class="hero-name" style="font-size: 3.5rem;">Project 02: RAG-Powered Incident Runbook Agent</h1>
+      <p class="hero-title">Tech Stack: LlamaIndex · Vector DB · RAG</p>
     </div>
   </section>
   <div class="divider"></div>
@@ -668,11 +668,11 @@
        
     <h3>The Challenge & Context</h3>
     <p style="margin-top:1rem; line-height:1.8; color:#9aa3ad;">
-        As LLMs move into production, standard APM tools fail to capture AI-specific metrics. I engineered a gateway wrapper around LangChain scripts using OpenTelemetry to emit spans containing prompt length, completion tokens, latency, and estimated cost. This telemetry was funneled into Langfuse and Grafana, providing an enterprise-wide view of LLM ROI and performance degradation over time.
+        On-call engineers often waste hours searching Confluence for relevant runbooks. I built a Retrieval-Augmented Generation (RAG) system using LlamaIndex and a vector database (pgvector) to ingest thousands of historical incident tickets, post-mortems, and runbooks. When a new alert fires, a LangGraph agent automatically queries this database and provides the on-call engineer with a synthesized summary of how similar incidents were resolved in the past.
     </p>
     <h3 style="margin-top:2rem;">Engineering Philosophy</h3>
     <p style="margin-top:1rem; line-height:1.8; color:#9aa3ad;">
-        This implementation represents a core principle of my engineering philosophy: bridging traditional observability paradigms with advanced algorithmic and AI-driven workflows. By leveraging Langfuse · OpenTelemetry · Python, the system transitioned from presenting raw data to providing <em>actionable intelligence</em>.
+        This implementation represents a core principle of my engineering philosophy: bridging traditional observability paradigms with advanced algorithmic and AI-driven workflows. By leveraging LlamaIndex · Vector DB · RAG, the system transitioned from presenting raw data to providing <em>actionable intelligence</em>.
     </p>
     
     </div>
