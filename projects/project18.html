@@ -659,6 +659,72 @@
       <a href="../index.html" class="hero-tag" style="display:inline-block; margin-bottom: 2rem; text-decoration:none;">← Return to main page</a>
       <h1 class="hero-name" style="font-size: 3.5rem;">Project 18: Data Pipeline Telemetry Scaffold</h1>
       <p class="hero-title">Tech Stack: Data Engineering · Monitoring · Architecture</p>
+    
+        <h3 style="margin-top:3rem;">Interactive Walkthrough Simulation</h3>
+        <p style="margin-top:1rem; line-height:1.8; color:#9aa3ad;">
+            The interface below is a mock visualization demonstrating the core functionality, real-time observability outputs, or AI agent interactions achieved in this project.
+        </p>
+        
+    <div style="background: #111518; border: 1px solid #1e2428; border-radius: 8px; padding: 1.5rem; margin-top: 3rem; font-family: sans-serif; display: flex; flex-direction: column; gap: 1rem;">
+        <div style="text-align: center; color: #6b7580; font-size: 0.8rem; margin-bottom: 0.5rem; text-transform: uppercase;">Copilot Walkthrough: Data Pipeline Telemetry Scaffold</div>
+        
+        <div style="display: flex; justify-content: flex-end;">
+            <div style="background: #1c232a; color: #e8eaed; padding: 1rem; border-radius: 12px 12px 0 12px; max-width: 80%; font-size: 0.9rem;">
+                "Hey setup, we just got a PagerDuty alert for High Latency on the Checkout Service. Can you investigate?"
+            </div>
+        </div>
+
+        <div style="display: flex; justify-content: flex-start;">
+            <div style="background: rgba(0, 212, 170, 0.1); border: 1px solid rgba(0, 212, 170, 0.2); color: #00d4aa; padding: 1rem; border-radius: 12px 12px 12px 0; max-width: 80%; font-size: 0.9rem; line-height: 1.6;">
+                <strong>Agent Analysis:</strong><br>
+                Fetching tracing data from OpenTelemetry...<br>
+                Extracting logs from ElasticSearch...<br><br>
+                Found it! Node <code>checkout-worker-03</code> is experiencing a 90% CPU spike due to an unoptimized database query. Previous runbooks suggest killing the pod or rolling back deployment v2.1.<br>
+                <div style="margin-top: 1rem; padding-top: 1rem; border-top: 1px solid rgba(0, 212, 170, 0.2);">
+                    <button style="background: transparent; border: 1px solid #00d4aa; color: #00d4aa; padding: 0.5rem 1rem; border-radius: 4px; font-family: 'DM Mono', monospace; font-size: 0.75rem; cursor: pointer;">Execute Rollback</button>
+                    <button style="background: #1e2428; border: 1px solid #374151; color: #9aa3ad; padding: 0.5rem 1rem; border-radius: 4px; font-family: 'DM Mono', monospace; font-size: 0.75rem; cursor: pointer; margin-left: 0.5rem;">View Raw Traces</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+        
+    <h3 style="margin-top:3rem;">Interactive Walkthrough Simulation</h3>
+        <p style="margin-top:1rem; line-height:1.8; color:#9aa3ad;">
+            The interface below is a mock visualization demonstrating the specific observability metric, architecture, or AI output of this individual project.
+        </p>
+        
+    <div style="background: #111518; border: 1px solid #1e2428; border-radius: 8px; padding: 1.5rem; margin-top: 3rem; font-family: sans-serif;">
+        <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #1e2428; padding-bottom: 1rem; margin-bottom: 1.5rem;">
+            <div style="font-weight: 600; color: #e8eaed;">Data Pipeline Telemetry</div>
+            <div style="display: flex; gap: 0.5rem;">
+                <span style="width: 12px; height: 12px; border-radius: 50%; background: #ff5f56;"></span>
+                <span style="width: 12px; height: 12px; border-radius: 50%; background: #ffbd2e;"></span>
+                <span style="width: 12px; height: 12px; border-radius: 50%; background: #27c93f;"></span>
+            </div>
+        </div>
+        <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem;">
+            <div style="background: #13181c; border: 1px solid #1e2428; padding: 1rem; border-radius: 6px; text-align: center;">
+                <div style="color: #6b7580; font-size: 0.8rem; text-transform: uppercase;">Kafka Consumer Lag</div>
+                <div style="color: #00d4aa; font-size: 2rem; font-weight: bold; margin-top: 0.5rem;">14,203<span style="font-size: 1rem;"> msg</span></div>
+            </div>
+            <div style="background: #13181c; border: 1px solid #1e2428; padding: 1rem; border-radius: 6px; text-align: center;">
+                <div style="color: #6b7580; font-size: 0.8rem; text-transform: uppercase;">Spark Job Duration</div>
+                <div style="color: #ffbd2e; font-size: 2rem; font-weight: bold; margin-top: 0.5rem;">12<span style="font-size: 1rem;">m</span></div>
+            </div>
+            <div style="background: #13181c; border: 1px solid #1e2428; padding: 1rem; border-radius: 6px; text-align: center;">
+                <div style="color: #6b7580; font-size: 0.8rem; text-transform: uppercase;">Data Freshness</div>
+                <div style="color: #27c93f; font-size: 2rem; font-weight: bold; margin-top: 0.5rem;">Lagging</div>
+            </div>
+        </div>
+        <div style="margin-top: 1rem; background: #13181c; border: 1px solid #1e2428; padding: 1rem; border-radius: 6px; height: 150px; position: relative;">
+            <div style="position: absolute; bottom: 1rem; left: 1rem; right: 1rem; height: 80px; display: flex; align-items: flex-end; gap: 4px;">
+                <div style="flex: 1; background: linear-gradient(to top, rgba(255,95,86,0.8) 73%, transparent); height: 100%; border-radius: 2px;"></div><div style="flex: 1; background: linear-gradient(to top, rgba(255,95,86,0.8) 76%, transparent); height: 100%; border-radius: 2px;"></div><div style="flex: 1; background: linear-gradient(to top, rgba(255,95,86,0.8) 63%, transparent); height: 100%; border-radius: 2px;"></div><div style="flex: 1; background: linear-gradient(to top, rgba(255,95,86,0.8) 51%, transparent); height: 100%; border-radius: 2px;"></div><div style="flex: 1; background: linear-gradient(to top, rgba(255,95,86,0.8) 34%, transparent); height: 100%; border-radius: 2px;"></div><div style="flex: 1; background: linear-gradient(to top, rgba(255,95,86,0.8) 20%, transparent); height: 100%; border-radius: 2px;"></div><div style="flex: 1; background: linear-gradient(to top, rgba(255,95,86,0.8) 75%, transparent); height: 100%; border-radius: 2px;"></div><div style="flex: 1; background: linear-gradient(to top, rgba(255,95,86,0.8) 35%, transparent); height: 100%; border-radius: 2px;"></div><div style="flex: 1; background: linear-gradient(to top, rgba(255,95,86,0.8) 39%, transparent); height: 100%; border-radius: 2px;"></div><div style="flex: 1; background: linear-gradient(to top, rgba(255,95,86,0.8) 24%, transparent); height: 100%; border-radius: 2px;"></div><div style="flex: 1; background: linear-gradient(to top, rgba(255,95,86,0.8) 84%, transparent); height: 100%; border-radius: 2px;"></div><div style="flex: 1; background: linear-gradient(to top, rgba(255,95,86,0.8) 46%, transparent); height: 100%; border-radius: 2px;"></div><div style="flex: 1; background: linear-gradient(to top, rgba(255,95,86,0.8) 40%, transparent); height: 100%; border-radius: 2px;"></div><div style="flex: 1; background: linear-gradient(to top, rgba(255,95,86,0.8) 97%, transparent); height: 100%; border-radius: 2px;"></div><div style="flex: 1; background: linear-gradient(to top, rgba(255,95,86,0.8) 69%, transparent); height: 100%; border-radius: 2px;"></div><div style="flex: 1; background: linear-gradient(to top, rgba(255,95,86,0.8) 43%, transparent); height: 100%; border-radius: 2px;"></div><div style="flex: 1; background: linear-gradient(to top, rgba(255,95,86,0.8) 81%, transparent); height: 100%; border-radius: 2px;"></div><div style="flex: 1; background: linear-gradient(to top, rgba(255,95,86,0.8) 38%, transparent); height: 100%; border-radius: 2px;"></div><div style="flex: 1; background: linear-gradient(to top, rgba(255,95,86,0.8) 83%, transparent); height: 100%; border-radius: 2px;"></div><div style="flex: 1; background: linear-gradient(to top, rgba(255,95,86,0.8) 60%, transparent); height: 100%; border-radius: 2px;"></div><div style="flex: 1; background: linear-gradient(to top, rgba(255,95,86,0.8) 97%, transparent); height: 100%; border-radius: 2px;"></div><div style="flex: 1; background: linear-gradient(to top, rgba(255,95,86,0.8) 68%, transparent); height: 100%; border-radius: 2px;"></div><div style="flex: 1; background: linear-gradient(to top, rgba(255,95,86,0.8) 23%, transparent); height: 100%; border-radius: 2px;"></div><div style="flex: 1; background: linear-gradient(to top, rgba(255,95,86,0.8) 75%, transparent); height: 100%; border-radius: 2px;"></div><div style="flex: 1; background: linear-gradient(to top, rgba(255,95,86,0.8) 36%, transparent); height: 100%; border-radius: 2px;"></div><div style="flex: 1; background: linear-gradient(to top, rgba(255,95,86,0.8) 65%, transparent); height: 100%; border-radius: 2px;"></div><div style="flex: 1; background: linear-gradient(to top, rgba(255,95,86,0.8) 29%, transparent); height: 100%; border-radius: 2px;"></div><div style="flex: 1; background: linear-gradient(to top, rgba(255,95,86,0.8) 79%, transparent); height: 100%; border-radius: 2px;"></div><div style="flex: 1; background: linear-gradient(to top, rgba(255,95,86,0.8) 64%, transparent); height: 100%; border-radius: 2px;"></div><div style="flex: 1; background: linear-gradient(to top, rgba(255,95,86,0.8) 60%, transparent); height: 100%; border-radius: 2px;"></div>
+            </div>
+        </div>
+    </div>
+    
+        
     </div>
   </section>
   <div class="divider"></div>
@@ -675,6 +741,72 @@
         This implementation represents a core principle of my engineering philosophy: bridging traditional observability paradigms with advanced algorithmic and AI-driven workflows. By leveraging Data Engineering · Monitoring · Architecture, the system transitioned from presenting raw data to providing <em>actionable intelligence</em>.
     </p>
     
+    
+        <h3 style="margin-top:3rem;">Interactive Walkthrough Simulation</h3>
+        <p style="margin-top:1rem; line-height:1.8; color:#9aa3ad;">
+            The interface below is a mock visualization demonstrating the core functionality, real-time observability outputs, or AI agent interactions achieved in this project.
+        </p>
+        
+    <div style="background: #111518; border: 1px solid #1e2428; border-radius: 8px; padding: 1.5rem; margin-top: 3rem; font-family: sans-serif; display: flex; flex-direction: column; gap: 1rem;">
+        <div style="text-align: center; color: #6b7580; font-size: 0.8rem; margin-bottom: 0.5rem; text-transform: uppercase;">Copilot Walkthrough: Data Pipeline Telemetry Scaffold</div>
+        
+        <div style="display: flex; justify-content: flex-end;">
+            <div style="background: #1c232a; color: #e8eaed; padding: 1rem; border-radius: 12px 12px 0 12px; max-width: 80%; font-size: 0.9rem;">
+                "Hey setup, we just got a PagerDuty alert for High Latency on the Checkout Service. Can you investigate?"
+            </div>
+        </div>
+
+        <div style="display: flex; justify-content: flex-start;">
+            <div style="background: rgba(0, 212, 170, 0.1); border: 1px solid rgba(0, 212, 170, 0.2); color: #00d4aa; padding: 1rem; border-radius: 12px 12px 12px 0; max-width: 80%; font-size: 0.9rem; line-height: 1.6;">
+                <strong>Agent Analysis:</strong><br>
+                Fetching tracing data from OpenTelemetry...<br>
+                Extracting logs from ElasticSearch...<br><br>
+                Found it! Node <code>checkout-worker-03</code> is experiencing a 90% CPU spike due to an unoptimized database query. Previous runbooks suggest killing the pod or rolling back deployment v2.1.<br>
+                <div style="margin-top: 1rem; padding-top: 1rem; border-top: 1px solid rgba(0, 212, 170, 0.2);">
+                    <button style="background: transparent; border: 1px solid #00d4aa; color: #00d4aa; padding: 0.5rem 1rem; border-radius: 4px; font-family: 'DM Mono', monospace; font-size: 0.75rem; cursor: pointer;">Execute Rollback</button>
+                    <button style="background: #1e2428; border: 1px solid #374151; color: #9aa3ad; padding: 0.5rem 1rem; border-radius: 4px; font-family: 'DM Mono', monospace; font-size: 0.75rem; cursor: pointer; margin-left: 0.5rem;">View Raw Traces</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+        
+    <h3 style="margin-top:3rem;">Interactive Walkthrough Simulation</h3>
+        <p style="margin-top:1rem; line-height:1.8; color:#9aa3ad;">
+            The interface below is a mock visualization demonstrating the specific observability metric, architecture, or AI output of this individual project.
+        </p>
+        
+    <div style="background: #111518; border: 1px solid #1e2428; border-radius: 8px; padding: 1.5rem; margin-top: 3rem; font-family: sans-serif;">
+        <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #1e2428; padding-bottom: 1rem; margin-bottom: 1.5rem;">
+            <div style="font-weight: 600; color: #e8eaed;">Data Pipeline Telemetry</div>
+            <div style="display: flex; gap: 0.5rem;">
+                <span style="width: 12px; height: 12px; border-radius: 50%; background: #ff5f56;"></span>
+                <span style="width: 12px; height: 12px; border-radius: 50%; background: #ffbd2e;"></span>
+                <span style="width: 12px; height: 12px; border-radius: 50%; background: #27c93f;"></span>
+            </div>
+        </div>
+        <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem;">
+            <div style="background: #13181c; border: 1px solid #1e2428; padding: 1rem; border-radius: 6px; text-align: center;">
+                <div style="color: #6b7580; font-size: 0.8rem; text-transform: uppercase;">Kafka Consumer Lag</div>
+                <div style="color: #00d4aa; font-size: 2rem; font-weight: bold; margin-top: 0.5rem;">14,203<span style="font-size: 1rem;"> msg</span></div>
+            </div>
+            <div style="background: #13181c; border: 1px solid #1e2428; padding: 1rem; border-radius: 6px; text-align: center;">
+                <div style="color: #6b7580; font-size: 0.8rem; text-transform: uppercase;">Spark Job Duration</div>
+                <div style="color: #ffbd2e; font-size: 2rem; font-weight: bold; margin-top: 0.5rem;">12<span style="font-size: 1rem;">m</span></div>
+            </div>
+            <div style="background: #13181c; border: 1px solid #1e2428; padding: 1rem; border-radius: 6px; text-align: center;">
+                <div style="color: #6b7580; font-size: 0.8rem; text-transform: uppercase;">Data Freshness</div>
+                <div style="color: #27c93f; font-size: 2rem; font-weight: bold; margin-top: 0.5rem;">Lagging</div>
+            </div>
+        </div>
+        <div style="margin-top: 1rem; background: #13181c; border: 1px solid #1e2428; padding: 1rem; border-radius: 6px; height: 150px; position: relative;">
+            <div style="position: absolute; bottom: 1rem; left: 1rem; right: 1rem; height: 80px; display: flex; align-items: flex-end; gap: 4px;">
+                <div style="flex: 1; background: linear-gradient(to top, rgba(255,95,86,0.8) 73%, transparent); height: 100%; border-radius: 2px;"></div><div style="flex: 1; background: linear-gradient(to top, rgba(255,95,86,0.8) 76%, transparent); height: 100%; border-radius: 2px;"></div><div style="flex: 1; background: linear-gradient(to top, rgba(255,95,86,0.8) 63%, transparent); height: 100%; border-radius: 2px;"></div><div style="flex: 1; background: linear-gradient(to top, rgba(255,95,86,0.8) 51%, transparent); height: 100%; border-radius: 2px;"></div><div style="flex: 1; background: linear-gradient(to top, rgba(255,95,86,0.8) 34%, transparent); height: 100%; border-radius: 2px;"></div><div style="flex: 1; background: linear-gradient(to top, rgba(255,95,86,0.8) 20%, transparent); height: 100%; border-radius: 2px;"></div><div style="flex: 1; background: linear-gradient(to top, rgba(255,95,86,0.8) 75%, transparent); height: 100%; border-radius: 2px;"></div><div style="flex: 1; background: linear-gradient(to top, rgba(255,95,86,0.8) 35%, transparent); height: 100%; border-radius: 2px;"></div><div style="flex: 1; background: linear-gradient(to top, rgba(255,95,86,0.8) 39%, transparent); height: 100%; border-radius: 2px;"></div><div style="flex: 1; background: linear-gradient(to top, rgba(255,95,86,0.8) 24%, transparent); height: 100%; border-radius: 2px;"></div><div style="flex: 1; background: linear-gradient(to top, rgba(255,95,86,0.8) 84%, transparent); height: 100%; border-radius: 2px;"></div><div style="flex: 1; background: linear-gradient(to top, rgba(255,95,86,0.8) 46%, transparent); height: 100%; border-radius: 2px;"></div><div style="flex: 1; background: linear-gradient(to top, rgba(255,95,86,0.8) 40%, transparent); height: 100%; border-radius: 2px;"></div><div style="flex: 1; background: linear-gradient(to top, rgba(255,95,86,0.8) 97%, transparent); height: 100%; border-radius: 2px;"></div><div style="flex: 1; background: linear-gradient(to top, rgba(255,95,86,0.8) 69%, transparent); height: 100%; border-radius: 2px;"></div><div style="flex: 1; background: linear-gradient(to top, rgba(255,95,86,0.8) 43%, transparent); height: 100%; border-radius: 2px;"></div><div style="flex: 1; background: linear-gradient(to top, rgba(255,95,86,0.8) 81%, transparent); height: 100%; border-radius: 2px;"></div><div style="flex: 1; background: linear-gradient(to top, rgba(255,95,86,0.8) 38%, transparent); height: 100%; border-radius: 2px;"></div><div style="flex: 1; background: linear-gradient(to top, rgba(255,95,86,0.8) 83%, transparent); height: 100%; border-radius: 2px;"></div><div style="flex: 1; background: linear-gradient(to top, rgba(255,95,86,0.8) 60%, transparent); height: 100%; border-radius: 2px;"></div><div style="flex: 1; background: linear-gradient(to top, rgba(255,95,86,0.8) 97%, transparent); height: 100%; border-radius: 2px;"></div><div style="flex: 1; background: linear-gradient(to top, rgba(255,95,86,0.8) 68%, transparent); height: 100%; border-radius: 2px;"></div><div style="flex: 1; background: linear-gradient(to top, rgba(255,95,86,0.8) 23%, transparent); height: 100%; border-radius: 2px;"></div><div style="flex: 1; background: linear-gradient(to top, rgba(255,95,86,0.8) 75%, transparent); height: 100%; border-radius: 2px;"></div><div style="flex: 1; background: linear-gradient(to top, rgba(255,95,86,0.8) 36%, transparent); height: 100%; border-radius: 2px;"></div><div style="flex: 1; background: linear-gradient(to top, rgba(255,95,86,0.8) 65%, transparent); height: 100%; border-radius: 2px;"></div><div style="flex: 1; background: linear-gradient(to top, rgba(255,95,86,0.8) 29%, transparent); height: 100%; border-radius: 2px;"></div><div style="flex: 1; background: linear-gradient(to top, rgba(255,95,86,0.8) 79%, transparent); height: 100%; border-radius: 2px;"></div><div style="flex: 1; background: linear-gradient(to top, rgba(255,95,86,0.8) 64%, transparent); height: 100%; border-radius: 2px;"></div><div style="flex: 1; background: linear-gradient(to top, rgba(255,95,86,0.8) 60%, transparent); height: 100%; border-radius: 2px;"></div>
+            </div>
+        </div>
+    </div>
+    
+        
     </div>
   </section>
 <footer>

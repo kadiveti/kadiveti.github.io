@@ -31,7 +31,6 @@
     overflow-x: hidden;
   }
 
-  /* Noise texture overlay */
   body::before {
     content: '';
     position: fixed;
@@ -44,62 +43,74 @@
 
   .wrap { position: relative; z-index: 1; max-width: 1100px; margin: 0 auto; padding: 60px 24px 80px; }
 
+  /* ── NAV BACK ── */
+  .nav-back {
+    display: inline-flex; align-items: center; gap: 8px;
+    font-family: var(--font-mono); font-size: 11px; color: var(--muted);
+    text-decoration: none; margin-bottom: 40px;
+    transition: color 0.2s;
+  }
+  .nav-back:hover { color: var(--accent3); }
+
   /* ── HERO ── */
   .hero { margin-bottom: 64px; }
   .hero-tag {
     display: inline-block;
-    font-family: var(--font-mono);
-    font-size: 11px;
-    letter-spacing: 3px;
-    color: var(--accent3);
-    text-transform: uppercase;
-    border: 1px solid var(--accent3);
-    padding: 4px 12px;
-    border-radius: 2px;
-    margin-bottom: 20px;
-    opacity: 0;
-    animation: fadeUp 0.6s 0.1s forwards;
+    font-family: var(--font-mono); font-size: 11px; letter-spacing: 3px;
+    color: var(--accent3); text-transform: uppercase;
+    border: 1px solid var(--accent3); padding: 4px 12px; border-radius: 2px;
+    margin-bottom: 20px; opacity: 0; animation: fadeUp 0.6s 0.1s forwards;
   }
   .hero h1 {
-    font-size: clamp(36px, 6vw, 72px);
-    font-weight: 800;
-    line-height: 1.05;
-    letter-spacing: -2px;
-    opacity: 0;
-    animation: fadeUp 0.6s 0.2s forwards;
+    font-size: clamp(36px, 6vw, 72px); font-weight: 800;
+    line-height: 1.05; letter-spacing: -2px;
+    opacity: 0; animation: fadeUp 0.6s 0.2s forwards;
   }
   .hero h1 span { color: var(--accent1); }
   .hero-sub {
-    margin-top: 16px;
-    font-family: var(--font-mono);
-    font-size: 13px;
-    color: var(--muted);
-    opacity: 0;
-    animation: fadeUp 0.6s 0.35s forwards;
+    margin-top: 16px; font-family: var(--font-mono); font-size: 13px; color: var(--muted);
+    opacity: 0; animation: fadeUp 0.6s 0.35s forwards;
+  }
+  .hero-desc {
+    margin-top: 20px; font-family: var(--font-mono); font-size: 12px; color: #8888a0;
+    line-height: 1.8; max-width: 680px;
+    opacity: 0; animation: fadeUp 0.6s 0.45s forwards;
+  }
+  .hero-stats {
+    display: flex; gap: 32px; flex-wrap: wrap; margin-top: 28px;
+    opacity: 0; animation: fadeUp 0.6s 0.55s forwards;
+  }
+  .hero-stat { display: flex; flex-direction: column; gap: 4px; }
+  .hero-stat-num { font-size: 28px; font-weight: 800; line-height: 1; }
+  .hero-stat-lbl { font-family: var(--font-mono); font-size: 10px; color: var(--muted); text-transform: uppercase; letter-spacing: 1px; }
+
+  /* ── SECTION HEADER ── */
+  .section-header {
+    display: flex; align-items: center; gap: 16px; margin-bottom: 28px;
+  }
+  .section-header h2 { font-size: 22px; font-weight: 800; letter-spacing: -0.5px; }
+  .section-header .line { flex: 1; height: 1px; background: var(--border); }
+  .section-desc {
+    font-family: var(--font-mono); font-size: 11px; color: var(--muted);
+    margin-top: -16px; margin-bottom: 24px; line-height: 1.7;
+    border-left: 2px solid var(--border); padding-left: 12px;
   }
 
   /* ── DAILY SCHEDULE ── */
   .daily-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-    gap: 12px;
-    margin-bottom: 64px;
-    opacity: 0;
-    animation: fadeUp 0.6s 0.45s forwards;
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 12px; margin-bottom: 64px;
+    opacity: 0; animation: fadeUp 0.6s 0.45s forwards;
   }
   .daily-block {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 10px;
-    padding: 18px 16px;
-    position: relative;
-    overflow: hidden;
+    background: var(--surface); border: 1px solid var(--border);
+    border-radius: 10px; padding: 18px 16px;
+    position: relative; overflow: hidden;
+    transition: border-color 0.2s, transform 0.2s;
   }
+  .daily-block:hover { transform: translateY(-2px); }
   .daily-block::before {
-    content: '';
-    position: absolute;
-    top: 0; left: 0; right: 0;
-    height: 3px;
+    content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
   }
   .daily-block:nth-child(1)::before { background: var(--accent1); }
   .daily-block:nth-child(2)::before { background: var(--accent2); }
@@ -108,10 +119,7 @@
   .daily-block:nth-child(5)::before { background: var(--accent5); }
   .daily-block:nth-child(6)::before { background: #c084fc; }
   .daily-block .time {
-    font-family: var(--font-mono);
-    font-size: 22px;
-    font-weight: 500;
-    margin-bottom: 6px;
+    font-family: var(--font-mono); font-size: 22px; font-weight: 500; margin-bottom: 6px;
   }
   .daily-block:nth-child(1) .time { color: var(--accent1); }
   .daily-block:nth-child(2) .time { color: var(--accent2); }
@@ -121,34 +129,88 @@
   .daily-block:nth-child(6) .time { color: #c084fc; }
   .daily-block .label { font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: var(--text); }
   .daily-block .sub { font-family: var(--font-mono); font-size: 10px; color: var(--muted); margin-top: 4px; }
+  .daily-block .detail-list {
+    margin-top: 10px; display: flex; flex-direction: column; gap: 4px;
+    border-top: 1px solid var(--border); padding-top: 10px;
+  }
+  .daily-block .detail-item {
+    font-family: var(--font-mono); font-size: 9px; color: #8888a0;
+    display: flex; gap: 6px; align-items: flex-start; line-height: 1.4;
+  }
+  .daily-block .detail-item::before { content: '›'; flex-shrink: 0; }
 
-  /* ── SECTION HEADER ── */
-  .section-header {
-    display: flex;
-    align-items: center;
-    gap: 16px;
-    margin-bottom: 28px;
+  /* ── WEEKLY RHYTHM ── */
+  .rhythm-grid {
+    display: grid; grid-template-columns: repeat(7, 1fr);
+    gap: 8px; margin-bottom: 64px;
   }
-  .section-header h2 {
-    font-size: 22px;
-    font-weight: 800;
-    letter-spacing: -0.5px;
+  .day-col { display: flex; flex-direction: column; gap: 6px; }
+  .day-label {
+    font-family: var(--font-mono); font-size: 9px; color: var(--muted);
+    text-align: center; padding: 6px 0; text-transform: uppercase; letter-spacing: 1px;
   }
-  .section-header .line {
-    flex: 1;
-    height: 1px;
-    background: var(--border);
+  .day-block {
+    height: 32px; border-radius: 6px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 8px; font-weight: 700; letter-spacing: 0.5px;
+    text-transform: uppercase; text-align: center; cursor: default;
+    transition: opacity 0.2s;
   }
+  .day-block:hover { opacity: 0.85; }
+  .db-claude { background: rgba(192,132,252,0.2); color: #c084fc; border: 1px solid rgba(192,132,252,0.3); }
+  .db-python { background: rgba(247,194,106,0.2); color: var(--accent2); border: 1px solid rgba(247,194,106,0.3); }
+  .db-ai { background: rgba(74,244,194,0.2); color: var(--accent3); border: 1px solid rgba(74,244,194,0.3); }
+  .db-obs { background: rgba(244,106,138,0.2); color: var(--accent4); border: 1px solid rgba(244,106,138,0.3); }
+  .db-devops { background: rgba(106,180,244,0.2); color: var(--accent5); border: 1px solid rgba(106,180,244,0.3); }
+  .db-brand { background: rgba(124,106,247,0.2); color: var(--accent1); border: 1px solid rgba(124,106,247,0.3); }
+  .db-review { background: rgba(255,255,255,0.04); color: var(--muted); border: 1px solid var(--border); font-size: 7px; }
+
+  /* ── PRIORITY STACK ── */
+  .priority-stack {
+    display: flex; flex-direction: column; gap: 12px; margin-bottom: 64px;
+  }
+  .priority-item {
+    background: var(--surface); border: 1px solid var(--border);
+    border-radius: 10px; padding: 18px 20px;
+    opacity: 0; animation: slideIn 0.4s forwards;
+    transition: border-color 0.2s;
+  }
+  .priority-item:hover { border-color: rgba(124,106,247,0.3); }
+  .priority-item:nth-child(1) { animation-delay: 0.05s; }
+  .priority-item:nth-child(2) { animation-delay: 0.1s; }
+  .priority-item:nth-child(3) { animation-delay: 0.15s; }
+  .priority-item:nth-child(4) { animation-delay: 0.2s; }
+  .priority-item:nth-child(5) { animation-delay: 0.25s; }
+  .priority-top {
+    display: flex; align-items: center; gap: 16px; flex-wrap: wrap; margin-bottom: 10px;
+  }
+  .priority-num {
+    font-family: var(--font-mono); font-size: 28px; font-weight: 300;
+    color: var(--border); width: 36px; flex-shrink: 0; line-height: 1;
+  }
+  .priority-name { font-size: 15px; font-weight: 700; flex: 1; }
+  .priority-why { font-family: var(--font-mono); font-size: 11px; color: var(--muted); }
+  .priority-badge {
+    font-size: 10px; font-weight: 700; letter-spacing: 1px;
+    padding: 4px 12px; border-radius: 20px; text-transform: uppercase; flex-shrink: 0;
+  }
+  .priority-detail {
+    margin-left: 52px;
+    border-top: 1px solid var(--border); padding-top: 10px;
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 8px;
+  }
+  .priority-point {
+    font-family: var(--font-mono); font-size: 10px; color: #8888a0;
+    display: flex; gap: 6px; line-height: 1.5;
+  }
+  .priority-point::before { content: '→'; flex-shrink: 0; color: var(--accent1); }
 
   /* ── PHASE TIMELINE ── */
   .phases { margin-bottom: 64px; }
   .phase {
-    display: grid;
-    grid-template-columns: 90px 1fr;
-    gap: 0 24px;
-    margin-bottom: 0;
-    opacity: 0;
-    animation: fadeUp 0.5s forwards;
+    display: grid; grid-template-columns: 90px 1fr;
+    gap: 0 24px; margin-bottom: 0;
+    opacity: 0; animation: fadeUp 0.5s forwards;
   }
   .phase:nth-child(1) { animation-delay: 0.1s; }
   .phase:nth-child(2) { animation-delay: 0.2s; }
@@ -156,99 +218,71 @@
   .phase:nth-child(4) { animation-delay: 0.4s; }
   .phase:nth-child(5) { animation-delay: 0.5s; }
   .phase:nth-child(6) { animation-delay: 0.6s; }
-
-  .phase-left {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
+  .phase-left { display: flex; flex-direction: column; align-items: center; }
   .phase-dot {
-    width: 36px;
-    height: 36px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-family: var(--font-mono);
-    font-size: 11px;
-    font-weight: 500;
-    flex-shrink: 0;
-    border: 2px solid;
+    width: 36px; height: 36px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-family: var(--font-mono); font-size: 11px; font-weight: 500;
+    flex-shrink: 0; border: 2px solid;
   }
   .phase-line {
-    width: 2px;
-    flex: 1;
-    min-height: 20px;
-    background: var(--border);
-    margin: 8px 0;
+    width: 2px; flex: 1; min-height: 20px;
+    background: var(--border); margin: 8px 0;
   }
   .phase:last-child .phase-line { display: none; }
-
   .phase-card {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 12px;
-    padding: 20px 24px;
-    margin-bottom: 16px;
+    background: var(--surface); border: 1px solid var(--border);
+    border-radius: 12px; padding: 22px 26px; margin-bottom: 16px;
     transition: border-color 0.2s;
   }
-  .phase-card:hover { border-color: var(--accent1); }
-
+  .phase-card:hover { border-color: rgba(124,106,247,0.3); }
   .phase-meta {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    margin-bottom: 12px;
-    flex-wrap: wrap;
+    display: flex; align-items: center; gap: 12px; margin-bottom: 16px; flex-wrap: wrap;
   }
-  .phase-title { font-size: 16px; font-weight: 700; }
+  .phase-title { font-size: 17px; font-weight: 800; }
   .phase-months {
-    font-family: var(--font-mono);
-    font-size: 10px;
-    color: var(--muted);
-    background: var(--border);
-    padding: 3px 10px;
-    border-radius: 20px;
+    font-family: var(--font-mono); font-size: 10px; color: var(--muted);
+    background: var(--border); padding: 3px 10px; border-radius: 20px;
   }
   .phase-focus {
-    font-size: 10px;
-    font-weight: 700;
-    letter-spacing: 1px;
-    padding: 3px 10px;
-    border-radius: 20px;
-    text-transform: uppercase;
+    font-size: 10px; font-weight: 700; letter-spacing: 1px;
+    padding: 3px 10px; border-radius: 20px; text-transform: uppercase;
   }
-
-  .deliverables {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-    margin-top: 14px;
+  .phase-summary {
+    font-family: var(--font-mono); font-size: 11px; color: #8888a0;
+    line-height: 1.7; margin-bottom: 16px; padding: 10px 14px;
+    background: rgba(255,255,255,0.025); border-radius: 6px;
+    border-left: 2px solid var(--border);
   }
-  .deliverable {
-    display: flex;
-    gap: 10px;
-    align-items: flex-start;
-  }
+  .deliverables { display: flex; flex-direction: column; gap: 14px; margin-top: 4px; }
+  .deliverable { display: flex; flex-direction: column; gap: 6px; }
+  .deliverable-header { display: flex; gap: 10px; align-items: flex-start; }
   .deliverable-track {
-    font-family: var(--font-mono);
-    font-size: 9px;
-    font-weight: 500;
-    padding: 2px 8px;
-    border-radius: 4px;
-    flex-shrink: 0;
-    margin-top: 1px;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
+    font-family: var(--font-mono); font-size: 9px; font-weight: 500;
+    padding: 2px 8px; border-radius: 4px; flex-shrink: 0;
+    margin-top: 1px; text-transform: uppercase; letter-spacing: 0.5px;
   }
-  .deliverable-text {
-    font-size: 13px;
-    color: var(--text);
-    line-height: 1.5;
+  .deliverable-text { font-size: 13px; color: var(--text); line-height: 1.5; font-weight: 600; }
+  .deliverable-text strong { color: var(--accent2); font-weight: 700; }
+  .deliverable-body {
+    margin-left: 60px; display: flex; flex-direction: column; gap: 4px;
   }
-  .deliverable-text strong { color: var(--accent2); font-weight: 600; }
+  .deliverable-point {
+    font-family: var(--font-mono); font-size: 10px; color: #8888a0;
+    display: flex; gap: 8px; line-height: 1.5;
+  }
+  .deliverable-point .arrow { color: var(--accent3); flex-shrink: 0; }
+  .deliverable-success {
+    margin-left: 60px; margin-top: 4px;
+    font-family: var(--font-mono); font-size: 9px;
+    padding: 5px 10px; border-radius: 4px;
+    background: rgba(74,244,194,0.06); color: var(--accent3);
+    border: 1px solid rgba(74,244,194,0.15);
+    display: inline-flex; align-items: center; gap: 6px;
+  }
+  .deliverable-success::before { content: '✓'; }
 
-  /* Track color classes */
+  /* Track colors */
   .t-brand { background: rgba(124,106,247,0.15); color: var(--accent1); }
   .t-python { background: rgba(247,194,106,0.15); color: var(--accent2); }
   .t-ai { background: rgba(74,244,194,0.15); color: var(--accent3); }
@@ -264,70 +298,20 @@
   .pd-5 { border-color: var(--accent5); color: var(--accent5); background: rgba(106,180,244,0.1); }
   .pd-6 { border-color: #c084fc; color: #c084fc; background: rgba(192,132,252,0.1); }
 
-  /* ── PRIORITY STACK ── */
-  .priority-stack {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    margin-bottom: 64px;
-  }
-  .priority-item {
-    display: flex;
-    align-items: center;
-    gap: 16px;
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 10px;
-    padding: 14px 20px;
-    opacity: 0;
-    animation: slideIn 0.4s forwards;
-  }
-  .priority-item:nth-child(1) { animation-delay: 0.05s; }
-  .priority-item:nth-child(2) { animation-delay: 0.1s; }
-  .priority-item:nth-child(3) { animation-delay: 0.15s; }
-  .priority-item:nth-child(4) { animation-delay: 0.2s; }
-  .priority-item:nth-child(5) { animation-delay: 0.25s; }
-  .priority-num {
-    font-family: var(--font-mono);
-    font-size: 28px;
-    font-weight: 300;
-    color: var(--border);
-    width: 36px;
-    flex-shrink: 0;
-    line-height: 1;
-  }
-  .priority-name { font-size: 15px; font-weight: 700; flex: 1; }
-  .priority-why { font-family: var(--font-mono); font-size: 11px; color: var(--muted); }
-  .priority-badge {
-    font-size: 10px;
-    font-weight: 700;
-    letter-spacing: 1px;
-    padding: 4px 12px;
-    border-radius: 20px;
-    text-transform: uppercase;
-    flex-shrink: 0;
-  }
-
   /* ── KEY OUTCOMES ── */
   .outcomes {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 14px;
-    margin-bottom: 64px;
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 14px; margin-bottom: 64px;
   }
   .outcome-card {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 12px;
-    padding: 22px 20px;
-    position: relative;
-    overflow: hidden;
+    background: var(--surface); border: 1px solid var(--border);
+    border-radius: 12px; padding: 22px 20px;
+    position: relative; overflow: hidden;
+    transition: border-color 0.2s, transform 0.2s;
   }
+  .outcome-card:hover { transform: translateY(-3px); }
   .outcome-card::after {
-    content: '';
-    position: absolute;
-    bottom: 0; left: 0; right: 0;
-    height: 2px;
+    content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 2px;
   }
   .outcome-card:nth-child(1)::after { background: linear-gradient(90deg, var(--accent1), transparent); }
   .outcome-card:nth-child(2)::after { background: linear-gradient(90deg, var(--accent2), transparent); }
@@ -337,90 +321,72 @@
   .outcome-card:nth-child(6)::after { background: linear-gradient(90deg, #c084fc, transparent); }
   .outcome-icon { font-size: 28px; margin-bottom: 12px; }
   .outcome-title { font-size: 14px; font-weight: 700; margin-bottom: 6px; }
-  .outcome-desc { font-family: var(--font-mono); font-size: 11px; color: var(--muted); line-height: 1.6; }
+  .outcome-desc { font-family: var(--font-mono); font-size: 11px; color: var(--muted); line-height: 1.6; margin-bottom: 10px; }
+  .outcome-checklist { display: flex; flex-direction: column; gap: 4px; margin-top: 10px; border-top: 1px solid var(--border); padding-top: 10px; }
+  .outcome-check { font-family: var(--font-mono); font-size: 9px; color: #8888a0; display: flex; gap: 6px; line-height: 1.4; }
+  .outcome-check::before { content: '✓'; color: var(--accent3); flex-shrink: 0; }
 
-  /* ── WEEKLY RHYTHM ── */
-  .rhythm-grid {
-    display: grid;
-    grid-template-columns: repeat(7, 1fr);
-    gap: 8px;
-    margin-bottom: 64px;
+  /* ── SUCCESS METRICS ── */
+  .metrics-table {
+    width: 100%; border-collapse: collapse; margin-bottom: 64px;
+    font-family: var(--font-mono); font-size: 11px;
   }
-  .day-col { display: flex; flex-direction: column; gap: 6px; }
-  .day-label {
-    font-family: var(--font-mono);
-    font-size: 9px;
-    color: var(--muted);
-    text-align: center;
-    padding: 6px 0;
-    text-transform: uppercase;
-    letter-spacing: 1px;
+  .metrics-table th {
+    text-align: left; padding: 10px 16px; border-bottom: 1px solid var(--border);
+    color: var(--muted); font-size: 9px; text-transform: uppercase; letter-spacing: 1px;
+    background: var(--surface);
   }
-  .day-block {
-    height: 32px;
-    border-radius: 6px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 8px;
-    font-weight: 700;
-    letter-spacing: 0.5px;
-    text-transform: uppercase;
-    text-align: center;
-    cursor: default;
+  .metrics-table td {
+    padding: 12px 16px; border-bottom: 1px solid rgba(30,30,46,0.5);
+    color: var(--text); vertical-align: top; line-height: 1.5;
   }
-  .db-claude { background: rgba(192,132,252,0.2); color: #c084fc; border: 1px solid rgba(192,132,252,0.3); }
-  .db-python { background: rgba(247,194,106,0.2); color: var(--accent2); border: 1px solid rgba(247,194,106,0.3); }
-  .db-ai { background: rgba(74,244,194,0.2); color: var(--accent3); border: 1px solid rgba(74,244,194,0.3); }
-  .db-obs { background: rgba(244,106,138,0.2); color: var(--accent4); border: 1px solid rgba(244,106,138,0.3); }
-  .db-devops { background: rgba(106,180,244,0.2); color: var(--accent5); border: 1px solid rgba(106,180,244,0.3); }
-  .db-brand { background: rgba(124,106,247,0.2); color: var(--accent1); border: 1px solid rgba(124,106,247,0.3); }
-  .db-review { background: rgba(255,255,255,0.04); color: var(--muted); border: 1px solid var(--border); font-size: 7px; }
+  .metrics-table tr:last-child td { border-bottom: none; }
+  .metrics-table tr:hover td { background: rgba(255,255,255,0.02); }
+  .m-track { font-weight: 600; }
+  .m-kpi { color: var(--accent2); }
+  .m-target { color: var(--accent3); }
+  .m-tool { color: var(--muted); font-size: 10px; }
 
   /* ── RESOURCES ── */
   .resources-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 14px;
-    margin-bottom: 40px;
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 14px; margin-bottom: 40px;
   }
   .resource-card {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 10px;
-    padding: 18px 20px;
+    background: var(--surface); border: 1px solid var(--border);
+    border-radius: 10px; padding: 20px;
+    transition: border-color 0.2s;
   }
-  .resource-track {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    margin-bottom: 12px;
-  }
+  .resource-card:hover { border-color: rgba(124,106,247,0.25); }
+  .resource-track { display: flex; align-items: center; gap: 10px; margin-bottom: 8px; }
   .resource-track-name { font-size: 13px; font-weight: 700; }
-  .resource-list { display: flex; flex-direction: column; gap: 6px; }
+  .resource-why { font-family: var(--font-mono); font-size: 10px; color: var(--muted); margin-bottom: 12px; line-height: 1.5; }
+  .resource-list { display: flex; flex-direction: column; gap: 8px; }
   .resource-item {
-    font-family: var(--font-mono);
-    font-size: 11px;
-    color: var(--muted);
-    padding: 6px 10px;
-    background: rgba(255,255,255,0.03);
-    border-radius: 6px;
-    border-left: 2px solid var(--border);
+    font-family: var(--font-mono); font-size: 11px; color: var(--muted);
+    padding: 8px 12px; background: rgba(255,255,255,0.03);
+    border-radius: 6px; border-left: 2px solid var(--border);
+    display: flex; flex-direction: column; gap: 3px;
   }
+  .resource-item .r-name { color: var(--text); font-size: 11px; }
+  .resource-item .r-desc { font-size: 9px; color: #6b6b80; }
+  .resource-item .r-priority { font-size: 8px; font-weight: 700; padding: 1px 6px; border-radius: 3px; display: inline-block; margin-top: 2px; text-transform: uppercase; letter-spacing: 0.5px; }
+  .rp-high { background: rgba(74,244,194,0.12); color: var(--accent3); }
+  .rp-med { background: rgba(247,194,106,0.12); color: var(--accent2); }
+  .rp-low { background: rgba(107,107,128,0.12); color: var(--muted); }
 
-  /* ── FOOTER TIP ── */
+  /* ── TIP BOX ── */
   .tip-box {
-    background: rgba(124,106,247,0.08);
-    border: 1px solid rgba(124,106,247,0.25);
-    border-radius: 12px;
-    padding: 24px 28px;
-    display: flex;
-    gap: 18px;
-    align-items: flex-start;
+    background: rgba(124,106,247,0.08); border: 1px solid rgba(124,106,247,0.25);
+    border-radius: 12px; padding: 28px 32px;
+    display: flex; gap: 20px; align-items: flex-start;
   }
-  .tip-icon { font-size: 28px; flex-shrink: 0; }
-  .tip-title { font-size: 14px; font-weight: 700; margin-bottom: 6px; color: var(--accent1); }
-  .tip-text { font-family: var(--font-mono); font-size: 12px; color: var(--muted); line-height: 1.7; }
+  .tip-icon { font-size: 32px; flex-shrink: 0; }
+  .tip-title { font-size: 15px; font-weight: 800; margin-bottom: 8px; color: var(--accent1); }
+  .tip-text { font-family: var(--font-mono); font-size: 12px; color: var(--muted); line-height: 1.8; }
+  .tip-points { margin-top: 12px; display: flex; flex-direction: column; gap: 6px; }
+  .tip-point { font-family: var(--font-mono); font-size: 11px; color: #8888a0; display: flex; gap: 8px; line-height: 1.5; }
+  .tip-point .tp-arrow { color: var(--accent1); flex-shrink: 0; }
 
   /* ── ANIMATIONS ── */
   @keyframes fadeUp {
@@ -432,20 +398,58 @@
     to   { opacity: 1; transform: translateX(0); }
   }
 
-  /* scrollbar */
   ::-webkit-scrollbar { width: 6px; }
   ::-webkit-scrollbar-track { background: var(--bg); }
   ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+
+  @media (max-width: 768px) {
+    .phase { grid-template-columns: 48px 1fr; gap: 0 12px; }
+    .priority-detail { margin-left: 0; }
+    .deliverable-body, .deliverable-success { margin-left: 0; }
+    .rhythm-grid { grid-template-columns: repeat(4, 1fr); }
+    .rhythm-grid .day-col:nth-child(6), .rhythm-grid .day-col:nth-child(7) { display: none; }
+    .tip-box { flex-direction: column; }
+  }
 </style>
 </head>
 <body>
 <div class="wrap">
+
+  <a href="index.html" class="nav-back">← Back to Portfolio</a>
 
   <!-- HERO -->
   <div class="hero">
     <div class="hero-tag">6-Month Mastery Roadmap · 2025</div>
     <h1>Learn.<br/><span>Build.</span> Ship.</h1>
     <div class="hero-sub">// 4.5 hrs/day · 5 tracks · 1 career transformation</div>
+    <div class="hero-desc">
+      This is not a passive study plan — it's an engineering sprint with measurable deliverables every month.
+      Each track compounds on the others: Python enables AI projects, AI projects need observability, observability
+      runs on cloud infra, and every step gets documented for brand building. The goal is not just to learn —
+      it's to become the person companies search for.
+    </div>
+    <div class="hero-stats">
+      <div class="hero-stat">
+        <div class="hero-stat-num" style="color:var(--accent1)">4.5h</div>
+        <div class="hero-stat-lbl">Per Day</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-num" style="color:var(--accent2)">5</div>
+        <div class="hero-stat-lbl">Parallel Tracks</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-num" style="color:var(--accent3)">24</div>
+        <div class="hero-stat-lbl">Weeks</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-num" style="color:var(--accent4)">3+</div>
+        <div class="hero-stat-lbl">Certifications</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-num" style="color:var(--accent5)">10+</div>
+        <div class="hero-stat-lbl">GitHub Projects</div>
+      </div>
+    </div>
   </div>
 
   <!-- DAILY SCHEDULE -->
@@ -454,36 +458,130 @@
     <div class="line"></div>
     <span style="font-family:var(--font-mono);font-size:11px;color:var(--muted)">4.5 hrs/day</span>
   </div>
+  <p class="section-desc">
+    Each block is a non-negotiable time slot. The order matters — Claude cert first (fresh brain), brand last (low effort, high ROI).
+    Do not multi-task across blocks. Full focus per session. Even 10 minutes of brand building daily compounds to 60+ hours over 6 months.
+  </p>
   <div class="daily-grid">
     <div class="daily-block">
       <div class="time">1h</div>
       <div class="label">Claude Architect</div>
       <div class="sub">Cert prep · practice</div>
+      <div class="detail-list">
+        <div class="detail-item">30m reading official Anthropic docs or cert material</div>
+        <div class="detail-item">30m answering practice questions (batch of ~25)</div>
+        <div class="detail-item">Focus areas: Agentic Architecture (27%), Claude Code (20%)</div>
+        <div class="detail-item">Track weak domains — revisit the day after</div>
+      </div>
     </div>
     <div class="daily-block">
       <div class="time">30m</div>
       <div class="label">Python</div>
       <div class="sub">Problems · build · ship</div>
+      <div class="detail-list">
+        <div class="detail-item">M1–M2: 1 LeetCode Easy problem with clean solution</div>
+        <div class="detail-item">M3–M6: Work on your active project (feature, test, refactor)</div>
+        <div class="detail-item">Always commit — no dark branches, no unpushed code</div>
+        <div class="detail-item">30m is enough when done daily without gaps</div>
+      </div>
     </div>
     <div class="daily-block">
       <div class="time">1h</div>
       <div class="label">AI / ML</div>
       <div class="sub">Krishnaik · RAG · Agentic</div>
+      <div class="detail-list">
+        <div class="detail-item">Follow Krishnaik curriculum in order (Data Sci → RAG → Agentic → LLMOps)</div>
+        <div class="detail-item">Watch at 1.25× speed, but code along — don't just watch</div>
+        <div class="detail-item">Build 1 notebook or mini-project per week minimum</div>
+        <div class="detail-item">Every project gets a GitHub push + brief README</div>
+      </div>
     </div>
     <div class="daily-block">
       <div class="time">1h</div>
       <div class="label">Observability</div>
       <div class="sub">OTel · Grafana · Elastic</div>
+      <div class="detail-list">
+        <div class="detail-item">M1: OTel fundamentals — spans, traces, metrics, logs model</div>
+        <div class="detail-item">M2–M3: Instrument real Python apps — emit custom spans</div>
+        <div class="detail-item">M4: LLM observability — trace token costs, latency, drift</div>
+        <div class="detail-item">M5–M6: SLO/SLI definitions, alerting, runbooks</div>
+      </div>
     </div>
     <div class="daily-block">
       <div class="time">1h</div>
       <div class="label">DevOps + Cloud</div>
       <div class="sub">K8s · Azure · AWS · GCP</div>
+      <div class="detail-list">
+        <div class="detail-item">M1–M2: Git workflows, Docker, CI/CD with GitHub Actions</div>
+        <div class="detail-item">M3: Kubernetes — pods, deployments, services, ingress</div>
+        <div class="detail-item">M4–M5: Cloud cert prep (AZ-900 / AZ-204 or AWS SAA)</div>
+        <div class="detail-item">M6: Terraform basics — IaC for your personal projects</div>
+      </div>
     </div>
     <div class="daily-block">
       <div class="time">~10m</div>
       <div class="label">Brand Building</div>
       <div class="sub">OpenClaw · LinkedIn post</div>
+      <div class="detail-list">
+        <div class="detail-item">Mon: Draft LinkedIn post (what you built or learned this week)</div>
+        <div class="detail-item">Wed: Polish and schedule post with OpenClaw automation</div>
+        <div class="detail-item">Fri: Engage with comments, reshare relevant content</div>
+        <div class="detail-item">Ongoing: Update GitHub READMEs as projects evolve</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- WEEKLY RHYTHM -->
+  <div class="section-header">
+    <h2>Weekly Rhythm</h2>
+    <div class="line"></div>
+  </div>
+  <p class="section-desc">
+    Each day has a dominant focus alongside the daily baseline. Saturday is your deep-build day — no fragmented tasks.
+    Sunday is review + planning — assess what slipped, adjust next week.
+  </p>
+  <div class="rhythm-grid">
+    <div class="day-col">
+      <div class="day-label">Mon</div>
+      <div class="day-block db-claude">Claude</div>
+      <div class="day-block db-python">Python</div>
+      <div class="day-block db-brand">Post Draft</div>
+    </div>
+    <div class="day-col">
+      <div class="day-label">Tue</div>
+      <div class="day-block db-ai">AI / ML</div>
+      <div class="day-block db-obs">OTel Lab</div>
+      <div class="day-block db-claude">Claude Qs</div>
+    </div>
+    <div class="day-col">
+      <div class="day-label">Wed</div>
+      <div class="day-block db-python">Python</div>
+      <div class="day-block db-devops">DevOps</div>
+      <div class="day-block db-brand">Schedule Post</div>
+    </div>
+    <div class="day-col">
+      <div class="day-label">Thu</div>
+      <div class="day-block db-ai">AI Build</div>
+      <div class="day-block db-obs">Grafana</div>
+      <div class="day-block db-claude">Domain Review</div>
+    </div>
+    <div class="day-col">
+      <div class="day-label">Fri</div>
+      <div class="day-block db-devops">Cloud / K8s</div>
+      <div class="day-block db-python">GitHub Push</div>
+      <div class="day-block db-brand">Engage</div>
+    </div>
+    <div class="day-col">
+      <div class="day-label">Sat</div>
+      <div class="day-block db-ai">Deep Build</div>
+      <div class="day-block db-ai">Project Day</div>
+      <div class="day-block db-obs">End-to-End</div>
+    </div>
+    <div class="day-col">
+      <div class="day-label">Sun</div>
+      <div class="day-block db-review">Review</div>
+      <div class="day-block db-review">Plan Week</div>
+      <div class="day-block db-review">Rest / Read</div>
     </div>
   </div>
 
@@ -492,36 +590,80 @@
     <h2>Priority Stack</h2>
     <div class="line"></div>
   </div>
+  <p class="section-desc">
+    If a day goes sideways and you only have 30 minutes — work the stack top-down. Brand building is #01 because
+    visibility compounds from Day 1. Waiting until you're "ready" to post is the single biggest mistake.
+  </p>
   <div class="priority-stack" style="margin-bottom:48px">
     <div class="priority-item">
-      <div class="priority-num">01</div>
-      <div class="priority-name">Brand Building</div>
-      <div class="priority-why" style="flex:1">Visible = hireable. Start Day 1 with OpenClaw automation.</div>
-      <div class="priority-badge" style="background:rgba(124,106,247,0.15);color:var(--accent1)">Always On</div>
+      <div class="priority-top">
+        <div class="priority-num">01</div>
+        <div class="priority-name">Brand Building</div>
+        <div class="priority-why" style="flex:1">Visible = hireable. Start Day 1 with OpenClaw automation.</div>
+        <div class="priority-badge" style="background:rgba(124,106,247,0.15);color:var(--accent1)">Always On</div>
+      </div>
+      <div class="priority-detail">
+        <div class="priority-point">Post about what you're learning, not just what you've mastered — authenticity beats polish on LinkedIn</div>
+        <div class="priority-point">Use OpenClaw to auto-tailor your resume to each JD — saves 2–3 hours per application</div>
+        <div class="priority-point">GitHub is your second portfolio — every project needs a clean README with a demo GIF or screenshot</div>
+        <div class="priority-point">By Month 3: recruiters will start finding you. By Month 5: inbound DMs should be normal</div>
+      </div>
     </div>
     <div class="priority-item">
-      <div class="priority-num">02</div>
-      <div class="priority-name">Python + AI</div>
-      <div class="priority-why" style="flex:1">Foundation for everything else — RAG, Agentic, LLMOps all need this.</div>
-      <div class="priority-badge" style="background:rgba(74,244,194,0.15);color:var(--accent3)">M1 → M4</div>
+      <div class="priority-top">
+        <div class="priority-num">02</div>
+        <div class="priority-name">Python + AI</div>
+        <div class="priority-why" style="flex:1">Foundation for everything else — RAG, Agentic, LLMOps all need this.</div>
+        <div class="priority-badge" style="background:rgba(74,244,194,0.15);color:var(--accent3)">M1 → M4</div>
+      </div>
+      <div class="priority-detail">
+        <div class="priority-point">Python is not optional — every AI project, every automation, every API integration requires it</div>
+        <div class="priority-point">Don't study Python in isolation: build real things with it (CLI tools, FastAPI services, automation scripts)</div>
+        <div class="priority-point">Krishnaik curriculum is your AI backbone — follow it in sequence, don't skip to the exciting parts early</div>
+        <div class="priority-point">The RAG track is the highest ROI: it's what most AI engineer job interviews will test</div>
+      </div>
     </div>
     <div class="priority-item">
-      <div class="priority-num">03</div>
-      <div class="priority-name">Observability in LLM</div>
-      <div class="priority-why" style="flex:1">How to measure AI — OTel + Prometheus + LLM tracing. Rare skill.</div>
-      <div class="priority-badge" style="background:rgba(244,106,138,0.15);color:var(--accent4)">M2 → M5</div>
+      <div class="priority-top">
+        <div class="priority-num">03</div>
+        <div class="priority-name">Observability in LLM</div>
+        <div class="priority-why" style="flex:1">How to measure AI — OTel + Prometheus + LLM tracing. Rare skill.</div>
+        <div class="priority-badge" style="background:rgba(244,106,138,0.15);color:var(--accent4)">M2 → M5</div>
+      </div>
+      <div class="priority-detail">
+        <div class="priority-point">This is your career differentiator — almost no one combines deep observability expertise with AI engineering</div>
+        <div class="priority-point">Instrument your own AI projects with OTel: emit spans for every LLM call, track tokens and latency</div>
+        <div class="priority-point">Build dashboards in Grafana that show LLM ROI: cost per call, p95 latency, hallucination rate proxies</div>
+        <div class="priority-point">One blog post about "LLM Observability in Production" will outperform 10 generic posts</div>
+      </div>
     </div>
     <div class="priority-item">
-      <div class="priority-num">04</div>
-      <div class="priority-name">DevOps + Cloud</div>
-      <div class="priority-why" style="flex:1">K8s + 1 cloud cert. Deploy your own AI projects end-to-end.</div>
-      <div class="priority-badge" style="background:rgba(106,180,244,0.15);color:var(--accent5)">M3 → M6</div>
+      <div class="priority-top">
+        <div class="priority-num">04</div>
+        <div class="priority-name">DevOps + Cloud</div>
+        <div class="priority-why" style="flex:1">K8s + 1 cloud cert. Deploy your own AI projects end-to-end.</div>
+        <div class="priority-badge" style="background:rgba(106,180,244,0.15);color:var(--accent5)">M3 → M6</div>
+      </div>
+      <div class="priority-detail">
+        <div class="priority-point">Docker and GitHub Actions are the minimum — every project should have a Dockerfile and CI/CD pipeline</div>
+        <div class="priority-point">Kubernetes basics (not expert level) — enough to deploy a containerized app and understand pod scaling</div>
+        <div class="priority-point">Azure cert (AZ-900 or AZ-204) is the priority given your banking background — AKS is widely used in finance</div>
+        <div class="priority-point">IaC (Terraform) for at least one project by M6 — even a basic main.tf counts on a resume</div>
+      </div>
     </div>
     <div class="priority-item">
-      <div class="priority-num">05</div>
-      <div class="priority-name">Claude Architect Cert</div>
-      <div class="priority-why" style="flex:1">Daily 1hr. Exam by Month 3. Credential + differentiation.</div>
-      <div class="priority-badge" style="background:rgba(192,132,252,0.15);color:#c084fc">Exam M3</div>
+      <div class="priority-top">
+        <div class="priority-num">05</div>
+        <div class="priority-name">Claude Architect Cert</div>
+        <div class="priority-why" style="flex:1">Daily 1hr. Exam by Month 3. Credential + differentiation.</div>
+        <div class="priority-badge" style="background:rgba(192,132,252,0.15);color:#c084fc">Exam M3</div>
+      </div>
+      <div class="priority-detail">
+        <div class="priority-point">500 practice questions over 12 weeks = ~42 questions per week — very achievable at 1hr/day</div>
+        <div class="priority-point">High-weight domains: Agentic Architecture (27%), Claude Code (20%), Prompt Engineering (18%)</div>
+        <div class="priority-point">Take the exam when consistently scoring 80%+ on practice sets — don't delay for "more preparation"</div>
+        <div class="priority-point">This cert is currently rare — early movers get outsized benefit before it becomes commoditised</div>
+      </div>
     </div>
   </div>
 
@@ -530,6 +672,10 @@
     <h2>6-Month Phase Plan</h2>
     <div class="line"></div>
   </div>
+  <p class="section-desc">
+    Each phase has a clear theme and specific deliverables. A deliverable is not "I studied X" — it's "I shipped X."
+    If a month ends without the deliverable existing in the real world (GitHub, LinkedIn, certificate), it doesn't count.
+  </p>
   <div class="phases">
 
     <!-- PHASE 1 -->
@@ -544,26 +690,77 @@
           <div class="phase-months">Month 1 · Weeks 1–4</div>
           <div class="phase-focus" style="background:rgba(124,106,247,0.15);color:var(--accent1)">Setup + Momentum</div>
         </div>
+        <div class="phase-summary">
+          Month 1 is about building the habit engine, not producing masterpieces. The most important output is consistency —
+          4.5hrs every day, every track touched. Imposter syndrome will peak here. Ship anyway.
+          By the end of Week 4 you should have: a GitHub profile worth looking at, 4 LinkedIn posts live, and a local OTel stack running.
+        </div>
         <div class="deliverables">
           <div class="deliverable">
-            <span class="deliverable-track t-brand">Brand</span>
-            <span class="deliverable-text">Set up OpenClaw pipeline. Publish <strong>first 4 LinkedIn posts</strong> (1/week). Automate scraping resume-relevant content.</span>
+            <div class="deliverable-header">
+              <span class="deliverable-track t-brand">Brand</span>
+              <span class="deliverable-text">Launch your personal brand infrastructure — <strong>4 LinkedIn posts live</strong></span>
+            </div>
+            <div class="deliverable-body">
+              <div class="deliverable-point"><span class="arrow">›</span>Post 1: "Why I'm transitioning from Observability Engineering to AI Engineering" — personal story, high engagement</div>
+              <div class="deliverable-point"><span class="arrow">›</span>Post 2: A technical insight from your 9 years of observability work — position yourself as an expert with context</div>
+              <div class="deliverable-point"><span class="arrow">›</span>Post 3: What you're learning this month and why — transparency builds followers</div>
+              <div class="deliverable-point"><span class="arrow">›</span>Post 4: Share your first GitHub project (CLI app) — show you're building, not just talking</div>
+              <div class="deliverable-point"><span class="arrow">›</span>Set up OpenClaw: scrape target JDs, identify recurring keywords, calibrate resume template</div>
+            </div>
+            <div class="deliverable-success">4 posts published · OpenClaw running · GitHub profile complete with bio and pinned repos</div>
           </div>
           <div class="deliverable">
-            <span class="deliverable-track t-python">Python</span>
-            <span class="deliverable-text">Review core: OOP, file I/O, APIs, libraries. Solve <strong>30 LeetCode Easy</strong> problems. Day 30 goal: a working CLI app pushed to GitHub.</span>
+            <div class="deliverable-header">
+              <span class="deliverable-track t-python">Python</span>
+              <span class="deliverable-text">Solidify Python fundamentals and build a <strong>working CLI app on GitHub</strong></span>
+            </div>
+            <div class="deliverable-body">
+              <div class="deliverable-point"><span class="arrow">›</span>Week 1–2: Review OOP, file I/O, error handling, virtual environments, package management (pip/poetry)</div>
+              <div class="deliverable-point"><span class="arrow">›</span>Week 3: REST API consumption with requests, JSON handling, basic data transformations</div>
+              <div class="deliverable-point"><span class="arrow">›</span>Week 4: Build CLI app — e.g., a log parser, an API aggregator, or a file organiser. Add argparse, tests, README</div>
+              <div class="deliverable-point"><span class="arrow">›</span>Solve 30 LeetCode Easy problems (1/day Mon–Fri). Focus on strings, arrays, hashmaps — interview staples</div>
+            </div>
+            <div class="deliverable-success">CLI app pushed to GitHub with README, .gitignore, basic unit tests</div>
           </div>
           <div class="deliverable">
-            <span class="deliverable-track t-ai">AI</span>
-            <span class="deliverable-text">Start Krishnaik Data Science 1. Cover NumPy, Pandas, ML fundamentals. Build <strong>1 EDA notebook</strong> on a public dataset.</span>
+            <div class="deliverable-header">
+              <span class="deliverable-track t-ai">AI</span>
+              <span class="deliverable-text">Start Krishnaik Data Science 1 — build <strong>1 EDA notebook on a public dataset</strong></span>
+            </div>
+            <div class="deliverable-body">
+              <div class="deliverable-point"><span class="arrow">›</span>Complete: NumPy (array operations, broadcasting), Pandas (DataFrames, groupby, merge, pivot)</div>
+              <div class="deliverable-point"><span class="arrow">›</span>Complete: Matplotlib + Seaborn for data visualisation — histogram, correlation heatmap, scatter</div>
+              <div class="deliverable-point"><span class="arrow">›</span>ML fundamentals: supervised vs unsupervised, train/test split, bias-variance tradeoff, basic sklearn</div>
+              <div class="deliverable-point"><span class="arrow">›</span>EDA notebook: pick a Kaggle dataset (Titanic, House Prices, or similar). Document every insight. Push to GitHub</div>
+            </div>
+            <div class="deliverable-success">Jupyter notebook on GitHub with clear markdown explanations and at least 5 visualisations</div>
           </div>
           <div class="deliverable">
-            <span class="deliverable-track t-obs">Obs</span>
-            <span class="deliverable-text">Intro to OpenTelemetry. Understand traces, metrics, logs. <strong>Set up local OTel collector</strong> + Grafana dashboard.</span>
+            <div class="deliverable-header">
+              <span class="deliverable-track t-obs">Obs</span>
+              <span class="deliverable-text">OTel fundamentals — <strong>local OTel collector + Grafana dashboard running</strong></span>
+            </div>
+            <div class="deliverable-body">
+              <div class="deliverable-point"><span class="arrow">›</span>Understand the three pillars: Traces (spans, context propagation), Metrics (counters, histograms, gauges), Logs</div>
+              <div class="deliverable-point"><span class="arrow">›</span>Set up Docker Compose with: OTel Collector → Prometheus → Grafana. No cloud needed yet — local only</div>
+              <div class="deliverable-point"><span class="arrow">›</span>Instrument a toy Python app: send a custom trace and custom metric. See it in Grafana</div>
+              <div class="deliverable-point"><span class="arrow">›</span>Read: OpenTelemetry Specification overview — understand why W3C trace context matters in distributed systems</div>
+            </div>
+            <div class="deliverable-success">Docker Compose stack running: OTel → Prometheus → Grafana with a custom dashboard visible</div>
           </div>
           <div class="deliverable">
-            <span class="deliverable-track t-claude">Claude</span>
-            <span class="deliverable-text">Complete Foundations + Prompt Engineering domains. Do <strong>100 practice questions</strong> (your existing set). Review tool use and context window concepts.</span>
+            <div class="deliverable-header">
+              <span class="deliverable-track t-claude">Claude</span>
+              <span class="deliverable-text">Complete Foundations + Prompt Engineering domains — <strong>100 practice questions done</strong></span>
+            </div>
+            <div class="deliverable-body">
+              <div class="deliverable-point"><span class="arrow">›</span>Foundations domain: Claude model families, safety principles, constitutional AI, RLHF overview</div>
+              <div class="deliverable-point"><span class="arrow">›</span>Prompt Engineering: chain-of-thought, few-shot, role prompting, structured outputs, XML tagging</div>
+              <div class="deliverable-point"><span class="arrow">›</span>Tool Use basics: how Claude calls tools, function schemas, parallel tool use</div>
+              <div class="deliverable-point"><span class="arrow">›</span>Complete Batch 1 of your 500 practice questions — flag every wrong answer for next-day review</div>
+            </div>
+            <div class="deliverable-success">100 practice questions attempted · score tracking started · weak areas identified</div>
           </div>
         </div>
       </div>
@@ -581,26 +778,76 @@
           <div class="phase-months">Month 2 · Weeks 5–8</div>
           <div class="phase-focus" style="background:rgba(247,194,106,0.15);color:var(--accent2)">Projects Begin</div>
         </div>
+        <div class="phase-summary">
+          Month 2 is when you shift from learning to building. Everything you study must immediately connect to something
+          you're building. The FastAPI service, the RAG pipeline, and the instrumented Python app are your three anchors.
+          Anyone checking your GitHub by end of Week 8 should see active commits across 2–3 repositories.
+        </div>
         <div class="deliverables">
           <div class="deliverable">
-            <span class="deliverable-track t-brand">Brand</span>
-            <span class="deliverable-text">Publish <strong>8 posts total</strong>. Start writing about what you're learning (Python, AI). Add GitHub project links in posts.</span>
+            <div class="deliverable-header">
+              <span class="deliverable-track t-brand">Brand</span>
+              <span class="deliverable-text">Grow to <strong>8 posts total</strong> — content shifts from "who I am" to "what I built"</span>
+            </div>
+            <div class="deliverable-body">
+              <div class="deliverable-point"><span class="arrow">›</span>Post 5–6: Document what you're building — "I built a FastAPI service that does X — here's what I learned"</div>
+              <div class="deliverable-point"><span class="arrow">›</span>Post 7: Share the EDA notebook from M1 — explain the insights in plain language, link to GitHub</div>
+              <div class="deliverable-point"><span class="arrow">›</span>Post 8: "What the difference between traces, metrics, and logs actually means" — technical post from your OTel work</div>
+              <div class="deliverable-point"><span class="arrow">›</span>Start including GitHub project links in posts — this is what recruiter eyes scan for</div>
+            </div>
+            <div class="deliverable-success">8 posts live · at least 2 posts with GitHub links · post engagement trending up</div>
           </div>
           <div class="deliverable">
-            <span class="deliverable-track t-python">Python</span>
-            <span class="deliverable-text">Advanced Python: decorators, generators, async. Build and publish <strong>a FastAPI microservice</strong>. Connect to a real API or DB.</span>
+            <div class="deliverable-header">
+              <span class="deliverable-track t-python">Python</span>
+              <span class="deliverable-text">Advanced Python — ship and publish <strong>a FastAPI microservice connected to a real API or DB</strong></span>
+            </div>
+            <div class="deliverable-body">
+              <div class="deliverable-point"><span class="arrow">›</span>Advanced concepts: decorators (logging, timing, auth), generators, context managers, async/await</div>
+              <div class="deliverable-point"><span class="arrow">›</span>FastAPI: define endpoints, request/response models with Pydantic, dependency injection, background tasks</div>
+              <div class="deliverable-point"><span class="arrow">›</span>Connect to PostgreSQL (SQLAlchemy + Alembic) or a public REST API (weather, GitHub, finance data)</div>
+              <div class="deliverable-point"><span class="arrow">›</span>Add basic auth (API key or JWT), write pytest tests, add a Dockerfile, deploy locally with docker-compose</div>
+            </div>
+            <div class="deliverable-success">FastAPI service on GitHub: Dockerfile + tests + README + working endpoints. Demo in README</div>
           </div>
           <div class="deliverable">
-            <span class="deliverable-track t-ai">AI</span>
-            <span class="deliverable-text">Data Science 2 + start <strong>RAG fundamentals</strong>. Build a basic RAG pipeline — PDF ingestion → embeddings → retrieval → answer.</span>
+            <div class="deliverable-header">
+              <span class="deliverable-track t-ai">AI</span>
+              <span class="deliverable-text">Data Science 2 + RAG fundamentals — <strong>basic RAG pipeline: PDF → embeddings → retrieval → answer</strong></span>
+            </div>
+            <div class="deliverable-body">
+              <div class="deliverable-point"><span class="arrow">›</span>Data Science 2: feature engineering, cross-validation, ensemble methods (Random Forest, XGBoost), model evaluation metrics</div>
+              <div class="deliverable-point"><span class="arrow">›</span>RAG concepts: chunking strategies, embedding models (OpenAI ada-002 or open-source), vector stores (FAISS or Chroma)</div>
+              <div class="deliverable-point"><span class="arrow">›</span>Build pipeline: load PDF → split into chunks → embed → store in vector DB → retrieve top-k → prompt LLM with context</div>
+              <div class="deliverable-point"><span class="arrow">›</span>Test with a real document (e.g., Anthropic usage policy PDF, a research paper, or your own resume)</div>
+            </div>
+            <div class="deliverable-success">RAG pipeline notebook on GitHub: end-to-end working, shows retrieved context in output</div>
           </div>
           <div class="deliverable">
-            <span class="deliverable-track t-obs">Obs</span>
-            <span class="deliverable-text">Instrument a Python app with OTel. Add <strong>Prometheus metrics + Grafana alerts</strong>. Read first 3 chapters of your Observability book.</span>
+            <div class="deliverable-header">
+              <span class="deliverable-track t-obs">Obs</span>
+              <span class="deliverable-text">Instrument a Python app with OTel — <strong>Prometheus metrics + Grafana alerts running</strong></span>
+            </div>
+            <div class="deliverable-body">
+              <div class="deliverable-point"><span class="arrow">›</span>Add OTel Python SDK to your FastAPI service: auto-instrument HTTP requests, add custom spans for business logic</div>
+              <div class="deliverable-point"><span class="arrow">›</span>Expose Prometheus metrics endpoint (/metrics): request count, request duration histogram, error rate</div>
+              <div class="deliverable-point"><span class="arrow">›</span>Create Grafana dashboard: RED metrics (Rate, Errors, Duration). Add an alert rule for p95 latency > 500ms</div>
+              <div class="deliverable-point"><span class="arrow">›</span>Read Observability Engineering book: Chapters 1–3 (Why Observability, Observability vs Monitoring, Distributed Tracing)</div>
+            </div>
+            <div class="deliverable-success">FastAPI app instrumented: Grafana dashboard screenshot in README, alert rule configured</div>
           </div>
           <div class="deliverable">
-            <span class="deliverable-track t-claude">Claude</span>
-            <span class="deliverable-text">Agentic Architecture domain deep dive (27% of exam). Cover tool use, multi-turn agents, memory patterns. <strong>Target: 200 practice Qs done total.</strong></span>
+            <div class="deliverable-header">
+              <span class="deliverable-track t-claude">Claude</span>
+              <span class="deliverable-text">Agentic Architecture deep dive — <strong>200 practice questions done total</strong></span>
+            </div>
+            <div class="deliverable-body">
+              <div class="deliverable-point"><span class="arrow">›</span>Agentic Architecture (27% of exam): multi-step agents, tool orchestration, memory patterns (in-context vs external)</div>
+              <div class="deliverable-point"><span class="arrow">›</span>Agent design patterns: ReAct (Reason + Act), Plan-and-Execute, Reflection loops</div>
+              <div class="deliverable-point"><span class="arrow">›</span>Multi-turn context management: how to maintain state across long agent runs without context overflow</div>
+              <div class="deliverable-point"><span class="arrow">›</span>Complete Batches 2–3 of practice questions. Maintain an error log — review flagged questions every Sunday</div>
+            </div>
+            <div class="deliverable-success">200 questions completed · score on Agentic domain ≥ 75% · error log reviewed weekly</div>
           </div>
         </div>
       </div>
@@ -618,26 +865,76 @@
           <div class="phase-months">Month 3 · Weeks 9–12</div>
           <div class="phase-focus" style="background:rgba(74,244,194,0.15);color:var(--accent3)">Cert + Cloud Starts</div>
         </div>
+        <div class="phase-summary">
+          Month 3 is your first major credentialing milestone. The Claude Architect exam happens this month — not later,
+          not "when I feel ready." The exam is the forcing function. Simultaneously: your first full Python project ships,
+          DevOps pipeline goes live, and the agentic AI work begins. By end of M3, LinkedIn shows: Certified.
+        </div>
         <div class="deliverables">
           <div class="deliverable">
-            <span class="deliverable-track t-claude">Claude</span>
-            <span class="deliverable-text"><strong>Take Claude Certified Architect exam by Week 12.</strong> Complete all 500 practice questions. Review Claude Code domain (20% weight) this month.</span>
+            <div class="deliverable-header">
+              <span class="deliverable-track t-claude">Claude</span>
+              <span class="deliverable-text"><strong>Take Claude Certified Architect exam by Week 12</strong> — all 500 questions completed</span>
+            </div>
+            <div class="deliverable-body">
+              <div class="deliverable-point"><span class="arrow">›</span>Complete Batches 4–5: finish all 500 practice questions. Don't read more — practice more</div>
+              <div class="deliverable-point"><span class="arrow">›</span>Claude Code domain (20%): understand Claude Code architecture, hooks, MCP servers, permissions, slash commands</div>
+              <div class="deliverable-point"><span class="arrow">›</span>Final two weeks: simulate exam conditions — 60 questions in 90 minutes with no notes</div>
+              <div class="deliverable-point"><span class="arrow">›</span>Book exam slot at start of Week 10 — the booking commitment makes it real. Take it in Week 11 or 12</div>
+            </div>
+            <div class="deliverable-success">Claude Architect certification earned · badge added to LinkedIn + GitHub profile + resume</div>
           </div>
           <div class="deliverable">
-            <span class="deliverable-track t-python">Python</span>
-            <span class="deliverable-text">Publish <strong>a complete Python app on GitHub</strong> with README, tests, CI. Can be a tool, scraper, or mini SaaS backend. Medium post about building it.</span>
+            <div class="deliverable-header">
+              <span class="deliverable-track t-python">Python</span>
+              <span class="deliverable-text">Publish a <strong>complete Python app on GitHub</strong> — with README, tests, and CI pipeline</span>
+            </div>
+            <div class="deliverable-body">
+              <div class="deliverable-point"><span class="arrow">›</span>This is a step up from M2 — not a notebook or microservice, but a complete, documented application</div>
+              <div class="deliverable-point"><span class="arrow">›</span>Ideas: log anomaly detector using regex + ML, GitHub repo health checker, observability cost calculator</div>
+              <div class="deliverable-point"><span class="arrow">›</span>Must have: pyproject.toml, pytest tests with ≥60% coverage, GitHub Actions CI, detailed README with architecture diagram</div>
+              <div class="deliverable-point"><span class="arrow">›</span>Write a Medium or Hashnode post about how you built it — this is your first technical article</div>
+            </div>
+            <div class="deliverable-success">Project on GitHub with CI badge in README · technical blog post published and linked</div>
           </div>
           <div class="deliverable">
-            <span class="deliverable-track t-ai">AI</span>
-            <span class="deliverable-text">Start Agentic AI v2. Build <strong>a multi-agent system</strong> with tool use (web search + file I/O). Understand agent orchestration patterns.</span>
+            <div class="deliverable-header">
+              <span class="deliverable-track t-ai">AI</span>
+              <span class="deliverable-text">Start Agentic AI v2 — build <strong>a multi-agent system with tool use</strong></span>
+            </div>
+            <div class="deliverable-body">
+              <div class="deliverable-point"><span class="arrow">›</span>Krishnaik Agentic AI v2: LangGraph fundamentals, stateful agent graphs, conditional edges, human-in-the-loop</div>
+              <div class="deliverable-point"><span class="arrow">›</span>Build a 2-agent system: one agent does web search (via Tavily or SerpAPI), one synthesises and formats the answer</div>
+              <div class="deliverable-point"><span class="arrow">›</span>Add file I/O: agent writes results to a structured JSON or Markdown report file</div>
+              <div class="deliverable-point"><span class="arrow">›</span>Test with: "Research the top 5 LLM observability tools in 2025 and summarise their pricing" — real-world use case</div>
+            </div>
+            <div class="deliverable-success">Multi-agent notebook on GitHub: shows tool call traces, intermediate reasoning, final output</div>
           </div>
           <div class="deliverable">
-            <span class="deliverable-track t-devops">DevOps</span>
-            <span class="deliverable-text">Start Naina Academy DevOps. Set up <strong>GitHub Actions CI/CD pipeline</strong>. Containerize your Python app. Docker fundamentals solid.</span>
+            <div class="deliverable-header">
+              <span class="deliverable-track t-devops">DevOps</span>
+              <span class="deliverable-text">Start Naina Academy DevOps — <strong>GitHub Actions CI/CD + containerised app</strong></span>
+            </div>
+            <div class="deliverable-body">
+              <div class="deliverable-point"><span class="arrow">›</span>Docker: multi-stage builds, .dockerignore, environment variable injection, named volumes, health checks</div>
+              <div class="deliverable-point"><span class="arrow">›</span>GitHub Actions: trigger on push to main, run pytest, build Docker image, push to GitHub Container Registry (GHCR)</div>
+              <div class="deliverable-point"><span class="arrow">›</span>docker-compose for local development: web service + postgres + OTel collector as a single command startup</div>
+              <div class="deliverable-point"><span class="arrow">›</span>Naina Academy: complete Git advanced module (rebasing, cherry-pick, branch strategy), then move to CI/CD pipelines section</div>
+            </div>
+            <div class="deliverable-success">Python app with CI/CD: green build badge in README · Docker image in GHCR · compose file included</div>
           </div>
           <div class="deliverable">
-            <span class="deliverable-track t-brand">Brand</span>
-            <span class="deliverable-text"><strong>Announce cert achievement publicly.</strong> 12 posts total. Resume updated with OpenClaw. GitHub portfolio taking shape.</span>
+            <div class="deliverable-header">
+              <span class="deliverable-track t-brand">Brand</span>
+              <span class="deliverable-text"><strong>Announce cert publicly</strong> — 12 posts total, GitHub portfolio taking shape</span>
+            </div>
+            <div class="deliverable-body">
+              <div class="deliverable-point"><span class="arrow">›</span>Cert announcement post: don't just say "I passed" — share 3 things you learned that surprised you. Gets more engagement</div>
+              <div class="deliverable-point"><span class="arrow">›</span>Post about your multi-agent system: include a short demo video or GIF of it running — video gets 5× reach on LinkedIn</div>
+              <div class="deliverable-point"><span class="arrow">›</span>Update LinkedIn headline: "Observability Engineer → AI Engineer | Claude Certified Architect | Open to AI/LLMOps roles"</div>
+              <div class="deliverable-point"><span class="arrow">›</span>Resume v2: OpenClaw-tailored, cert added, GitHub link prominent, Python + AI + OTel keywords throughout</div>
+            </div>
+            <div class="deliverable-success">12 posts live · cert on LinkedIn + resume · profile views should be noticeably up this month</div>
           </div>
         </div>
       </div>
@@ -655,26 +952,75 @@
           <div class="phase-months">Month 4 · Weeks 13–16</div>
           <div class="phase-focus" style="background:rgba(244,106,138,0.15);color:var(--accent4)">Connect the Dots</div>
         </div>
+        <div class="phase-summary">
+          Month 4 is where your unique moat starts to form. You're not just learning AI — you're instrumenting it.
+          Not just observing systems — you're observing AI systems. The LLMOps + OTel combination is your fingerprint.
+          Every project this month should combine at least two tracks. The agentic Claude API tool is your showpiece.
+        </div>
         <div class="deliverables">
           <div class="deliverable">
-            <span class="deliverable-track t-ai">AI</span>
-            <span class="deliverable-text">LLMOps course. Learn <strong>LLM observability</strong> — trace LLM calls, token usage, latency, hallucination rate. This bridges AI + Observability tracks.</span>
+            <div class="deliverable-header">
+              <span class="deliverable-track t-ai">AI</span>
+              <span class="deliverable-text">LLMOps course — learn <strong>LLM observability: traces, token usage, latency, hallucination rate</strong></span>
+            </div>
+            <div class="deliverable-body">
+              <div class="deliverable-point"><span class="arrow">›</span>Krishnaik LLMOps: model versioning, prompt versioning, evaluation frameworks (RAGAS, DeepEval), cost tracking</div>
+              <div class="deliverable-point"><span class="arrow">›</span>Langfuse: the Langchain/LLM equivalent of Grafana — set up a Langfuse project and trace every LLM call you make</div>
+              <div class="deliverable-point"><span class="arrow">›</span>Build an evaluation harness: run your RAG pipeline against 20 test questions, measure faithfulness and relevance scores</div>
+              <div class="deliverable-point"><span class="arrow">›</span>Connect to your OTel stack: wrap LangChain calls with OTel spans, send to Prometheus, graph in Grafana</div>
+            </div>
+            <div class="deliverable-success">RAG app with Langfuse tracing + Grafana dashboard showing LLM cost and latency over time</div>
           </div>
           <div class="deliverable">
-            <span class="deliverable-track t-obs">Obs</span>
-            <span class="deliverable-text">Instrument an <strong>AI app end-to-end</strong>: OTel spans on LLM calls, Grafana dashboard for AI metrics, Elasticsearch for log search. Finish Observability book.</span>
+            <div class="deliverable-header">
+              <span class="deliverable-track t-obs">Obs</span>
+              <span class="deliverable-text">Instrument an <strong>AI app end-to-end</strong> — OTel spans on every LLM call, AI metrics in Grafana</span>
+            </div>
+            <div class="deliverable-body">
+              <div class="deliverable-point"><span class="arrow">›</span>Every LangChain/Claude API call wrapped in an OTel span: attributes include model, prompt_tokens, completion_tokens, latency</div>
+              <div class="deliverable-point"><span class="arrow">›</span>Grafana dashboard: request rate, avg/p95/p99 latency, tokens per call, estimated cost per call (based on pricing API)</div>
+              <div class="deliverable-point"><span class="arrow">›</span>Elasticsearch integration: store full prompt/response pairs for offline analysis — searchable by trace ID</div>
+              <div class="deliverable-point"><span class="arrow">›</span>Finish Observability Engineering book — Chapters 4–end. Write a 1-page summary of key insights for your LinkedIn</div>
+            </div>
+            <div class="deliverable-success">End-to-end instrumented AI app: OTel → Prometheus → Grafana + Elasticsearch for log search. Screenshots in README</div>
           </div>
           <div class="deliverable">
-            <span class="deliverable-track t-devops">DevOps</span>
-            <span class="deliverable-text">Kubernetes basics. Deploy a containerized app to <strong>a managed K8s cluster</strong> (AKS or GKE). Start Azure cert prep (AZ-900 or AZ-204).</span>
+            <div class="deliverable-header">
+              <span class="deliverable-track t-devops">DevOps</span>
+              <span class="deliverable-text">Kubernetes basics — <strong>deploy a containerised app to a managed K8s cluster</strong> (AKS or GKE)</span>
+            </div>
+            <div class="deliverable-body">
+              <div class="deliverable-point"><span class="arrow">›</span>K8s objects: Pods, Deployments, Services (ClusterIP, LoadBalancer, NodePort), ConfigMaps, Secrets, PersistentVolumes</div>
+              <div class="deliverable-point"><span class="arrow">›</span>Deploy your FastAPI service from M2 to AKS (free trial) or Minikube locally — either counts</div>
+              <div class="deliverable-point"><span class="arrow">›</span>Add HorizontalPodAutoscaler (HPA): scale when CPU > 70%. Observe it in action with a load test (k6 or hey)</div>
+              <div class="deliverable-point"><span class="arrow">›</span>Start AZ-900 or AZ-204 cert prep: complete 2 modules per week (Microsoft Learn is free and structured)</div>
+            </div>
+            <div class="deliverable-success">App running on K8s cluster (even Minikube counts) with working deployment YAML in GitHub</div>
           </div>
           <div class="deliverable">
-            <span class="deliverable-track t-python">Python</span>
-            <span class="deliverable-text">Python + AI integration project: <strong>build an agentic tool in Python</strong> that uses Claude API. Ship it. Write about it.</span>
+            <div class="deliverable-header">
+              <span class="deliverable-track t-python">Python</span>
+              <span class="deliverable-text">Build and ship <strong>an agentic tool in Python using the Claude API</strong></span>
+            </div>
+            <div class="deliverable-body">
+              <div class="deliverable-point"><span class="arrow">›</span>Use Anthropic Python SDK directly — no LangChain abstraction. Learn the raw API: messages, tools, streaming</div>
+              <div class="deliverable-point"><span class="arrow">›</span>Build something useful: Slack incident summariser, log analysis agent, PR review bot, or resume screener</div>
+              <div class="deliverable-point"><span class="arrow">›</span>Implement tool use: at least 2 tools (e.g., search_logs, create_ticket, fetch_metrics). Handle tool call loops properly</div>
+              <div class="deliverable-point"><span class="arrow">›</span>Write about it: "How I built a production log analysis agent with Claude API in Python" — your best content yet</div>
+            </div>
+            <div class="deliverable-success">Claude API agent on GitHub with tool use working · blog post published · used in a real workflow if possible</div>
           </div>
           <div class="deliverable">
-            <span class="deliverable-track t-brand">Brand</span>
-            <span class="deliverable-text">16 posts. Start a mini-series: "How I built X with AI + Python." Each post drives GitHub traffic.</span>
+            <div class="deliverable-header">
+              <span class="deliverable-track t-brand">Brand</span>
+              <span class="deliverable-text">16 posts total — start a <strong>mini-series: "How I built X with AI + Python"</strong></span>
+            </div>
+            <div class="deliverable-body">
+              <div class="deliverable-point"><span class="arrow">›</span>Mini-series gives algorithmic advantage on LinkedIn: series posts get reshared as a unit, boosting impressions</div>
+              <div class="deliverable-point"><span class="arrow">›</span>Each post in the series links to the GitHub project — funnels profile visits and recruiter interest</div>
+              <div class="deliverable-point"><span class="arrow">›</span>Post about your observability + AI intersection — frame it as "what 9 years of observability taught me about monitoring LLMs"</div>
+            </div>
+            <div class="deliverable-success">16 posts live · mini-series running · GitHub traffic from LinkedIn measurable</div>
           </div>
         </div>
       </div>
@@ -692,22 +1038,64 @@
           <div class="phase-months">Month 5 · Weeks 17–20</div>
           <div class="phase-focus" style="background:rgba(106,180,244,0.15);color:var(--accent5)">Production-Grade</div>
         </div>
+        <div class="phase-summary">
+          Month 5 is production-grade everything. Your projects should now have CI/CD pipelines, monitoring, tests,
+          and documentation. The cloud certification happens this month. Two complete AI projects ship to GitHub.
+          By end of Week 20, a recruiter looking at your profile should see: cert, K8s deployment, AI projects, posts.
+          You should be actively talking to companies by now — don't wait for Month 6.
+        </div>
         <div class="deliverables">
           <div class="deliverable">
-            <span class="deliverable-track t-ai">AI</span>
-            <span class="deliverable-text">Krishnaik projects: complete <strong>2 end-to-end ML/AI projects</strong>. One RAG app, one agentic AI app. Both on GitHub with writeups.</span>
+            <div class="deliverable-header">
+              <span class="deliverable-track t-ai">AI</span>
+              <span class="deliverable-text">Complete <strong>2 end-to-end AI projects</strong> — one RAG app, one agentic AI app — both polished on GitHub</span>
+            </div>
+            <div class="deliverable-body">
+              <div class="deliverable-point"><span class="arrow">›</span>RAG project: document Q&A with evaluation scores (RAGAS faithfulness ≥ 0.8). Include chunking strategy comparison</div>
+              <div class="deliverable-point"><span class="arrow">›</span>Agentic project: multi-step agent with tool use, retry logic, human-in-the-loop approval step, logging to Langfuse</div>
+              <div class="deliverable-point"><span class="arrow">›</span>Both projects: Dockerfile, GitHub Actions CI, full README with architecture diagram, usage instructions</div>
+              <div class="deliverable-point"><span class="arrow">›</span>Both projects: instrumented with OTel — this is your portfolio differentiator. Add a "Observability" section to each README</div>
+            </div>
+            <div class="deliverable-success">2 projects on GitHub with green CI badges, OTel integration, Langfuse dashboard screenshots</div>
           </div>
           <div class="deliverable">
-            <span class="deliverable-track t-devops">DevOps</span>
-            <span class="deliverable-text"><strong>Azure or AWS certification exam</strong> this month. Deploy an AI project pipeline: code → Docker → CI/CD → K8s → monitored with Grafana.</span>
+            <div class="deliverable-header">
+              <span class="deliverable-track t-devops">DevOps</span>
+              <span class="deliverable-text"><strong>Azure or AWS certification exam</strong> this month — full cloud-to-monitoring pipeline deployed</span>
+            </div>
+            <div class="deliverable-body">
+              <div class="deliverable-point"><span class="arrow">›</span>Azure path (recommended given banking background): AZ-204 (Developer) is stronger than AZ-900 for engineering roles</div>
+              <div class="deliverable-point"><span class="arrow">›</span>Book exam by Week 17 — commit. Use Microsoft Learn + Udemy practice exams. Score 75%+ consistently before booking</div>
+              <div class="deliverable-point"><span class="arrow">›</span>Full pipeline: code push → GitHub Actions → Docker build → push to ACR/ECR → deploy to AKS/EKS → Grafana shows it's up</div>
+              <div class="deliverable-point"><span class="arrow">›</span>Add Kubernetes monitoring: deploy Prometheus Operator + Grafana into the cluster. K8s dashboards visible in Grafana</div>
+            </div>
+            <div class="deliverable-success">Cloud cert earned · full AI deployment pipeline documented in GitHub with architecture diagram</div>
           </div>
           <div class="deliverable">
-            <span class="deliverable-track t-obs">Obs</span>
-            <span class="deliverable-text">Full production observability stack for a personal project. <strong>SLO/SLI definitions</strong>, alerting rules, on-call runbook. SRE thinking applied.</span>
+            <div class="deliverable-header">
+              <span class="deliverable-track t-obs">Obs</span>
+              <span class="deliverable-text">Full production observability stack — <strong>SLO/SLI definitions, alerting rules, on-call runbook</strong></span>
+            </div>
+            <div class="deliverable-body">
+              <div class="deliverable-point"><span class="arrow">›</span>Define SLIs for your AI app: availability (%), latency (p95 &lt; 2s), error rate (&lt; 1%), cost ($/1000 calls)</div>
+              <div class="deliverable-point"><span class="arrow">›</span>Define SLOs: "99% of requests complete within 2s over a 30-day rolling window" — write them as actual Prometheus rules</div>
+              <div class="deliverable-point"><span class="arrow">›</span>Set up alerting: PagerDuty or Alertmanager routing. At least one alert fires + gets routed in your test environment</div>
+              <div class="deliverable-point"><span class="arrow">›</span>Write a runbook (Markdown file in GitHub): "What to do when LLM latency alert fires" — reference your actual Grafana dashboards</div>
+            </div>
+            <div class="deliverable-success">SLO document + Prometheus alert rules + runbook all committed to GitHub under /docs/observability/</div>
           </div>
           <div class="deliverable">
-            <span class="deliverable-track t-brand">Brand</span>
-            <span class="deliverable-text">20 posts. Share cloud cert win. Case study post: "My AI + Observability Stack." Recruiters finding you by now.</span>
+            <div class="deliverable-header">
+              <span class="deliverable-track t-brand">Brand</span>
+              <span class="deliverable-text">20 posts total — <strong>cloud cert win posted</strong>, case study: "My AI + Observability Stack"</span>
+            </div>
+            <div class="deliverable-body">
+              <div class="deliverable-point"><span class="arrow">›</span>Cloud cert post: go beyond the badge — share one thing that surprised you about Azure/AWS architecture</div>
+              <div class="deliverable-point"><span class="arrow">›</span>Case study post: "My AI + Observability Stack in 2025" — diagram your full tech stack (Canva or Excalidraw)</div>
+              <div class="deliverable-point"><span class="arrow">›</span>Start sending connection requests to: AI engineering leads, LLMOps practitioners, and observability-focused recruiters</div>
+              <div class="deliverable-point"><span class="arrow">›</span>Turn on "Open to Work" on LinkedIn (visible to recruiters only) — you have the credentials now</div>
+            </div>
+            <div class="deliverable-success">20 posts live · Open to Work enabled · receiving inbound recruiter DMs</div>
           </div>
         </div>
       </div>
@@ -725,26 +1113,75 @@
           <div class="phase-months">Month 6 · Weeks 21–24</div>
           <div class="phase-focus" style="background:rgba(192,132,252,0.15);color:#c084fc">Career Ready</div>
         </div>
+        <div class="phase-summary">
+          Month 6 is not learning month — it's launch month. The last 4 weeks are about consolidation, presentation,
+          and job applications. Every project gets a final polish pass. The capstone ships. The technical blog post about
+          LLM observability gets written and shared. Interviews start. This is the finish line.
+        </div>
         <div class="deliverables">
           <div class="deliverable">
-            <span class="deliverable-track t-brand">Brand</span>
-            <span class="deliverable-text"><strong>24+ posts</strong>. Full portfolio site live. Resume polished with OpenClaw. DMs from recruiters coming in. Begin targeted job applications.</span>
+            <div class="deliverable-header">
+              <span class="deliverable-track t-brand">Brand</span>
+              <span class="deliverable-text"><strong>24+ posts</strong> — full portfolio site live, targeted job applications active</span>
+            </div>
+            <div class="deliverable-body">
+              <div class="deliverable-point"><span class="arrow">›</span>Final portfolio site (this site) fully updated: all 20 projects live with descriptions, demos linked where possible</div>
+              <div class="deliverable-point"><span class="arrow">›</span>Resume v3: final OpenClaw polish, all certs and projects current, quantified impact for every role bullet point</div>
+              <div class="deliverable-point"><span class="arrow">›</span>Create a "hire me" signal: LinkedIn banner updated, About section rewritten as a product pitch, not a job summary</div>
+              <div class="deliverable-point"><span class="arrow">›</span>Target 5–10 applications per week to AI Engineering, LLMOps, or Senior Observability roles at companies using AI</div>
+            </div>
+            <div class="deliverable-success">Portfolio live · resume tailored per application · 5+ interviews scheduled</div>
           </div>
           <div class="deliverable">
-            <span class="deliverable-track t-python">Python</span>
-            <span class="deliverable-text"><strong>Capstone project:</strong> production Python app integrating Claude API + observability + CI/CD. Full README, tests, deployed. Your anchor portfolio piece.</span>
+            <div class="deliverable-header">
+              <span class="deliverable-track t-python">Python</span>
+              <span class="deliverable-text"><strong>Capstone project:</strong> production Python app — Claude API + observability + CI/CD + deployed</span>
+            </div>
+            <div class="deliverable-body">
+              <div class="deliverable-point"><span class="arrow">›</span>This is the anchor portfolio piece — invest the most time here. It must be impressive at first glance</div>
+              <div class="deliverable-point"><span class="arrow">›</span>Ideas: AI-powered incident response system, LLM-based log analysis tool, agentic code reviewer, RAG-based runbook assistant</div>
+              <div class="deliverable-point"><span class="arrow">›</span>Must have: full OTel instrumentation, Grafana dashboard, Dockerfile, CI/CD, K8s deployment YAML, comprehensive README</div>
+              <div class="deliverable-point"><span class="arrow">›</span>Write a detailed blog post: architecture decisions, challenges, metrics from production. This one post = 10 resume bullets</div>
+            </div>
+            <div class="deliverable-success">Deployed capstone on GitHub: README with architecture diagram, live demo, blog post linked</div>
           </div>
           <div class="deliverable">
-            <span class="deliverable-track t-ai">AI</span>
-            <span class="deliverable-text">Consolidate all Krishnaik projects. Create a <strong>GitHub AI portfolio</strong> with 3–4 polished projects: RAG, Agentic, LLMOps monitoring, data science.</span>
+            <div class="deliverable-header">
+              <span class="deliverable-track t-ai">AI</span>
+              <span class="deliverable-text">Consolidate into a <strong>GitHub AI portfolio</strong> — 3–4 polished projects: RAG, Agentic, LLMOps, Data Science</span>
+            </div>
+            <div class="deliverable-body">
+              <div class="deliverable-point"><span class="arrow">›</span>Audit all Krishnaik projects: remove the messy notebooks, polish the ones worth showing. Quality over quantity</div>
+              <div class="deliverable-point"><span class="arrow">›</span>Create a GitHub portfolio README: personal description, project table (name, stack, status, live link), certifications section</div>
+              <div class="deliverable-point"><span class="arrow">›</span>Add demo GIFs to each project README using Recordit or LICEcap — visuals are non-negotiable for hiring managers</div>
+              <div class="deliverable-point"><span class="arrow">›</span>Tag all repos properly: topics (python, langchain, opentelemetry, rag, llm), license, description, homepage link</div>
+            </div>
+            <div class="deliverable-success">GitHub profile: 4 pinned repos all with demos, 100+ total commits, professional README on profile</div>
           </div>
           <div class="deliverable">
-            <span class="deliverable-track t-devops">DevOps</span>
-            <span class="deliverable-text">Second cloud cert or GCP cert if time allows. <strong>Infrastructure-as-code</strong> (Terraform basics) for at least one project. Full pipeline documented.</span>
+            <div class="deliverable-header">
+              <span class="deliverable-track t-devops">DevOps</span>
+              <span class="deliverable-text">Second cloud cert if time allows — <strong>Terraform IaC for at least one project</strong></span>
+            </div>
+            <div class="deliverable-body">
+              <div class="deliverable-point"><span class="arrow">›</span>Terraform basics: providers, resources, variables, outputs, state management. Deploy your capstone infra with Terraform</div>
+              <div class="deliverable-point"><span class="arrow">›</span>Minimum viable IaC: main.tf that provisions K8s cluster + managed DB + monitoring stack. Commit to GitHub under /infra</div>
+              <div class="deliverable-point"><span class="arrow">›</span>Optional second cert: GCP ACE if your target roles are GCP-heavy, or AWS SAA if you want optionality</div>
+            </div>
+            <div class="deliverable-success">Terraform code in /infra directory · apply and destroy tested · IaC section in README</div>
           </div>
           <div class="deliverable">
-            <span class="deliverable-track t-obs">Obs</span>
-            <span class="deliverable-text">Write a <strong>technical blog post</strong> about LLM observability — your unique intersection. This one post will be a major career differentiator.</span>
+            <div class="deliverable-header">
+              <span class="deliverable-track t-obs">Obs</span>
+              <span class="deliverable-text">Write the <strong>technical blog post: "LLM Observability in Production"</strong> — your career differentiator</span>
+            </div>
+            <div class="deliverable-body">
+              <div class="deliverable-point"><span class="arrow">›</span>Structure: The problem (standard APM fails for LLMs) → Your approach (OTel spans + Langfuse + Grafana) → Results + learnings</div>
+              <div class="deliverable-point"><span class="arrow">›</span>Include real data: latency distributions, cost-per-call graphs, token usage patterns from your own projects</div>
+              <div class="deliverable-point"><span class="arrow">›</span>Publish on Medium and LinkedIn simultaneously — Medium for SEO, LinkedIn for network amplification</div>
+              <div class="deliverable-point"><span class="arrow">›</span>Submit to AI/MLOps newsletters (The Batch, Marktechpost, ML Engineer) — one acceptance puts you in front of 50K+ readers</div>
+            </div>
+            <div class="deliverable-success">Blog post live on Medium + LinkedIn · submitted to 2+ newsletters · 500+ impressions in first week</div>
           </div>
         </div>
       </div>
@@ -757,55 +1194,179 @@
     <h2>What You'll Have at Month 6</h2>
     <div class="line"></div>
   </div>
+  <p class="section-desc">
+    These are not aspirations — they are minimum deliverables if the plan is executed. Every item on this list
+    is directly tied to specific phase deliverables above.
+  </p>
   <div class="outcomes">
     <div class="outcome-card">
       <div class="outcome-icon">🏅</div>
       <div class="outcome-title">Claude Architect Cert</div>
-      <div class="outcome-desc">Certified by Month 3. A rare credential in the market that sets you apart in AI roles.</div>
+      <div class="outcome-desc">Certified by Month 3. A rare, vendor-specific credential for the model now dominant in enterprise AI adoption.</div>
+      <div class="outcome-checklist">
+        <div class="outcome-check">500 practice questions completed</div>
+        <div class="outcome-check">All 5 domains: Foundations, Prompt Eng, Agentic (27%), Claude Code (20%), Responsible AI</div>
+        <div class="outcome-check">Badge on LinkedIn + resume — differentiates from generic "AI enthusiast" profiles</div>
+        <div class="outcome-check">Early-mover advantage — this cert will be commoditised in 18 months</div>
+      </div>
     </div>
     <div class="outcome-card">
       <div class="outcome-icon">🐍</div>
       <div class="outcome-title">Python Portfolio</div>
-      <div class="outcome-desc">3+ published GitHub projects. CLI app → FastAPI service → full capstone. Proven builder.</div>
+      <div class="outcome-desc">3+ published GitHub projects across a clear progression arc — from CLI to microservice to production capstone.</div>
+      <div class="outcome-checklist">
+        <div class="outcome-check">CLI app (M1) — fundamentals demonstrated</div>
+        <div class="outcome-check">FastAPI microservice (M2) — production patterns</div>
+        <div class="outcome-check">Claude API agent (M4) — AI integration skills</div>
+        <div class="outcome-check">Capstone (M6) — anchor portfolio piece with full README and blog post</div>
+      </div>
     </div>
     <div class="outcome-card">
       <div class="outcome-icon">🤖</div>
       <div class="outcome-title">AI Project Portfolio</div>
-      <div class="outcome-desc">RAG app, Agentic AI system, LLMOps dashboard. Real projects from Krishnaik curriculum.</div>
+      <div class="outcome-desc">4 production-quality AI projects: RAG, Agentic, LLMOps, and Data Science. All instrumented. All on GitHub.</div>
+      <div class="outcome-checklist">
+        <div class="outcome-check">RAG app with RAGAS evaluation scores</div>
+        <div class="outcome-check">Multi-agent system with LangGraph + tool use</div>
+        <div class="outcome-check">LLMOps project with Langfuse + cost tracking</div>
+        <div class="outcome-check">Data Science notebook with EDA + ML model</div>
+      </div>
     </div>
     <div class="outcome-card">
       <div class="outcome-icon">📊</div>
       <div class="outcome-title">Observability Specialist</div>
-      <div class="outcome-desc">OTel + Grafana + Prometheus stack. LLM observability — a niche with very few practitioners.</div>
+      <div class="outcome-desc">The rarest profile: someone who can instrument and monitor LLM systems in production. Almost no one has this.</div>
+      <div class="outcome-checklist">
+        <div class="outcome-check">OTel + Prometheus + Grafana stack deployed for AI apps</div>
+        <div class="outcome-check">Langfuse for LLM trace storage and analysis</div>
+        <div class="outcome-check">SLO/SLI definitions written for a real AI service</div>
+        <div class="outcome-check">Technical blog post on LLM observability — published and shared</div>
+      </div>
     </div>
     <div class="outcome-card">
       <div class="outcome-icon">☁️</div>
       <div class="outcome-title">Cloud Certified</div>
-      <div class="outcome-desc">1–2 certs (Azure/AWS). Production K8s pipeline. Full CI/CD for your own projects.</div>
+      <div class="outcome-desc">1–2 certs (Azure + optionally AWS/GCP). Full CI/CD + K8s deployment pipeline for personal projects.</div>
+      <div class="outcome-checklist">
+        <div class="outcome-check">AZ-204 or AZ-900 earned by Month 5</div>
+        <div class="outcome-check">App deployed to AKS or GKE with working deployment YAML</div>
+        <div class="outcome-check">GitHub Actions: test → build → push → deploy pipeline</div>
+        <div class="outcome-check">Terraform IaC for at least one project infrastructure</div>
+      </div>
     </div>
     <div class="outcome-card">
       <div class="outcome-icon">📢</div>
       <div class="outcome-title">Personal Brand</div>
-      <div class="outcome-desc">24+ LinkedIn posts. Resume automated. GitHub portfolio with traffic. Recruiters inbound.</div>
+      <div class="outcome-desc">24+ LinkedIn posts. Resume automated. GitHub portfolio with real traffic. Recruiters finding you inbound.</div>
+      <div class="outcome-checklist">
+        <div class="outcome-check">24+ posts across 6 months — consistent signal, not bursts</div>
+        <div class="outcome-check">OpenClaw automating resume tailoring per JD</div>
+        <div class="outcome-check">GitHub profile with pinned repos, demos, and professional README</div>
+        <div class="outcome-check">Technical blog post on Medium with 500+ reads</div>
+      </div>
     </div>
   </div>
+
+  <!-- SUCCESS METRICS -->
+  <div class="section-header">
+    <h2>Success Metrics by Track</h2>
+    <div class="line"></div>
+  </div>
+  <p class="section-desc">
+    How you know you're on track. Check these at the end of each month — not the end of the 6 months.
+    If a KPI is red for two consecutive months, adjust the plan, not the target.
+  </p>
+  <table class="metrics-table">
+    <thead>
+      <tr>
+        <th>Track</th>
+        <th>Monthly KPI</th>
+        <th>6-Month Target</th>
+        <th>How to Measure</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="m-track" style="color:var(--accent1)">Brand</span></td>
+        <td class="m-kpi">4 LinkedIn posts per month</td>
+        <td class="m-target">24+ posts · 500+ followers gained · recruiters inbound</td>
+        <td class="m-tool">LinkedIn Analytics → Impressions, Profile Views, Follower Growth</td>
+      </tr>
+      <tr>
+        <td><span class="m-track" style="color:var(--accent2)">Python</span></td>
+        <td class="m-kpi">1 new GitHub commit every working day</td>
+        <td class="m-target">4 published projects · capstone deployed · CI badges green</td>
+        <td class="m-tool">GitHub contribution graph — no gaps longer than 3 days</td>
+      </tr>
+      <tr>
+        <td><span class="m-track" style="color:var(--accent3)">AI / ML</span></td>
+        <td class="m-kpi">1 notebook or mini-project per week</td>
+        <td class="m-target">4 polished AI projects · RAGAS scores ≥ 0.75 on RAG app</td>
+        <td class="m-tool">GitHub repos created per month · Krishnaik curriculum progress tracker</td>
+      </tr>
+      <tr>
+        <td><span class="m-track" style="color:var(--accent4)">Observability</span></td>
+        <td class="m-kpi">1 new OTel instrumentation per project built</td>
+        <td class="m-target">Full AI stack instrumented · SLOs defined · blog post published</td>
+        <td class="m-tool">Count of OTel-instrumented repos · Langfuse trace count · Grafana dashboards</td>
+      </tr>
+      <tr>
+        <td><span class="m-track" style="color:var(--accent5)">DevOps</span></td>
+        <td class="m-kpi">1 new pipeline or deployment per month</td>
+        <td class="m-target">1–2 cloud certs · K8s deployment live · Terraform IaC written</td>
+        <td class="m-tool">Cert exam completion dates · GitHub Actions run history · deployed app URL</td>
+      </tr>
+      <tr>
+        <td><span class="m-track" style="color:#c084fc">Claude Cert</span></td>
+        <td class="m-kpi">~42 practice questions per week</td>
+        <td class="m-target">Exam passed by Week 12 · score ≥ 80% on mock exams before attempting</td>
+        <td class="m-tool">Practice question tracker spreadsheet · score per domain logged weekly</td>
+      </tr>
+    </tbody>
+  </table>
 
   <!-- RESOURCES -->
   <div class="section-header">
     <h2>Resources by Track</h2>
     <div class="line"></div>
   </div>
+  <p class="section-desc">
+    Curated and ordered by priority. Don't add more resources — the bottleneck is execution, not knowledge.
+    Mark a resource as done only when you've shipped something using what you learned from it.
+  </p>
   <div class="resources-grid">
     <div class="resource-card">
       <div class="resource-track">
         <span class="deliverable-track t-claude">Claude</span>
         <span class="resource-track-name">Claude Architect Cert</span>
       </div>
+      <div class="resource-why">Highest ROI per hour in this plan — daily 1hr compounds to a credential that opens doors in 90 days.</div>
       <div class="resource-list">
-        <div class="resource-item">docs.anthropic.com — official docs (start here)</div>
-        <div class="resource-item">Your 500 Qs practice bank (batches of 100)</div>
-        <div class="resource-item">Claude Code domain — 20% of exam weight</div>
-        <div class="resource-item">Agentic Architecture — 27% of exam weight</div>
+        <div class="resource-item">
+          <span class="r-name">docs.anthropic.com — Official Docs</span>
+          <span class="r-desc">Primary source. Read every page. The exam is based on this, not third-party summaries.</span>
+          <span class="r-priority rp-high">★★★ Primary</span>
+        </div>
+        <div class="resource-item">
+          <span class="r-name">Your 500 Practice Questions Bank</span>
+          <span class="r-desc">Batches of 100. Track domain performance. Review wrong answers next morning.</span>
+          <span class="r-priority rp-high">★★★ Daily</span>
+        </div>
+        <div class="resource-item">
+          <span class="r-name">Agentic Architecture Domain (27% of exam)</span>
+          <span class="r-desc">Multi-step agents, tool orchestration, memory patterns, error recovery strategies.</span>
+          <span class="r-priority rp-high">★★★ Focus</span>
+        </div>
+        <div class="resource-item">
+          <span class="r-name">Claude Code Domain (20% of exam)</span>
+          <span class="r-desc">Claude Code CLI, hooks system, MCP servers, settings, IDE integrations, slash commands.</span>
+          <span class="r-priority rp-med">★★ Focus</span>
+        </div>
+        <div class="resource-item">
+          <span class="r-name">Anthropic Cookbook on GitHub</span>
+          <span class="r-desc">Practical code examples for every Claude API feature. Run them, modify them, understand them.</span>
+          <span class="r-priority rp-med">★★ Supplemental</span>
+        </div>
       </div>
     </div>
     <div class="resource-card">
@@ -813,11 +1374,33 @@
         <span class="deliverable-track t-python">Python</span>
         <span class="resource-track-name">Python Mastery</span>
       </div>
+      <div class="resource-why">Python is the execution layer for everything else. Without it, AI projects stay theoretical.</div>
       <div class="resource-list">
-        <div class="resource-item">LeetCode Easy → Medium problems (30 min/day)</div>
-        <div class="resource-item">FastAPI docs for microservice building</div>
-        <div class="resource-item">Real Python for advanced concepts</div>
-        <div class="resource-item">GitHub for publishing every project</div>
+        <div class="resource-item">
+          <span class="r-name">LeetCode Easy → Medium (30 min/day)</span>
+          <span class="r-desc">Focus on: Two Sum, Sliding Window, BFS/DFS basics. These are interview patterns, not academic CS.</span>
+          <span class="r-priority rp-high">★★★ Daily M1–M3</span>
+        </div>
+        <div class="resource-item">
+          <span class="r-name">FastAPI Official Documentation</span>
+          <span class="r-desc">Best-in-class docs. Build along with the tutorial. Don't just read — type the code.</span>
+          <span class="r-priority rp-high">★★★ M2</span>
+        </div>
+        <div class="resource-item">
+          <span class="r-name">Real Python — Advanced Concepts</span>
+          <span class="r-desc">Decorators, generators, context managers, async/await, type hints. Read one article per week.</span>
+          <span class="r-priority rp-med">★★ Ongoing</span>
+        </div>
+        <div class="resource-item">
+          <span class="r-name">Anthropic Python SDK (anthropic-sdk-python)</span>
+          <span class="r-desc">For your Claude API agent in M4. Read the source code, not just the docs.</span>
+          <span class="r-priority rp-med">★★ M4</span>
+        </div>
+        <div class="resource-item">
+          <span class="r-name">pytest + GitHub Actions CI</span>
+          <span class="r-desc">Every project needs tests and CI. pytest docs + GitHub Actions quickstart is all you need.</span>
+          <span class="r-priority rp-med">★★ M2–M3</span>
+        </div>
       </div>
     </div>
     <div class="resource-card">
@@ -825,11 +1408,33 @@
         <span class="deliverable-track t-ai">AI</span>
         <span class="resource-track-name">AI / ML</span>
       </div>
+      <div class="resource-why">Krishnaik's curriculum is curated for exactly this transition. Follow it in order — resist the urge to skip ahead.</div>
       <div class="resource-list">
-        <div class="resource-item">Krishnaik: Data Science 1 + 2</div>
-        <div class="resource-item">Krishnaik: RAG (priority ★★★)</div>
-        <div class="resource-item">Krishnaik: Agentic AI v2</div>
-        <div class="resource-item">Krishnaik: LLMOps + Projects</div>
+        <div class="resource-item">
+          <span class="r-name">Krishnaik: Data Science Masterclass 1 + 2</span>
+          <span class="r-desc">NumPy, Pandas, Matplotlib, Seaborn, sklearn, XGBoost. This is Month 1–2 material.</span>
+          <span class="r-priority rp-high">★★★ M1–M2</span>
+        </div>
+        <div class="resource-item">
+          <span class="r-name">Krishnaik: RAG Pipeline Course</span>
+          <span class="r-desc">Chunking, embeddings, FAISS, Chroma, retrieval evaluation. Most important single course in the plan.</span>
+          <span class="r-priority rp-high">★★★ M2 Priority</span>
+        </div>
+        <div class="resource-item">
+          <span class="r-name">Krishnaik: Agentic AI v2</span>
+          <span class="r-desc">LangGraph, stateful agents, multi-agent patterns, tool loops, human-in-the-loop approval flows.</span>
+          <span class="r-priority rp-high">★★★ M3</span>
+        </div>
+        <div class="resource-item">
+          <span class="r-name">Krishnaik: LLMOps + Projects</span>
+          <span class="r-desc">Model/prompt versioning, evaluation with RAGAS/DeepEval, Langfuse integration, cost management.</span>
+          <span class="r-priority rp-high">★★★ M4</span>
+        </div>
+        <div class="resource-item">
+          <span class="r-name">RAGAS Documentation</span>
+          <span class="r-desc">The evaluation framework for your RAG app. Run faithfulness, relevance, and groundedness metrics.</span>
+          <span class="r-priority rp-med">★★ M4–M5</span>
+        </div>
       </div>
     </div>
     <div class="resource-card">
@@ -837,11 +1442,33 @@
         <span class="deliverable-track t-obs">Obs</span>
         <span class="resource-track-name">Observability + SRE</span>
       </div>
+      <div class="resource-why">You already have years of practical observability experience. Now formalise and extend it to AI systems — that's the moat.</div>
       <div class="resource-list">
-        <div class="resource-item">Udemy: OpenTelemetry complete course</div>
-        <div class="resource-item">Grafana + Prometheus hands-on labs</div>
-        <div class="resource-item">Elasticsearch fundamentals</div>
-        <div class="resource-item">Book: Observability Engineering (O'Reilly)</div>
+        <div class="resource-item">
+          <span class="r-name">Udemy: OpenTelemetry Complete Course</span>
+          <span class="r-desc">Python SDK, auto-instrumentation, custom spans, OTLP export, collector pipeline. Code along fully.</span>
+          <span class="r-priority rp-high">★★★ M1–M2</span>
+        </div>
+        <div class="resource-item">
+          <span class="r-name">Langfuse Documentation + Quickstart</span>
+          <span class="r-desc">LLM trace store with full prompt/response capture. Set up a project and trace every LLM call from M4 onward.</span>
+          <span class="r-priority rp-high">★★★ M4</span>
+        </div>
+        <div class="resource-item">
+          <span class="r-name">Grafana + Prometheus Hands-on Labs</span>
+          <span class="r-desc">Grafana Play (play.grafana.org) for free dashboarding practice. Prometheus Operator for K8s monitoring.</span>
+          <span class="r-priority rp-med">★★ Ongoing</span>
+        </div>
+        <div class="resource-item">
+          <span class="r-name">Book: Observability Engineering (O'Reilly)</span>
+          <span class="r-desc">Chapters 1–3 in M1. Full read by M4. Write a LinkedIn post summarising each chapter you finish.</span>
+          <span class="r-priority rp-med">★★ M1–M4</span>
+        </div>
+        <div class="resource-item">
+          <span class="r-name">Google SRE Book (free online)</span>
+          <span class="r-desc">SLO/SLI/Error Budget chapters. Essential context for writing meaningful observability into your projects.</span>
+          <span class="r-priority rp-low">★ M5 Reference</span>
+        </div>
       </div>
     </div>
     <div class="resource-card">
@@ -849,11 +1476,33 @@
         <span class="deliverable-track t-devops">DevOps</span>
         <span class="resource-track-name">DevOps + Cloud</span>
       </div>
+      <div class="resource-why">Deploy everything you build. A project without a deployment story has 50% less resume value.</div>
       <div class="resource-list">
-        <div class="resource-item">Naina Academy DevOps pipeline series</div>
-        <div class="resource-item">Udemy: Azure (AZ-900 / AZ-204)</div>
-        <div class="resource-item">Udemy: AWS Solutions Architect or GCP ACE</div>
-        <div class="resource-item">Kubernetes by KodeKloud (free tier)</div>
+        <div class="resource-item">
+          <span class="r-name">Naina Academy DevOps Pipeline Series</span>
+          <span class="r-desc">Structured, practical. Covers Git advanced, Docker, CI/CD, K8s in sequence. Follow the order.</span>
+          <span class="r-priority rp-high">★★★ M3</span>
+        </div>
+        <div class="resource-item">
+          <span class="r-name">KodeKloud: Kubernetes for Beginners (free tier)</span>
+          <span class="r-desc">Hands-on labs, not just video. Do every lab. The Kubernetes CKA path is optional — just the basics for now.</span>
+          <span class="r-priority rp-high">★★★ M3–M4</span>
+        </div>
+        <div class="resource-item">
+          <span class="r-name">Microsoft Learn: AZ-204 Path (free)</span>
+          <span class="r-desc">Official cert prep. Combine with Udemy practice exams (Whizlabs or MeasureUp) for exam-style questions.</span>
+          <span class="r-priority rp-high">★★★ M4–M5</span>
+        </div>
+        <div class="resource-item">
+          <span class="r-name">Terraform: Learn Terraform with Azure (official)</span>
+          <span class="r-desc">HashiCorp tutorials are free and hands-on. Deploy a basic Azure K8s cluster with Terraform in M6.</span>
+          <span class="r-priority rp-med">★★ M6</span>
+        </div>
+        <div class="resource-item">
+          <span class="r-name">GitHub Actions Official Docs</span>
+          <span class="r-desc">The best reference for CI/CD. Build your pipeline by reading the YAML spec, not copying from StackOverflow.</span>
+          <span class="r-priority rp-med">★★ M2–M3</span>
+        </div>
       </div>
     </div>
     <div class="resource-card">
@@ -861,11 +1510,33 @@
         <span class="deliverable-track t-brand">Brand</span>
         <span class="resource-track-name">Brand + Resume</span>
       </div>
+      <div class="resource-why">Your brand compounds from Day 1. Everything else you build becomes invisible without it. Treat this as seriously as code.</div>
       <div class="resource-list">
-        <div class="resource-item">OpenClaw — resume scraping + auto-writing</div>
-        <div class="resource-item">LinkedIn: 1 post/week minimum</div>
-        <div class="resource-item">GitHub README polish for every project</div>
-        <div class="resource-item">Medium/Hashnode: 1 technical blog/month</div>
+        <div class="resource-item">
+          <span class="r-name">OpenClaw — Resume Auto-Tailoring</span>
+          <span class="r-desc">Scrape target JDs, extract keywords, calibrate resume template. Saves 2–3hrs per application cycle.</span>
+          <span class="r-priority rp-high">★★★ Day 1</span>
+        </div>
+        <div class="resource-item">
+          <span class="r-name">LinkedIn Creator Mode + Post Analytics</span>
+          <span class="r-desc">Enable Creator Mode (unlocks follower analytics). Review post impressions weekly — double down on what works.</span>
+          <span class="r-priority rp-high">★★★ Ongoing</span>
+        </div>
+        <div class="resource-item">
+          <span class="r-name">GitHub Profile README</span>
+          <span class="r-desc">Create a github.com/[username]/[username] repo. Add: bio, current focus, tech stack badges, project table.</span>
+          <span class="r-priority rp-high">★★★ M1</span>
+        </div>
+        <div class="resource-item">
+          <span class="r-name">Medium / Hashnode — Technical Blog</span>
+          <span class="r-desc">One post per month minimum. Cross-post to LinkedIn. The LLM Observability post in M6 is the priority.</span>
+          <span class="r-priority rp-med">★★ Monthly</span>
+        </div>
+        <div class="resource-item">
+          <span class="r-name">Excalidraw / Canva for Architecture Diagrams</span>
+          <span class="r-desc">Every project README needs a visual. Hiring managers spend 30 seconds on a README — make it scannable.</span>
+          <span class="r-priority rp-med">★★ Per Project</span>
+        </div>
       </div>
     </div>
   </div>
@@ -874,12 +1545,18 @@
   <div class="tip-box" style="margin-top:48px">
     <div class="tip-icon">⚡</div>
     <div>
-      <div class="tip-title">The Compounding Advantage</div>
+      <div class="tip-title">The Compounding Advantage — Your Career Moat</div>
       <div class="tip-text">
-        Your unique edge isn't any single track — it's the intersection. <strong style="color:var(--text)">LLM + Observability is nearly empty territory.</strong> 
-        An AI engineer who can instrument and monitor LLM systems in production is extremely rare. 
-        By Month 5, you'll have the only portfolio in most rooms that combines agentic AI + OTel + cloud deployment + a vendor cert. 
-        Post about that intersection every chance you get. That's your brand moat.
+        Your unique edge isn't any single track — it's the intersection.
+        <strong style="color:var(--text)">LLM + Observability is nearly empty territory.</strong>
+        An AI engineer who can instrument and monitor LLM systems in production is extremely rare.
+        By Month 5, you'll have the only portfolio in most rooms that combines agentic AI + OTel + cloud deployment + a vendor cert.
+      </div>
+      <div class="tip-points">
+        <div class="tip-point"><span class="tp-arrow">→</span><strong style="color:var(--text)">Most AI engineers can't monitor their own systems.</strong> They rely on basic logging and pray. You'll know p95 latency, cost per call, and drift detection — in production.</div>
+        <div class="tip-point"><span class="tp-arrow">→</span><strong style="color:var(--text)">Most observability engineers haven't touched LLMs.</strong> They're stuck monitoring Java heaps. You'll bridge both worlds and speak both languages.</div>
+        <div class="tip-point"><span class="tp-arrow">→</span><strong style="color:var(--text)">Post about that intersection every chance you get.</strong> One well-written post about "LLM Observability in Production" reaches engineers who have never seen that perspective. That's your brand moat.</div>
+        <div class="tip-point"><span class="tp-arrow">→</span><strong style="color:var(--text)">The compounding starts now, not in Month 6.</strong> Every post, every commit, every instrumented project adds a layer. Don't wait to be "ready" — ready is a myth.</div>
       </div>
     </div>
   </div>
